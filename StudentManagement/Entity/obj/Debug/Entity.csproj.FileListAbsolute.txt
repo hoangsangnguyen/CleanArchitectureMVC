@@ -1,0 +1,11 @@
+D:\Workspace\Web\StudentManagement\Entity\bin\Debug\Entity.dll.config
+D:\Workspace\Web\StudentManagement\Entity\bin\Debug\Entity.dll
+D:\Workspace\Web\StudentManagement\Entity\bin\Debug\Entity.pdb
+D:\Workspace\Web\StudentManagement\Entity\bin\Debug\EntityFramework.dll
+D:\Workspace\Web\StudentManagement\Entity\bin\Debug\EntityFramework.SqlServer.dll
+D:\Workspace\Web\StudentManagement\Entity\bin\Debug\EntityFramework.xml
+D:\Workspace\Web\StudentManagement\Entity\bin\Debug\EntityFramework.SqlServer.xml
+D:\Workspace\Web\StudentManagement\Entity\obj\Debug\Entity.csproj.CoreCompileInputs.cache
+D:\Workspace\Web\StudentManagement\Entity\obj\Debug\Entity.dll
+D:\Workspace\Web\StudentManagement\Entity\obj\Debug\Entity.pdb
+D:\Workspace\Web\StudentManagement\Entity\obj\Debug\Entity.csprojResolveAssemblyReference.cache
