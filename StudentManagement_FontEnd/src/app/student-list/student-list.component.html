@@ -1,0 +1,36 @@
+<!-- <kendo-grid 
+  [data]="gridView" 
+  [pageSize]="pageSize" 
+  [skip]="skip" 
+  [pageable]="true" 
+  [height]="400" 
+  [sortable]="true"
+  [filterable]="false"
+  [groupable]="true"
+  (pageChange)="pageChange($event)">
+  <kendo-grid-column field="id" title="Id" [width]="140"></kendo-grid-column>
+  <kendo-grid-column field="firstName" title="FirstName" [width]="120"></kendo-grid-column>
+  <kendo-grid-column field="lastName" title="LastName" [width]="100"></kendo-grid-column>
+  <kendo-grid-column field="score" title="Score" [width]="130"></kendo-grid-column>
+</kendo-grid> -->
+
+<kendo-grid [data]="gridView" [height]="533" [pageSize]="gridState.take" [skip]="gridState.skip" [sort]="gridState.sort"
+  [pageable]="true" [sortable]="true" (dataStateChange)="onStateChange($event)" (edit)="editHandler($event)" (remove)="removeHandler($event)"
+  (add)="addHandler($event)">
+  <ng-template kendoGridToolbarTemplate>
+    <button kendoGridAddCommand>Add new</button>
+  </ng-template>
+  <kendo-grid-column field="id" title="Id"></kendo-grid-column>
+  <kendo-grid-column field="firstName" title="FirstName"></kendo-grid-column>
+  <kendo-grid-column field="lastName" title="LastName"></kendo-grid-column>
+  <kendo-grid-column field="score" title="Score"></kendo-grid-column>
+  <kendo-grid-command-column title="command" width="220">
+    <ng-template kendoGridCellTemplate>
+      <button kendoGridEditCommand [primary]="true">Edit</button>
+      <button kendoGridRemoveCommand>Delete</button>
+    </ng-template>
+  </kendo-grid-command-column>
+</kendo-grid>
+
+<app-student-edit [model]="editDataItem" [isNew]="isNew" (save)="saveHandler($event)" (cancel)="cancelHandler()">
+</app-student-edit>

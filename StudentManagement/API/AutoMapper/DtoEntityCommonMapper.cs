@@ -14,6 +14,7 @@ namespace API.AutoMapper
         {
             #region Enity To Dto
             CreateMap<Student, StudentDto>().ReverseMap();
+            CreateMap<StudentForCreation, Student>();
             #endregion
 
             #region Dto to Entity

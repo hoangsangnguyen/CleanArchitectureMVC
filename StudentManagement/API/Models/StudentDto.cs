@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 
 namespace API.Models
 {
-    public class StudentDto
+    public class StudentDto : BaseDto
     {
-        public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public double Score { get; set; }

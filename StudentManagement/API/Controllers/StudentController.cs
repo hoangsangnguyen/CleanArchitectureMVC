@@ -1,6 +1,7 @@
 ﻿using API.Models;
 using AutoMapper;
 using Entity;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Service.StudentService;
 using System;
@@ -12,6 +13,7 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("AllowSpecificOrigin")]
     public class StudentController : ControllerBase
     {
         private readonly IStudentService _studentService;
@@ -50,7 +52,8 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> CreateStudent(StudentDto dto)
+        [EnableCors("AllowSpecificOrigin")]
+        public async Task<ActionResult> CreateStudent([FromBody]StudentForCreation dto)
         {
             if (!ModelState.IsValid)
             {
@@ -75,7 +78,7 @@ namespace API.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> UpdateStudent(StudentDto dto)
+        public async Task<ActionResult> UpdateStudent(int id, [FromBody]StudentDto dto)
         {
             if (!ModelState.IsValid)
             {
