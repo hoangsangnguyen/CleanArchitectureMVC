@@ -5,19 +5,20 @@ import { IStudentList } from './IStudentList';
 import { OnRequestListener, ResponseNotify } from '../shared/OnRequestListener';
 import { Response, Http } from '@angular/http';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { StudentListResponse } from './StudentListResponse';
 
 const httpOptions = {
     headers: new HttpHeaders({
-      'Access-Control-Allow-Origin':  '*',
-      'Access-Control-Allow-Credentials': 'true',
-      'Content-Type':  'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Credentials': 'true',
+        'Content-Type': 'application/json',
     })
-  };
+};
 
 @Injectable()
 export class StudentService implements IStudentList, OnRequestListener {
 
-    url = 'https://localhost:44314/api/';
+    url = 'http://localhost:59146/api/';
 
     studentsChanged = new Subject<Student[]>();
     requestStatusChanged = new Subject<ResponseNotify>();
@@ -25,11 +26,12 @@ export class StudentService implements IStudentList, OnRequestListener {
     private students: Student[];
 
     private headerDict = {
-        'Access-Control-Allow-Origin' : '*'
+        'Access-Control-Allow-Origin': '*'
     }
-    private requestOptions = {                                                                                                                                                                                 
-        headers: new Headers(this.headerDict), 
-      };
+
+    private requestOptions = {
+        headers: new Headers(this.headerDict)
+    };
 
     constructor(private http: HttpClient) {
     }
@@ -44,21 +46,22 @@ export class StudentService implements IStudentList, OnRequestListener {
         await this.http.post(this.url + 'student', student)
             .subscribe(
                 (response: Response) => {
-                    if (response.status == 201) {
+                    console.log('Create student response : ' + JSON.stringify(response));
+                    if (response['success'] === true) {
                         this.onSuccess();
                     } else {
-                        this.onFailure(response.statusText);
+                        this.onFailure(response['results']);
                     }
                 }
             );
     }
 
     async getStudents() {
-        await this.http.get<Student[]>(this.url + 'student')
+        await this.http.get<StudentListResponse>(this.url + 'student')
             .subscribe(
-                (students: Student[]) => {
-                    console.log('Student ' + JSON.stringify(students));
-                    this.setStudents(students);
+                (response: StudentListResponse) => {
+                    console.log('Student ' + JSON.stringify(response));
+                    this.setStudents(response['results']);
                 }
             );
     }
@@ -82,28 +85,28 @@ export class StudentService implements IStudentList, OnRequestListener {
         console.log('Student save ' + student['id']);
         const id = student['id'];
         await this.http.put(this.url + `student/${id}`, JSON.stringify(student), httpOptions)
-        .subscribe(
-          (response : Response) => {
-            if (response.status == 200) {
-                this.onSuccess();
-            } else {
-                this.onFailure(response.statusText);
-            }
-          }
-        );
+            .subscribe(
+                (response: Response) => {
+                    if (response['success'] === true) {
+                        this.onSuccess();
+                    } else {
+                        this.onFailure(response['results']);
+                    }
+                }
+            );
     }
 
     async deleteStudent(id: number) {
         await this.http.delete(this.url + `student/${id}`)
-      .subscribe(
-        (response : Response) => {
-          if (response.status == 200) {
-            this.onSuccess();
-          } else {
-            this.onFailure(response.statusText);
-          }
-        }
-      );
+            .subscribe(
+                (response: Response) => {
+                    if (response['success'] === true) {
+                        this.onSuccess();
+                    } else {
+                        this.onFailure(response['results']);
+                    }
+                }
+            );
     }
 
     async onSuccess() {

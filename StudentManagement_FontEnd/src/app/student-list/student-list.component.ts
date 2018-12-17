@@ -18,13 +18,13 @@ export class StudentListComponent implements OnInit, OnDestroy {
 
   students: Student[];
   subscription: Subscription;
-  
+
   public gridView: GridDataResult;
   public view: Observable<GridDataResult>;
   public gridState: State = {
-      sort: [],
-      skip: 0,
-      take: 10,
+    sort: [],
+    skip: 0,
+    take: 10,
   };
   pageSize = 10;
 
@@ -51,34 +51,35 @@ export class StudentListComponent implements OnInit, OnDestroy {
   public onStateChange(state: State) {
     this.gridState = state;
     this.loadItems();
-}
+  }
 
-public addHandler() {
-  this.editDataItem = new Student(null, null, null, null);
-  this.isNew = true;
-}
+  public addHandler() {
+    this.editDataItem = new Student(null, null, null, null);
+    this.isNew = true;
+  }
 
-public editHandler({dataItem}) {
-  this.editDataItem = dataItem;
-  this.isNew = false;
-}
+  public editHandler({ dataItem }) {
+    this.editDataItem = dataItem;
+    this.isNew = false;
+  }
 
-public cancelHandler() {
-  this.editDataItem = undefined;
-}
+  public cancelHandler() {
+    this.editDataItem = undefined;
+  }
 
-public async saveHandler(student: Student) {
-  if (this.isNew)
-    await this.studentService.createStudent(student);
-  else 
-    await this.studentService.updateStudent(student);
-  this.editDataItem = undefined;
-}
+  public async saveHandler(student: Student) {
+    if (this.isNew) {
+      await this.studentService.createStudent(student);
+    } else {
+      await this.studentService.updateStudent(student);
+    }
+    this.editDataItem = undefined;
+  }
 
-public async removeHandler({dataItem}) {
-  console.log('Delete ' + JSON.stringify(dataItem));
-  await this.studentService.deleteStudent(dataItem['id']);
-}
+  public async removeHandler({ dataItem }) {
+    console.log('Delete ' + JSON.stringify(dataItem));
+    await this.studentService.deleteStudent(dataItem['id']);
+  }
 
   // public pageChange(event: PageChangeEvent): void {
   //   this.skip = event.skip;
@@ -86,13 +87,13 @@ public async removeHandler({dataItem}) {
   // }
 
   private loadItems(): void {
-    if (this.students != undefined) {
+    if (this.students !== undefined) {
       this.gridView = {
         data: this.students.slice(this.gridState.skip, this.gridState.skip + this.pageSize),
         total: this.students.length
       };
     }
-    
+
   }
 
   ngOnDestroy(): void {
