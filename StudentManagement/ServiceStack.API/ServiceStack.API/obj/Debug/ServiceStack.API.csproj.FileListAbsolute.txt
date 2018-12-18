@@ -137,7 +137,6 @@ D:\Sang\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API
 D:\Sang\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\EntityFramework.SqlServer.dll
 D:\Sang\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\Service.dll
 D:\Sang\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\ServiceStack.OrmLite.SqlServer.dll
-D:\Sang\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\Microsoft.EntityFrameworkCore.dll
 D:\Sang\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 D:\Sang\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\Microsoft.Extensions.Logging.Abstractions.dll
 D:\Sang\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\Microsoft.Extensions.Caching.Abstractions.dll

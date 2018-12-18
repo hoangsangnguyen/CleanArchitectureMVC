@@ -50,11 +50,12 @@ namespace API
                     builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
             });
 
-            // add service
-            services.AddScoped<IStudentService, StudentService>();
-            services.AddScoped<IUnitOfWork<IEntity>, UnitOfWork<IEntity>>();
-            services.AddScoped<IRepository<IEntity>, Repository<IEntity>>();
+            // add service and repository
+            
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<IStudentRepository, StudentRepository>();
+            services.AddScoped(typeof(IUnitOfWork<>), typeof(UnitOfWork<>));
+            services.AddScoped<IStudentService, StudentService>();
 
         }
 
