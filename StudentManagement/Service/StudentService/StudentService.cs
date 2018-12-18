@@ -11,7 +11,7 @@ namespace Service.StudentService
 {
     public class StudentService : BaseService<Student>, IStudentService
     {
-        public StudentService(IUnitOfWork unitOfWork) : base(unitOfWork)
+        public StudentService(IUnitOfWork<Student> unitOfWork) : base(unitOfWork)
         {
         }
     }

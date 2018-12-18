@@ -5,7 +5,9 @@ import { IStudentList } from './IStudentList';
 import { OnRequestListener, ResponseNotify } from '../shared/OnRequestListener';
 import { Response, Http } from '@angular/http';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { StudentListResponse } from './StudentListResponse';
+import { StudentListResponse } from './dto/StudentListResponse';
+import { StudentResponse } from './dto/StudentResponse';
+import { NotificationService } from '@progress/kendo-angular-notification';
 
 const httpOptions = {
     headers: new HttpHeaders({
@@ -33,7 +35,7 @@ export class StudentService implements IStudentList, OnRequestListener {
         headers: new Headers(this.headerDict)
     };
 
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient, private notificationService: NotificationService) {
     }
 
     setStudents(students: Student[]) {
@@ -49,36 +51,33 @@ export class StudentService implements IStudentList, OnRequestListener {
                     console.log('Create student response : ' + JSON.stringify(response));
                     if (response['success'] === true) {
                         this.onSuccess();
+                        this.showSuccessNotification('Create student successful');
                     } else {
                         this.onFailure(response['results']);
+                        this.showErrorNotification('Create student failed');
                     }
                 }
             );
     }
 
     async getStudents() {
+        console.log('Before loading students');
         await this.http.get<StudentListResponse>(this.url + 'student')
-            .subscribe(
-                (response: StudentListResponse) => {
-                    console.log('Student ' + JSON.stringify(response));
-                    this.setStudents(response['results']);
-                }
-            );
+            .toPromise().then((response: StudentListResponse) => {
+                console.log('Student ' + JSON.stringify(response));
+                this.setStudents(response['results']);
+            });
+        console.log('After loading students');
     }
 
     async getStudent(id: number) {
-        this.http.get(this.url + `student/${id}`)
-            .map(
-                (response: Response) => {
-                    const student: Student = response.json();
-                    return student;
-                }
-            )
-            .subscribe(
-                (student: Student) => {
-                    return student;
-                }
-            );
+        let student: any;
+        await this.http.get(this.url + `student/${id}`)
+            .toPromise().then((response: StudentResponse) => {
+                console.log('Student ' + JSON.stringify(response));
+                student = response['results'];
+            });
+        return student;
     }
 
     async updateStudent(student: Student) {
@@ -89,8 +88,10 @@ export class StudentService implements IStudentList, OnRequestListener {
                 (response: Response) => {
                     if (response['success'] === true) {
                         this.onSuccess();
+                        this.showSuccessNotification('Update student successful');
                     } else {
                         this.onFailure(response['results']);
+                        this.showErrorNotification('Update student failed');
                     }
                 }
             );
@@ -102,8 +103,10 @@ export class StudentService implements IStudentList, OnRequestListener {
                 (response: Response) => {
                     if (response['success'] === true) {
                         this.onSuccess();
+                        this.showSuccessNotification('Delete student successful');
                     } else {
                         this.onFailure(response['results']);
+                        this.showErrorNotification('Delete student failed');
                     }
                 }
             );
@@ -118,5 +121,23 @@ export class StudentService implements IStudentList, OnRequestListener {
     onFailure(errorMessage: string): void {
         const response = new ResponseNotify(false, errorMessage);
         this.requestStatusChanged.next(response);
+    }
+
+    showSuccessNotification (content: string) {
+        this.notificationService.show({
+            content: content,
+            animation: { type: 'slide', duration: 500 },
+            position: { horizontal: 'right', vertical: 'bottom' },
+            type: { style: 'success', icon: true },
+        });
+    }
+
+    showErrorNotification (content: string) {
+        this.notificationService.show({
+            content: content,
+            animation: { type: 'slide', duration: 500 },
+            position: { horizontal: 'right', vertical: 'bottom' },
+            type: { style: 'error', icon: true },
+        });
     }
 }

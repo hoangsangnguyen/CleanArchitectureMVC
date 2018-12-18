@@ -9,9 +9,9 @@ namespace Service.BaseService
 {
     public abstract class BaseService<T> : IBaseService<T> where T : IEntity
     {
-        protected readonly IUnitOfWork _unitOfWork;
+        protected readonly IUnitOfWork<T> _unitOfWork;
 
-        public BaseService(IUnitOfWork unitOfWork)
+        public BaseService(IUnitOfWork<T> unitOfWork)
         {
             this._unitOfWork = unitOfWork;
         }
@@ -20,7 +20,7 @@ namespace Service.BaseService
         {
             try
             {
-                _unitOfWork.Repository<T>().Create(entity);
+                _unitOfWork.Repository.Create(entity);
                 await _unitOfWork.Save();
                 return entity.Id;
             }
@@ -35,9 +35,9 @@ namespace Service.BaseService
         {
             try
             {
-                var entity = await _unitOfWork.Repository<T>().GetById(id);
+                var entity = await _unitOfWork.Repository.GetById(id);
                 if (entity == null) throw new Exception("Not found entity object with id " + id);
-                _unitOfWork.Repository<T>().Delete(entity);
+                _unitOfWork.Repository.Delete(entity);
                 await _unitOfWork.Save();
                 return (int)id;
             }
@@ -58,7 +58,7 @@ namespace Service.BaseService
         {
             try
             {
-                var entities = await Task.FromResult(_unitOfWork.Repository<T>().GetAll());
+                var entities = await Task.FromResult(_unitOfWork.Repository.GetAll());
                 return entities.AsEnumerable();
             }
             catch (Exception e)
@@ -71,7 +71,7 @@ namespace Service.BaseService
         {
             try
             {
-                var entity = await _unitOfWork.Repository<T>().GetById(id);
+                var entity = await _unitOfWork.Repository.GetById(id);
                 return entity;
             } catch (Exception e)
             {
@@ -83,7 +83,7 @@ namespace Service.BaseService
         {
             try
             {
-                _unitOfWork.Repository<T>().Update(entity);
+                _unitOfWork.Repository.Update(entity);
                 await _unitOfWork.Save();
                 return entity.Id;
             } catch (Exception e)

@@ -52,7 +52,7 @@ namespace API
 
             // add service
             services.AddScoped<IStudentService, StudentService>();
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IUnitOfWork<IEntity>, UnitOfWork<IEntity>>();
             services.AddScoped<IRepository<IEntity>, Repository<IEntity>>();
             services.AddScoped<IStudentRepository, StudentRepository>();
 

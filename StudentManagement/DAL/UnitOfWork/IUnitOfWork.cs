@@ -8,10 +8,9 @@ using System.Threading.Tasks;
 
 namespace DAL.UnitOfWork
 {
-    public interface IUnitOfWork
+    public interface IUnitOfWork<T> where T : Entity.IEntity
     {
-        IRepository<TEntity> Repository<TEntity>() where TEntity : IEntity;
-
+        IRepository<T> Repository { get; set; }
         Task Save();
 
         /// <summary>

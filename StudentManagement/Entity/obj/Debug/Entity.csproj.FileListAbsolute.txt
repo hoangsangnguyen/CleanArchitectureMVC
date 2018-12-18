@@ -16,8 +16,8 @@ D:\Sang\CleanArchitectureMVC\StudentManagement\Entity\bin\Debug\EntityFramework.
 D:\Sang\CleanArchitectureMVC\StudentManagement\Entity\bin\Debug\EntityFramework.SqlServer.dll
 D:\Sang\CleanArchitectureMVC\StudentManagement\Entity\bin\Debug\EntityFramework.xml
 D:\Sang\CleanArchitectureMVC\StudentManagement\Entity\bin\Debug\EntityFramework.SqlServer.xml
-D:\Sang\CleanArchitectureMVC\StudentManagement\Entity\obj\Debug\Entity.csprojAssemblyReference.cache
 D:\Sang\CleanArchitectureMVC\StudentManagement\Entity\obj\Debug\Entity.csproj.CoreCompileInputs.cache
 D:\Sang\CleanArchitectureMVC\StudentManagement\Entity\obj\Debug\Entity.csproj.CopyComplete
 D:\Sang\CleanArchitectureMVC\StudentManagement\Entity\obj\Debug\Entity.dll
 D:\Sang\CleanArchitectureMVC\StudentManagement\Entity\obj\Debug\Entity.pdb
+D:\Sang\CleanArchitectureMVC\StudentManagement\Entity\obj\Debug\Entity.csprojAssemblyReference.cache

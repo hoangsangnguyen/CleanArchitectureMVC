@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { AppRoutingModule } from './app-routing.module';
-import { DataStorageService } from './shared/data-storage.service';
 import { StudentListComponent } from './student-list/student-list.component';
 import { GridModule } from '@progress/kendo-angular-grid';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -15,6 +14,8 @@ import { StudentService } from './student-list/student.service';
 import { HttpClientModule } from '@angular/common/http';
 import { StudentEditComponent } from './student-list/student-edit/student-edit.component';
 import { DialogModule } from '@progress/kendo-angular-dialog';
+import { NotificationComponent } from './shared/notification/notification.component';
+import { NotificationModule } from '@progress/kendo-angular-notification';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { DialogModule } from '@progress/kendo-angular-dialog';
     DropdownDirective,
     StudentListComponent,
     StudentEditComponent,
+    NotificationComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,9 +35,10 @@ import { DialogModule } from '@progress/kendo-angular-dialog';
     AppRoutingModule,
     GridModule,
     BrowserAnimationsModule,
-    DialogModule
+    DialogModule,
+    NotificationModule
   ],
-  providers: [StudentService, DataStorageService],
+  providers: [StudentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

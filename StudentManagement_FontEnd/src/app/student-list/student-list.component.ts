@@ -5,8 +5,7 @@ import { StudentService } from './student.service';
 import { Router } from '@angular/router';
 import { GridDataResult, PageChangeEvent } from '@progress/kendo-angular-grid';
 import { Observable } from 'rxjs/Observable';
-import { State } from '@progress/kendo-data-query';
-import { map } from 'rxjs/operators/map';
+import {process, State } from '@progress/kendo-data-query';
 
 @Component({
   selector: 'app-student-list',
@@ -25,6 +24,11 @@ export class StudentListComponent implements OnInit, OnDestroy {
     sort: [],
     skip: 0,
     take: 10,
+    // Initial filter descriptor
+    filter: {
+      logic: 'and',
+      filters: []
+    }
   };
   pageSize = 10;
 
@@ -45,7 +49,10 @@ export class StudentListComponent implements OnInit, OnDestroy {
       );
 
     await this.studentService.getStudents();
+    console.log('Load students');
+
     this.loadItems();
+
   }
 
   public onStateChange(state: State) {
@@ -81,17 +88,14 @@ export class StudentListComponent implements OnInit, OnDestroy {
     await this.studentService.deleteStudent(dataItem['id']);
   }
 
-  // public pageChange(event: PageChangeEvent): void {
-  //   this.skip = event.skip;
-  //   this.loadItems();
-  // }
+  public pageChange(event: PageChangeEvent): void {
+    this.gridState.skip = event.skip;
+    this.loadItems();
+  }
 
   private loadItems(): void {
     if (this.students !== undefined) {
-      this.gridView = {
-        data: this.students.slice(this.gridState.skip, this.gridState.skip + this.pageSize),
-        total: this.students.length
-      };
+      this.gridView = process(this.students, this.gridState);
     }
 
   }

@@ -14,8 +14,8 @@
   <kendo-grid-column field="score" title="Score" [width]="130"></kendo-grid-column>
 </kendo-grid> -->
 
-<kendo-grid [data]="gridView" [height]="533" [pageSize]="gridState.take" [skip]="gridState.skip" [sort]="gridState.sort"
-  [pageable]="true" [sortable]="true" (dataStateChange)="onStateChange($event)" (edit)="editHandler($event)" (remove)="removeHandler($event)"
+<kendo-grid [data]="gridView" [height]="533" [pageSize]="gridState.take" [skip]="gridState.skip" [sort]="gridState.sort"  [filterable]="true" [filter]="gridState.filter"
+  [pageable]="true" [sortable]="true" (dataStateChange)="onStateChange($event)" (edit)="editHandler($event)" (remove)="removeHandler($event)" (pageChange)="pageChange($event)"
   (add)="addHandler($event)">
   <ng-template kendoGridToolbarTemplate>
     <button kendoGridAddCommand>Add new</button>
@@ -23,7 +23,7 @@
   <kendo-grid-column field="id" title="Id"></kendo-grid-column>
   <kendo-grid-column field="firstName" title="FirstName"></kendo-grid-column>
   <kendo-grid-column field="lastName" title="LastName"></kendo-grid-column>
-  <kendo-grid-column field="score" title="Score"></kendo-grid-column>
+  <kendo-grid-column field="score" title="Score" filter="numeric"></kendo-grid-column>
   <kendo-grid-command-column title="command" width="220">
     <ng-template kendoGridCellTemplate>
       <button kendoGridEditCommand [primary]="true">Edit</button>

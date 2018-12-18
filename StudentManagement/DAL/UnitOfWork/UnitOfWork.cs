@@ -9,19 +9,16 @@ using Entity;
 
 namespace DAL.UnitOfWork
 {
-    public class UnitOfWork : IUnitOfWork, IDisposable
+    public class UnitOfWork<T> : IUnitOfWork<T>, IDisposable where T : IEntity
     {
         private StudentContext context;
-        private Dictionary<Type, object> _repositories;
-
-        public UnitOfWork(StudentContext context, IStudentRepository studentRepostory)
+        
+        public IRepository<T> Repository { get; set; }
+        public UnitOfWork(StudentContext context, IRepository<T> repostory)
         {
             this.context = context;
-            _repositories = new Dictionary<Type, object>();
-            _repositories.Add(typeof(Student), studentRepostory);
-        }
-
-        public IRepository<T> Repository<T>() where T : IEntity { return (IRepository<T>)_repositories[typeof(T)]; }
+            Repository = repostory;
+        }        
 
         #region Material
         //public IRepository<T> RepositoryAsync<T>() where T : IEntity
@@ -59,10 +56,10 @@ namespace DAL.UnitOfWork
         //        return this.studentRepository;
         //    } }
         #endregion
+
         public virtual void Dispose()
         {
-            Dispose(true);
-            GC.SuppressFinalize(this);
+            context.Dispose();
         }
 
         private bool disposed = false;
