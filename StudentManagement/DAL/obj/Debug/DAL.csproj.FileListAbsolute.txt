@@ -459,3 +459,16 @@ D:\Sang\CleanArchitectureMVC\StudentManagement\DAL\bin\Debug\ServiceStack.Client
 D:\Sang\CleanArchitectureMVC\StudentManagement\DAL\bin\Debug\ServiceStack.Common.xml
 D:\Sang\CleanArchitectureMVC\StudentManagement\DAL\bin\Debug\ServiceStack.Interfaces.xml
 D:\Sang\CleanArchitectureMVC\StudentManagement\DAL\bin\Debug\ServiceStack.Text.xml
+D:\Workspace\Web\CleanArchitectureMVC\StudentManagement\DAL\bin\Debug\Autofac.dll
+D:\Workspace\Web\CleanArchitectureMVC\StudentManagement\DAL\bin\Debug\Autofac.Extras.ServiceStack.dll
+D:\Workspace\Web\CleanArchitectureMVC\StudentManagement\DAL\bin\Debug\ServiceStack.Client.dll
+D:\Workspace\Web\CleanArchitectureMVC\StudentManagement\DAL\bin\Debug\ServiceStack.Common.dll
+D:\Workspace\Web\CleanArchitectureMVC\StudentManagement\DAL\bin\Debug\ServiceStack.dll
+D:\Workspace\Web\CleanArchitectureMVC\StudentManagement\DAL\bin\Debug\ServiceStack.Interfaces.dll
+D:\Workspace\Web\CleanArchitectureMVC\StudentManagement\DAL\bin\Debug\ServiceStack.Text.dll
+D:\Workspace\Web\CleanArchitectureMVC\StudentManagement\DAL\bin\Debug\Autofac.xml
+D:\Workspace\Web\CleanArchitectureMVC\StudentManagement\DAL\bin\Debug\ServiceStack.xml
+D:\Workspace\Web\CleanArchitectureMVC\StudentManagement\DAL\bin\Debug\ServiceStack.Client.xml
+D:\Workspace\Web\CleanArchitectureMVC\StudentManagement\DAL\bin\Debug\ServiceStack.Common.xml
+D:\Workspace\Web\CleanArchitectureMVC\StudentManagement\DAL\bin\Debug\ServiceStack.Interfaces.xml
+D:\Workspace\Web\CleanArchitectureMVC\StudentManagement\DAL\bin\Debug\ServiceStack.Text.xml
