@@ -13,7 +13,7 @@ namespace ServiceStack.API.Tests
         public UnitTest()
         {
             appHost = new BasicAppHost().Init();
-            appHost.Container.AddTransient<StudentServices>();
+            appHost.Container.AddTransient<MyServices>();
         }
 
         [OneTimeTearDown]
@@ -22,7 +22,7 @@ namespace ServiceStack.API.Tests
         [Test]
         public void Can_call_MyServices()
         {
-            var service = appHost.Container.Resolve<StudentServices>();
+            var service = appHost.Container.Resolve<MyServices>();
 
             var response = (HelloResponse)service.Any(new Hello { Name = "World" });
 

@@ -13,7 +13,7 @@ namespace ServiceStack.API.Tests
 
         class AppHost : AppSelfHostBase
         {
-            public AppHost() : base(nameof(IntegrationTest), typeof(StudentServices).Assembly) { }
+            public AppHost() : base(nameof(IntegrationTest), typeof(MyServices).Assembly) { }
 
             public override void Configure(Container container)
             {

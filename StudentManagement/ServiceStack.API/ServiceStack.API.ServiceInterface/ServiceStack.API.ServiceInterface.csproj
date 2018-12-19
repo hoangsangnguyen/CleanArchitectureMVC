@@ -84,9 +84,18 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Entity\Entity.csproj">
+      <Project>{b70ff96d-e632-4b30-8aa0-e8069fc9fa00}</Project>
+      <Name>Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Service\Service.csproj">
+      <Project>{3660f69c-5452-4a95-92d2-532803dafdcf}</Project>
+      <Name>Service</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ServiceStack.API.ServiceModel\ServiceStack.API.ServiceModel.csproj">
       <Project>{53E82AC1-DD1D-4C66-B55F-F9F4ACFB2F40}</Project>
       <Name>ServiceStack.API.ServiceModel</Name>
