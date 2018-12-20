@@ -1,0 +1,12 @@
+D:\Sang\CleanArchitectureMVC\StudentManagement\Entity\bin\Release\Entity.dll.config
+D:\Sang\CleanArchitectureMVC\StudentManagement\Entity\bin\Release\Entity.dll
+D:\Sang\CleanArchitectureMVC\StudentManagement\Entity\bin\Release\Entity.pdb
+D:\Sang\CleanArchitectureMVC\StudentManagement\Entity\bin\Release\EntityFramework.dll
+D:\Sang\CleanArchitectureMVC\StudentManagement\Entity\bin\Release\EntityFramework.SqlServer.dll
+D:\Sang\CleanArchitectureMVC\StudentManagement\Entity\bin\Release\EntityFramework.xml
+D:\Sang\CleanArchitectureMVC\StudentManagement\Entity\bin\Release\EntityFramework.SqlServer.xml
+D:\Sang\CleanArchitectureMVC\StudentManagement\Entity\obj\Release\Entity.csprojAssemblyReference.cache
+D:\Sang\CleanArchitectureMVC\StudentManagement\Entity\obj\Release\Entity.csproj.CoreCompileInputs.cache
+D:\Sang\CleanArchitectureMVC\StudentManagement\Entity\obj\Release\Entity.csproj.CopyComplete
+D:\Sang\CleanArchitectureMVC\StudentManagement\Entity\obj\Release\Entity.dll
+D:\Sang\CleanArchitectureMVC\StudentManagement\Entity\obj\Release\Entity.pdb

@@ -81,6 +81,11 @@ namespace DAL.Repository
 
         public void Update(T entity)
         {
+            Console.WriteLine("State : " + _context.Entry(entity).State.ToString());
+            if (_context.Entry(entity).State == EntityState.Detached)
+            {
+                _dbSet.Attach(entity);
+            }
             _context.Entry(entity).State = EntityState.Modified;
         }
 

@@ -31,28 +31,28 @@ namespace ServiceStack.API.ServiceInterface
             {
                 var studentEntities = await _studentService.GetAll();
                 var dtos = studentEntities.ToList().ConvertAll(x => x.ConvertTo<StudentDto>());
-                var response = new BaseResponse
+                return new
                 {
                     Success = true,
                     StatusCode = HttpStatusCode.OK,
-                    Results = dtos
+                    Results = dtos,
+                    ItemCount = dtos.Count
                 };
-                return response;
             }
             catch (Exception e)
             {
                 Console.WriteLine("Get all student error : " + e.Message);
-                var response = new BaseResponse
+                return new
                 {
                     Success = false,
                     StatusCode = HttpStatusCode.BadRequest,
-                    Results = e.Message
+                    Results = e.Message,
+                    ItemCount = 0
                 };
-                return response;
             }
         }
 
-        public async Task<object> Get(GetStudentById request)
+        public async Task<object> Get(StudentById request)
         {
             var response = new BaseResponse();
 
@@ -80,7 +80,7 @@ namespace ServiceStack.API.ServiceInterface
             return response;
         }
 
-        public async Task<object> Post(CreateOrUpdateStudent studentDto)
+        public async Task<object> Post(CreateStudent request)
         {
             var response = new BaseResponse();
 
@@ -92,7 +92,7 @@ namespace ServiceStack.API.ServiceInterface
             //    return BadRequest(response);
             //}
 
-            var entity = studentDto.ConvertTo<Student>();
+            var entity = request.ConvertTo<Student>();
             try
             {
                 int result = await _studentService.Create(entity);
@@ -108,13 +108,13 @@ namespace ServiceStack.API.ServiceInterface
             {
                 Console.WriteLine("Error craete : " + e.Message);
                 response.Results = e.Message;
-            } 
+            }
             response.Success = false;
             response.StatusCode = HttpStatusCode.BadRequest;
             return response;
         }
 
-        public async Task<object> Put(CreateOrUpdateStudent dto)
+        public async Task<object> Put(UpdateStudent request)
         {
             var response = new BaseResponse();
 
@@ -125,20 +125,22 @@ namespace ServiceStack.API.ServiceInterface
             //    response.Results = null;
             //    return BadRequest();
             //}
-
-           
             try
             {
-                var entity = dto.ConvertTo<Student>();
-                entity.Id = dto.Id.Value;
-                int result = await _studentService.Update(entity);
-                if (result > 0)
+                var entity = await _studentService.GetById(request.Id);
+                if (entity != null)
                 {
-                    response.Success = true;
-                    response.StatusCode = HttpStatusCode.OK;
-                    response.Results = result;
-                    return response;
+                    entity = request.ConvertTo<Student>();
+                    int result = await _studentService.Update(entity);
+                    if (result > 0)
+                    {
+                        response.Success = true;
+                        response.StatusCode = HttpStatusCode.OK;
+                        response.Results = result;
+                        return response;
+                    }
                 }
+                
             }
             catch (Exception e)
             {
@@ -150,7 +152,32 @@ namespace ServiceStack.API.ServiceInterface
             response.StatusCode = HttpStatusCode.BadRequest;
             return response;
         }
-       
-        
+
+        public async Task<object> Delete(StudentById request)
+        {
+            var response = new BaseResponse();
+            try
+            {
+                var result = await _studentService.Delete(request.Id);
+                if (result > 0)
+                {
+                    response.Success = true;
+                    response.StatusCode = HttpStatusCode.OK;
+                    response.Results = request.Id;
+                    return response;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error delete student: " + e.Message);
+                response.Results = e.Message;
+            }
+
+            response.Success = false;
+            response.StatusCode = HttpStatusCode.NotFound;
+
+            return response;
+        }
+
     }
 }

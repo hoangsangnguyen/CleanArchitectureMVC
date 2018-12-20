@@ -1,0 +1,9 @@
+D:\Sang\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API.ServiceModel\bin\Release\ServiceStack.API.ServiceModel.dll
+D:\Sang\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API.ServiceModel\bin\Release\ServiceStack.API.ServiceModel.pdb
+D:\Sang\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API.ServiceModel\bin\Release\ServiceStack.Interfaces.dll
+D:\Sang\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API.ServiceModel\bin\Release\ServiceStack.Interfaces.xml
+D:\Sang\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API.ServiceModel\obj\Release\ServiceStack.API.ServiceModel.csprojAssemblyReference.cache
+D:\Sang\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API.ServiceModel\obj\Release\ServiceStack.API.ServiceModel.csproj.CoreCompileInputs.cache
+D:\Sang\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API.ServiceModel\obj\Release\ServiceStack.API.ServiceModel.csproj.CopyComplete
+D:\Sang\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API.ServiceModel\obj\Release\ServiceStack.API.ServiceModel.dll
+D:\Sang\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API.ServiceModel\obj\Release\ServiceStack.API.ServiceModel.pdb
