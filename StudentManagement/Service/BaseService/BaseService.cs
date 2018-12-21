@@ -16,37 +16,19 @@ namespace Service.BaseService
             this._unitOfWork = unitOfWork;
         }
 
-        public virtual async Task<int> Create(T entity)
+        public virtual async Task<T> Create(T entity)
         {
-            try
-            {
-                _unitOfWork.Repository.Create(entity);
-                await _unitOfWork.Save();
-                return entity.Id;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-           
+            _unitOfWork.Repository.Create(entity);
+            await _unitOfWork.Save();
+            return entity;
         }
 
         public virtual async Task<int> Delete(object id)
         {
-            try
-            {
-                var entity = await _unitOfWork.Repository.GetById(id);
-                if (entity == null) throw new Exception("Not found entity object with id " + id);
-                _unitOfWork.Repository.Delete(entity);
-                await _unitOfWork.Save();
-                return (int)id;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-
-            
+            var entity = await _unitOfWork.Repository.GetById(id);
+            _unitOfWork.Repository.Delete(entity);
+            await _unitOfWork.Save();
+            return (int)id;
         }
 
         public Task<int> Delete(T entity)
@@ -56,41 +38,21 @@ namespace Service.BaseService
 
         public async Task<IEnumerable<T>> GetAll()
         {
-            try
-            {
-                var entities = await Task.FromResult(_unitOfWork.Repository.GetAll());
-                return entities.AsEnumerable();
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
+            var entities = await Task.FromResult(_unitOfWork.Repository.GetAll());
+            return entities.AsEnumerable();
         }
 
         public async Task<T> GetById(object id)
         {
-            try
-            {
-                var entity = await _unitOfWork.Repository.GetById(id);
-                return entity;
-            } catch (Exception e)
-            {
-                throw e;
-            }
+            var entity = await _unitOfWork.Repository.GetById(id);
+            return entity;
         }
 
-        public async Task<int> Update(T entity)
+        public async Task<T> Update(T entity)
         {
-            try
-            {
-                _unitOfWork.Repository.Update(entity);
-                await _unitOfWork.Save();
-                return entity.Id;
-            } catch (Exception e)
-            {
-                throw e;
-            }
-            
+            _unitOfWork.Repository.Update(entity);
+            await _unitOfWork.Save();
+            return entity;
         }
     }
 }

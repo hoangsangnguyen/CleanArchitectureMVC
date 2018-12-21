@@ -20,4 +20,3 @@ D:\Sang\CleanArchitectureMVC\StudentManagement\Entity\obj\Debug\Entity.csproj.Co
 D:\Sang\CleanArchitectureMVC\StudentManagement\Entity\obj\Debug\Entity.csproj.CopyComplete
 D:\Sang\CleanArchitectureMVC\StudentManagement\Entity\obj\Debug\Entity.dll
 D:\Sang\CleanArchitectureMVC\StudentManagement\Entity\obj\Debug\Entity.pdb
-D:\Sang\CleanArchitectureMVC\StudentManagement\Entity\obj\Debug\Entity.csprojAssemblyReference.cache

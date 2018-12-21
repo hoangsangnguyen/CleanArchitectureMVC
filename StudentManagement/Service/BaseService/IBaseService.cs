@@ -11,8 +11,8 @@ namespace Service.BaseService
     {
         Task<IEnumerable<T>> GetAll();
         Task<T> GetById(object id);
-        Task<int> Create(T entity);
-        Task<int> Update(T entity);
+        Task<T> Create(T entity);
+        Task<T> Update(T entity);
         Task<int> Delete(object id);
         Task<int> Delete(T entity);
     }

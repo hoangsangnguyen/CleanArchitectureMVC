@@ -10,7 +10,8 @@ namespace ServiceStack.API.ServiceModel
     public class BaseResponse
     {
         public bool Success { get; set; }
-        public HttpStatusCode StatusCode { get; set; }
-        public object Results { get; set; }
+        public int StatusCode { get; set; }
+        public string Message { get; set; }
+        public object Results { get; set; } = null;
     }
 }

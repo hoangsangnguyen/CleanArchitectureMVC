@@ -40,14 +40,14 @@ namespace ServiceStack.API.ServiceInterface
                     ItemCount = dtos.Count
                 };
             }
-            catch (Exception e)
+            catch (WebServiceException webEx)
             {
-                Console.WriteLine("Get all student error : " + e.Message);
+                Console.WriteLine("Get all student error : " + webEx.ErrorMessage);
                 return new
                 {
                     Success = false,
-                    StatusCode = HttpStatusCode.BadRequest,
-                    Results = e.Message,
+                    StatusCode = webEx.StatusCode,
+                    Message = webEx.ErrorMessage,
                     ItemCount = 0
                 };
             }
@@ -60,99 +60,62 @@ namespace ServiceStack.API.ServiceInterface
             try
             {
                 var entity = await _studentService.GetById(request.Id);
-                if (entity != null)
-                {
-                    var dto = entity.ConvertTo<StudentDto>();
-                    response.Success = true;
-                    response.StatusCode = HttpStatusCode.OK;
-                    response.Results = dto;
-                    return response;
-                }
+                var dto = entity.ConvertTo<StudentDto>();
+                response.Success = true;
+                response.StatusCode = HttpStatusCode.OK.ConvertTo<int>();
+                response.Results = dto;
             }
-            catch (Exception e)
+            catch (WebServiceException webEx)
             {
-                Console.WriteLine("Error GET STUDENT BY ID : " + e.Message);
-                response.Results = e.Message;
+                response.Success = false;
+                response.StatusCode = webEx.StatusCode;
+                response.Message = webEx.ErrorMessage;
             }
-
-            response.Success = false;
-            response.StatusCode = HttpStatusCode.NotFound;
-
             return response;
         }
 
         public async Task<object> Post(CreateStudent request)
         {
             var response = new BaseResponse();
-
-            //if (!ModelState.IsValid)
-            //{
-            //    response.Success = false;
-            //    response.StatusCode = HttpStatusCode.BadRequest;
-            //    response.Results = null;
-            //    return BadRequest(response);
-            //}
-
-            var entity = request.ConvertTo<Student>();
             try
             {
-                int result = await _studentService.Create(entity);
-                if (result > 0)
-                {
-                    response.Success = true;
-                    response.StatusCode = HttpStatusCode.Created;
-                    response.Results = result;
-                    return response;
-                }
+                var entity = request.ConvertTo<Student>();
+                var result = await _studentService.Create(entity);
+                response.Success = true;
+                response.StatusCode = HttpStatusCode.Created.ConvertTo<int>();
+                response.Message = "Create student success";
+                response.Results = result;
+                return response;
             }
-            catch (Exception e)
+            catch (WebServiceException webEx)
             {
-                Console.WriteLine("Error craete : " + e.Message);
-                response.Results = e.Message;
+                response.Success = false;
+                response.StatusCode = webEx.StatusCode;
+                response.Message = webEx.ErrorMessage;
             }
-            response.Success = false;
-            response.StatusCode = HttpStatusCode.BadRequest;
             return response;
         }
 
         public async Task<object> Put(UpdateStudent request)
         {
             var response = new BaseResponse();
-
-            //if (!ModelState.IsValid)
-            //{
-            //    response.Success = false;
-            //    response.StatusCode = HttpStatusCode.BadRequest;
-            //    response.Results = null;
-            //    return BadRequest();
-            //}
             try
             {
                 var entity = await _studentService.GetById(request.Id);
-                if (entity != null)
-                {
-                    Mapper.Map(request, entity);
-                    int result = await _studentService.Update(entity);
-                    if (result > 0)
-                    {
-                        response.Success = true;
-                        response.StatusCode = HttpStatusCode.OK;
-                        response.Results = result;
-                        return response;
-                    }
-                }
-
-                response.Results = "Not found";
-                
+                Mapper.Map(request, entity);
+                var result = await _studentService.Update(entity);
+                response.Success = true;
+                response.Message = "Update student succees";
+                response.StatusCode = HttpStatusCode.OK.ConvertTo<int>();
+                response.Results = result;
+                return response;
             }
-            catch (Exception e)
+            catch (WebServiceException webEx)
             {
-                Console.WriteLine("Error update : " + e.Message);
-                response.Results = e.Message;
+                response.Success = false;
+                response.StatusCode = webEx.StatusCode;
+                response.Message = webEx.ErrorMessage;
             }
-
-            response.Success = false;
-            response.StatusCode = HttpStatusCode.BadRequest;
             return response;
         }
 
@@ -162,23 +125,18 @@ namespace ServiceStack.API.ServiceInterface
             try
             {
                 var result = await _studentService.Delete(request.Id);
-                if (result > 0)
-                {
-                    response.Success = true;
-                    response.StatusCode = HttpStatusCode.OK;
-                    response.Results = request.Id;
-                    return response;
-                }
+                response.Success = true;
+                response.Message = $"Delete student with id {request.Id} success";
+                response.StatusCode = HttpStatusCode.OK.ConvertTo<int>();
+                response.Results = request.Id;
+                return response;
             }
-            catch (Exception e)
+            catch (WebServiceException webEx)
             {
-                Console.WriteLine("Error delete student: " + e.Message);
-                response.Results = e.Message;
+                response.Success = false;
+                response.StatusCode = webEx.StatusCode;
+                response.Message = webEx.ErrorMessage;
             }
-
-            response.Success = false;
-            response.StatusCode = HttpStatusCode.NotFound;
-
             return response;
         }
 

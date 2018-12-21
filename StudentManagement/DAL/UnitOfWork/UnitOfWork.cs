@@ -20,43 +20,6 @@ namespace DAL.UnitOfWork
             Repository = repostory;
         }        
 
-        #region Material
-        //public IRepository<T> RepositoryAsync<T>() where T : IEntity
-        //{
-        //    if (_repositories == null)
-        //    {
-        //        _repositories = new Dictionary<string, object>();
-        //    }
-
-        //    var type = typeof(T).Name;
-
-        //    if (_repositories.ContainsKey(type))
-        //    {
-        //        return (IRepository<T>)_repositories[type];
-        //    }
-
-        //    var repositoryType = typeof(Repository<>);
-        //    try
-        //    {
-        //        _repositories.Add(type, Activator.CreateInstance(repositoryType.MakeGenericType(typeof(T)), context, this));
-
-        //    } catch (Exception e)
-        //    {
-        //        Console.WriteLine("ERROR INIT Repo : " + e.Message);
-        //    }
-
-        //    return (IRepository<T>)_repositories[type];
-        //}
-
-        //public IStudentRepository StudentRepository { get {
-        //        if (this.studentRepository == null)
-        //        {
-        //            this.studentRepository = new StudentRepository(context);
-        //        }
-        //        return this.studentRepository;
-        //    } }
-        #endregion
-
         public virtual void Dispose()
         {
             context.Dispose();
@@ -75,27 +38,16 @@ namespace DAL.UnitOfWork
             this.disposed = true;
         }
 
-        //public void RejectChanges()
-        //{
-        //    foreach (var entry in context.changeTracker().Entries()
-        //      .Where(e => e.State.CompareTo(EntityState.Unchanged) == 0)
-        //    {
-        //        switch (entry.State)
-        //        {
-        //            case EntityState.Added:
-        //                entry.State = EntityState.Detached;
-        //                break;
-        //            case EntityState.Modified:
-        //            case EntityState.Deleted:
-        //                entry.Reload();
-        //                break;
-        //        }
-        //    }
-        //}
-
         public async Task Save()
         {
-            await context.SaveChangeAsync();
+            try
+            {
+                await context.SaveChangeAsync();
+            }
+            catch
+            {
+                context.Database.BeginTransaction().Rollback();
+            }
         }
     }
 }
