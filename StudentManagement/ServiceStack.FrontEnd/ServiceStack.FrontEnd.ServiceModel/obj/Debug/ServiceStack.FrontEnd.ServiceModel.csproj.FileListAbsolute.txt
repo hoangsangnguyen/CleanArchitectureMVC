@@ -2,7 +2,6 @@ D:\Sang\CleanArchitectureMVC\StudentManagement\ServiceStack.FrontEnd\ServiceStac
 D:\Sang\CleanArchitectureMVC\StudentManagement\ServiceStack.FrontEnd\ServiceStack.FrontEnd.ServiceModel\bin\Debug\ServiceStack.FrontEnd.ServiceModel.pdb
 D:\Sang\CleanArchitectureMVC\StudentManagement\ServiceStack.FrontEnd\ServiceStack.FrontEnd.ServiceModel\bin\Debug\ServiceStack.Interfaces.dll
 D:\Sang\CleanArchitectureMVC\StudentManagement\ServiceStack.FrontEnd\ServiceStack.FrontEnd.ServiceModel\bin\Debug\ServiceStack.Interfaces.xml
-D:\Sang\CleanArchitectureMVC\StudentManagement\ServiceStack.FrontEnd\ServiceStack.FrontEnd.ServiceModel\obj\Debug\ServiceStack.FrontEnd.ServiceModel.csprojAssemblyReference.cache
 D:\Sang\CleanArchitectureMVC\StudentManagement\ServiceStack.FrontEnd\ServiceStack.FrontEnd.ServiceModel\obj\Debug\ServiceStack.FrontEnd.ServiceModel.csproj.CoreCompileInputs.cache
 D:\Sang\CleanArchitectureMVC\StudentManagement\ServiceStack.FrontEnd\ServiceStack.FrontEnd.ServiceModel\obj\Debug\ServiceStack.FrontEnd.ServiceModel.csproj.CopyComplete
 D:\Sang\CleanArchitectureMVC\StudentManagement\ServiceStack.FrontEnd\ServiceStack.FrontEnd.ServiceModel\obj\Debug\ServiceStack.FrontEnd.ServiceModel.dll

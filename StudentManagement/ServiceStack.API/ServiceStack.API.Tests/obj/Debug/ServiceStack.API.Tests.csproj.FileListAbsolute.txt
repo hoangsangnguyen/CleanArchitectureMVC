@@ -331,3 +331,6 @@ D:\Workspace\Web\CleanArchitectureMVC\StudentManagement\ServiceStack.API\Service
 D:\Workspace\Web\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API.Tests\obj\Debug\ServiceStack.API.Tests.csproj.CoreCompileInputs.cache
 D:\Workspace\Web\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API.Tests\obj\Debug\ServiceStack.API.Tests.dll
 D:\Workspace\Web\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API.Tests\obj\Debug\ServiceStack.API.Tests.pdb
+D:\Sang\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API.Tests\bin\Debug\AutoMapper.dll
+D:\Sang\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API.Tests\bin\Debug\AutoMapper.pdb
+D:\Sang\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API.Tests\bin\Debug\AutoMapper.xml

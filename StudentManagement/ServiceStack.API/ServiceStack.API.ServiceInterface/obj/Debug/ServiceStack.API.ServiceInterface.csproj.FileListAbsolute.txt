@@ -333,3 +333,6 @@ D:\Workspace\Web\CleanArchitectureMVC\StudentManagement\ServiceStack.API\Service
 D:\Workspace\Web\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API.ServiceInterface\obj\Debug\ServiceStack.API.ServiceInterface.csproj.CoreCompileInputs.cache
 D:\Workspace\Web\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API.ServiceInterface\obj\Debug\ServiceStack.API.ServiceInterface.dll
 D:\Workspace\Web\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API.ServiceInterface\obj\Debug\ServiceStack.API.ServiceInterface.pdb
+D:\Sang\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API.ServiceInterface\bin\Debug\AutoMapper.dll
+D:\Sang\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API.ServiceInterface\bin\Debug\AutoMapper.pdb
+D:\Sang\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API.ServiceInterface\bin\Debug\AutoMapper.xml

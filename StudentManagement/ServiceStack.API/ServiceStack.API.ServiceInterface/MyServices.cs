@@ -1,4 +1,5 @@
-﻿using Entity;
+﻿using AutoMapper;
+using Entity;
 using Service.StudentService;
 using ServiceStack;
 using ServiceStack.API.ServiceModel;
@@ -130,7 +131,7 @@ namespace ServiceStack.API.ServiceInterface
                 var entity = await _studentService.GetById(request.Id);
                 if (entity != null)
                 {
-                    entity = request.ConvertTo<Student>();
+                    Mapper.Map(request, entity);
                     int result = await _studentService.Update(entity);
                     if (result > 0)
                     {
@@ -140,6 +141,8 @@ namespace ServiceStack.API.ServiceInterface
                         return response;
                     }
                 }
+
+                response.Results = "Not found";
                 
             }
             catch (Exception e)

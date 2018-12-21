@@ -1,4 +1,5 @@
-﻿using Autofac;
+﻿using API.AutoMapper;
+using Autofac;
 using DAL.Database;
 using DAL.Repository;
 using DAL.UnitOfWork;
@@ -52,6 +53,8 @@ namespace ServiceStack.API
 
             IContainerAdapter adapter = new AutofacIocAdapter(builder.Build());
             container.Adapter = adapter;
+
+            AutoMapperConfiguration.Config();
         }
     }
 }
