@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Service.StudentService
 {
-    public class IStudentService : BaseService<Student>, IStudentService
+    public class StudentService : BaseService<Student>, IStudentService
     {
-        public IStudentService(IUnitOfWork<Student> unitOfWork) : base(unitOfWork)
+        public StudentService(IUnitOfWork<Student> unitOfWork) : base(unitOfWork)
         {
         }
     }

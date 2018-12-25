@@ -2,16 +2,20 @@
 using Autofac;
 using DAL.Database;
 using DAL.Repository;
+using DAL.Repository.Classes;
+using DAL.Repository.Departments;
 using DAL.UnitOfWork;
 using Entity;
 using Funq;
 using Microsoft.EntityFrameworkCore;
 using Service.BaseService;
+using Service.ClassService;
+using Service.DepartmentService;
+using Service.StudentService;
 using ServiceStack;
 using ServiceStack.API.ServiceInterface;
 using ServiceStack.Configuration;
 using ServiceStack.Data;
-using ServiceStack.OrmLite;
 
 namespace ServiceStack.API
 {
@@ -22,7 +26,7 @@ namespace ServiceStack.API
         /// Base constructor requires a Name and Assembly where web service implementation is located
         /// </summary>
         public AppHost()
-            : base("ServiceStack.API", typeof(MyServices).Assembly) { }
+            : base("ServiceStack.API", typeof(BaseService).Assembly) { }
 
         /// <summary>
         /// Application specific configuration
@@ -30,7 +34,8 @@ namespace ServiceStack.API
         /// </summary>
         public override void Configure(Container container)
         {
-            //Config examples
+            /*
+             * //Config examples
             this.Plugins.Add(new PostmanFeature());
             this.Plugins.Add(new CorsFeature());
 
@@ -76,6 +81,42 @@ namespace ServiceStack.API
 
             //IContainerAdapter adapter = new AutofacIocAdapter(builder.Build());
             //container.Adapter = adapter;
+
+            AutoMapperConfiguration.Config();
+             */
+
+            /**
+             * 
+             **/
+
+            this.Plugins.Add(new CorsFeature());
+
+            var builder = new ContainerBuilder();
+
+            var contextOption = new DbContextOptionsBuilder<StudentContext>()
+                .UseSqlServer(AppSettings.GetString("ConnectionString"), b => b.MigrationsAssembly("ServiceStack.API"))
+                .Options;
+            builder.RegisterInstance(new StudentContext(contextOption)).As<StudentContext>().SingleInstance();
+            builder
+                .RegisterGeneric(typeof(Repository<>))
+                .As(typeof(IRepository<>))
+                .InstancePerDependency();
+            builder.RegisterType<StudentRepository>().As<IStudentRepository>();
+            builder.RegisterType<DepartmentRepository>().As<IDepartmentRepository>();
+            builder.RegisterType<ClassRepository>().As<IClassRepository>();
+
+
+            builder
+               .RegisterGeneric(typeof(UnitOfWork<>))
+               .As(typeof(IUnitOfWork<>))
+               .InstancePerDependency();
+            builder.RegisterType<StudentService>().As<IStudentService>();
+            builder.RegisterType<DepartmentService>().As<IDepartmentService>();
+            builder.RegisterType<ClassService>().As<IClassService>();
+
+
+            IContainerAdapter adapter = new AutofacIocAdapter(builder.Build());
+            container.Adapter = adapter;
 
             AutoMapperConfiguration.Config();
         }

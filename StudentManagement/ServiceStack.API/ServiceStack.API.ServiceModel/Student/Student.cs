@@ -13,24 +13,17 @@ namespace ServiceStack.API.ServiceModel.Student
         public double Score { get; set; }
     }
 
-    public class StudentForCreateOrUpdate : IReturn<BaseResponse>
-    {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public double Score { get; set; }
-    }
-
-    [Route("/student", "GET")]
+    [Route("/students", "GET")]
     public class GetStudents : IReturn<BaseResponse>{}
 
-    [Route("/student/{Id}", "GET")]
-    [Route("/student", "DELETE")]
+    [Route("/students/{Id}", "GET")]
+    [Route("/students", "DELETE")]
     public class StudentById : IReturn<BaseResponse>
     {
         public int Id { get; set; }
     }
 
-    [Route("/student", "POST")]
+    [Route("/students", "POST")]
     public class CreateStudent : IReturn<BaseResponse>
     {
         public string FirstName { get; set; }
@@ -38,7 +31,7 @@ namespace ServiceStack.API.ServiceModel.Student
         public double Score { get; set; }
     }
 
-    [Route("/student", "PUT")]
+    [Route("/students", "PUT")]
     public class UpdateStudent : IReturn<BaseResponse>
     {
         public int Id { get; set; }
