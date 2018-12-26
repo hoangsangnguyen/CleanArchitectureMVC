@@ -59,8 +59,6 @@ namespace DAL.Repository
                 _dbSet.Attach(entity);
             }
             _context.Entry(entity).State = EntityState.Modified;
-        }
-
-
+        }        
     }
 }

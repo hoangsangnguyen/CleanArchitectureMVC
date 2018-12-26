@@ -23,49 +23,28 @@ namespace ServiceStack.API.ServiceInterface
 
         public async Task<object> Get(GetClasses request)
         {
-            try
+
+            var entities = await _classService.GetAll();
+            var dtos = entities.ToList().ConvertAll(x => x.ConvertTo<ClassDto>());
+            return new
             {
-                var entities = await _classService.GetAll();
-                var dtos = entities.ToList().ConvertAll(x => x.ConvertTo<ClassDto>());
-                return new
-                {
-                    Success = true,
-                    StatusCode = HttpStatusCode.OK,
-                    Results = dtos,
-                    ItemCount = dtos.Count
-                };
-            }
-            catch (WebServiceException webEx)
-            {
-                Console.WriteLine("Get all class error : " + webEx.ErrorMessage);
-                return new
-                {
-                    Success = false,
-                    StatusCode = webEx.StatusCode,
-                    Message = webEx.ErrorMessage,
-                    ItemCount = 0
-                };
-            }
+                Success = true,
+                StatusCode = (int)HttpStatusCode.OK,
+                Results = dtos,
+                ItemCount = dtos.Count
+            };
+
         }
 
         public async Task<object> Get(ClassById request)
         {
             var response = new BaseResponse();
 
-            try
-            {
-                var entity = await _classService.GetById(request.Id);
-                var dto = entity.ConvertTo<ClassDto>();
-                response.Success = true;
-                response.StatusCode = HttpStatusCode.OK.ConvertTo<int>();
-                response.Results = dto;
-            }
-            catch (WebServiceException webEx)
-            {
-                response.Success = false;
-                response.StatusCode = webEx.StatusCode;
-                response.Message = webEx.ErrorMessage;
-            }
+            var entity = await _classService.GetById(request.Id);
+            var dto = entity.ConvertTo<ClassDto>();
+            response.Success = true;
+            response.StatusCode = (int)HttpStatusCode.OK;
+            response.Results = dto;
             return response;
         }
 

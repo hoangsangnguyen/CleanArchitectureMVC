@@ -10,7 +10,7 @@ namespace ServiceStack.API.ServiceModel.Student
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public double Score { get; set; }
+        public string ClassName { get; set; }
     }
 
     [Route("/students", "GET")]
@@ -28,7 +28,7 @@ namespace ServiceStack.API.ServiceModel.Student
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public double Score { get; set; }
+        public int ClassId { get; set; }
     }
 
     [Route("/students", "PUT")]
@@ -37,7 +37,7 @@ namespace ServiceStack.API.ServiceModel.Student
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public double Score { get; set; }
+        public int ClassId { get; set; }
     }
 
 }

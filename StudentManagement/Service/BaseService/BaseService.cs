@@ -36,7 +36,7 @@ namespace Service.BaseService
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<T>> GetAll()
+        public virtual async Task<IEnumerable<T>> GetAll()
         {
             var entities = await Task.FromResult(_unitOfWork.Repository.GetAll());
             return entities.AsEnumerable();

@@ -535,6 +535,7 @@ D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\Service
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\System.Xml.XPath.dll
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\System.Xml.XPath.XDocument.dll
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\Autofac.dll
+D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\Autofac.Integration.Mvc.dll
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\AutoMapper.dll
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\DAL.dll
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\Entity.dll
@@ -554,6 +555,7 @@ D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\Service
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\Microsoft.Extensions.Logging.dll
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\Microsoft.Extensions.Options.dll
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\Microsoft.Extensions.Primitives.dll
+D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\Microsoft.Web.Infrastructure.dll
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\Remotion.Linq.dll
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\Service.dll
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\ServiceStack.API.ServiceInterface.dll
@@ -562,8 +564,6 @@ D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\Service
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\ServiceStack.Common.dll
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\ServiceStack.dll
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\ServiceStack.Interfaces.dll
-D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\ServiceStack.OrmLite.dll
-D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\ServiceStack.Redis.dll
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\ServiceStack.Server.dll
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\ServiceStack.Text.dll
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\System.Buffers.dll
@@ -577,6 +577,12 @@ D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\Service
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\System.Numerics.Vectors.dll
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\System.Runtime.CompilerServices.Unsafe.dll
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\System.ValueTuple.dll
+D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\System.Web.Helpers.dll
+D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\System.Web.Mvc.dll
+D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\System.Web.Razor.dll
+D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\System.Web.WebPages.Deployment.dll
+D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\System.Web.WebPages.dll
+D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\System.Web.WebPages.Razor.dll
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\DAL.pdb
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\DAL.dll.config
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\Entity.pdb
@@ -587,6 +593,7 @@ D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\Service
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\ServiceStack.API.ServiceInterface.dll.config
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\ServiceStack.API.ServiceModel.pdb
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\Autofac.xml
+D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\Autofac.Integration.Mvc.xml
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\AutoMapper.pdb
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\AutoMapper.xml
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\Microsoft.EntityFrameworkCore.xml
@@ -610,8 +617,6 @@ D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\Service
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\ServiceStack.Client.xml
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\ServiceStack.Common.xml
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\ServiceStack.Interfaces.xml
-D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\ServiceStack.OrmLite.xml
-D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\ServiceStack.Redis.xml
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\ServiceStack.Server.xml
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\ServiceStack.Text.xml
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\System.Buffers.xml
@@ -622,6 +627,12 @@ D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\Service
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\System.Numerics.Vectors.xml
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\System.Runtime.CompilerServices.Unsafe.xml
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\System.ValueTuple.xml
+D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\System.Web.Helpers.xml
+D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\System.Web.Mvc.xml
+D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\System.Web.Razor.xml
+D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\System.Web.WebPages.xml
+D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\System.Web.WebPages.Deployment.xml
+D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\System.Web.WebPages.Razor.xml
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\obj\Debug\ServiceStack.API.csprojAssemblyReference.cache
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\obj\Debug\ServiceStack.API.dll.config
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\obj\Debug\ServiceStack.API.csproj.CoreCompileInputs.cache

@@ -80,7 +80,7 @@
     <Compile Include="BaseService.cs" />
     <Compile Include="ClassApiService.cs" />
     <Compile Include="DepartmentApiService.cs" />
-    <Compile Include="MyServices.cs" />
+    <Compile Include="StudentApiServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

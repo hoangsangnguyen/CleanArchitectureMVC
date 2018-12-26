@@ -442,8 +442,6 @@ D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\Service
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API.ServiceInterface\bin\Debug\ServiceStack.Common.dll
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API.ServiceInterface\bin\Debug\ServiceStack.dll
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API.ServiceInterface\bin\Debug\ServiceStack.Interfaces.dll
-D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API.ServiceInterface\bin\Debug\ServiceStack.OrmLite.dll
-D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API.ServiceInterface\bin\Debug\ServiceStack.Redis.dll
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API.ServiceInterface\bin\Debug\ServiceStack.Server.dll
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API.ServiceInterface\bin\Debug\ServiceStack.Text.dll
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API.ServiceInterface\bin\Debug\System.Buffers.dll
@@ -477,8 +475,6 @@ D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\Service
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API.ServiceInterface\bin\Debug\ServiceStack.Client.xml
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API.ServiceInterface\bin\Debug\ServiceStack.Common.xml
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API.ServiceInterface\bin\Debug\ServiceStack.Interfaces.xml
-D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API.ServiceInterface\bin\Debug\ServiceStack.OrmLite.xml
-D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API.ServiceInterface\bin\Debug\ServiceStack.Redis.xml
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API.ServiceInterface\bin\Debug\ServiceStack.Server.xml
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API.ServiceInterface\bin\Debug\ServiceStack.Text.xml
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API.ServiceInterface\bin\Debug\System.Buffers.xml

@@ -1,36 +1,61 @@
 ﻿using Autofac;
+using Autofac.Integration.Mvc;
+using Funq;
 using ServiceStack.Configuration;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 
 namespace ServiceStack.API
 {
+    /// <summary>
+    /// Adapater between ServiceStack and Autofac
+    /// (Replace the default Funq Ioc Container)
+    /// </summary>
     public class AutofacIocAdapter : IContainerAdapter
     {
-        private Autofac.IContainer container;
+        private readonly Autofac.IContainer _container;
+        private readonly Container _funqContainer;
 
-        public AutofacIocAdapter(Autofac.IContainer container)
+        public AutofacIocAdapter(Autofac.IContainer container, Container funqContainer)
         {
-            this.container = container;
+            _container = container;
+            // Register a RequestLifetimeScopeProvider (from Autofac.Integration.Mvc) with Funq
+            var lifetimeScopeProvider = new RequestLifetimeScopeProvider(_container);
+            funqContainer.Register<ILifetimeScopeProvider>(x => lifetimeScopeProvider);
+            //Store the autofac application (root) container, and the funq container for later use            
+            _funqContainer = funqContainer;
         }
 
+        public Action<ContainerBuilder> ConfigAction { get; set; }
+
+        private ILifetimeScope ActiveScope
+        {
+            get
+            {
+                // If there is an active HttpContext, retrieve the lifetime scope by resolving
+                // the ILifetimeScopeProvider from Funq.  Otherwise, use the application (root) container.
+
+                return HttpContext.Current == null
+                            ? _container
+                            : _funqContainer.Resolve<ILifetimeScopeProvider>().GetLifetimeScope(ConfigAction);
+            }
+        }
         public T Resolve<T>()
         {
-            return container.Resolve<T>();
+            return ActiveScope.Resolve<T>();
         }
 
         public T TryResolve<T>()
         {
             T result;
 
-            if (container.TryResolve<T>(out result))
+            if (ActiveScope.TryResolve<T>(out result))
             {
                 return result;
             }
 
             return default(T);
         }
+
     }
 }

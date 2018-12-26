@@ -9,6 +9,10 @@ namespace Entity
 {
     public class Student : IEntity
     {
+        public Student()
+        {
+        }
+
         public string FirstName { get; set; }
         public string LastName { get; set; }
 

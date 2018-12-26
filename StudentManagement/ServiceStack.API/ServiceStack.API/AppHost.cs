@@ -14,6 +14,7 @@ using Service.DepartmentService;
 using Service.StudentService;
 using ServiceStack;
 using ServiceStack.API.ServiceInterface;
+using ServiceStack.API.ServiceModel;
 using ServiceStack.Configuration;
 using ServiceStack.Data;
 
@@ -93,10 +94,14 @@ namespace ServiceStack.API
 
             var builder = new ContainerBuilder();
 
-            var contextOption = new DbContextOptionsBuilder<StudentContext>()
-                .UseSqlServer(AppSettings.GetString("ConnectionString"), b => b.MigrationsAssembly("ServiceStack.API"))
-                .Options;
-            builder.RegisterInstance(new StudentContext(contextOption)).As<StudentContext>().SingleInstance();
+
+            builder.Register(c =>
+            {
+                var contextOption = new DbContextOptionsBuilder<StudentContext>()
+               .UseSqlServer(AppSettings.GetString("ConnectionString"), b => b.MigrationsAssembly("ServiceStack.API"))
+               .Options;
+                return new StudentContext(contextOption);
+            }).InstancePerRequest();
             builder
                 .RegisterGeneric(typeof(Repository<>))
                 .As(typeof(IRepository<>))
@@ -115,10 +120,37 @@ namespace ServiceStack.API
             builder.RegisterType<ClassService>().As<IClassService>();
 
 
-            IContainerAdapter adapter = new AutofacIocAdapter(builder.Build());
+            IContainerAdapter adapter = new AutofacIocAdapter(builder.Build(), container);
             container.Adapter = adapter;
 
             AutoMapperConfiguration.Config();
+
+            // handle Exceptions occuring in Services.
+            this.ServiceExceptionHandlers.Add((httpReq, request, exception) =>
+            {
+                var response = new BaseResponse
+                {
+                    Success = false,
+                    StatusCode = 0,
+                    Message = exception.Message,
+                    Results = exception.GetResponseBody()
+                };
+
+                return DtoUtils.CreateErrorResponse(request, exception);
+
+                //return new BaseResponse
+                //{
+                //    Success = false,
+                //    StatusCode = 0,
+                //    Message = exception.Message,
+                //    Results = exception.GetResponseBody()
+                //};
+            });
+
+            //this.UncaughtExceptionHandlers.Add((req, res, operationName, ex) => {
+            //    res.Write($"Error: {ex.GetType().Name}: {ex.Message}");
+            //    res.EndRequest(skipHeaders: true);
+            //});
         }
     }
 }

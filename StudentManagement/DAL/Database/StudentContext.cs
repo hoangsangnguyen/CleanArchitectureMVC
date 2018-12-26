@@ -1,11 +1,11 @@
 ﻿using Entity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace DAL.Database
 {
@@ -13,6 +13,15 @@ namespace DAL.Database
     {
         public StudentContext(DbContextOptions<StudentContext> options) : base(options)
         {
+        }
+
+        public StudentContext()
+        {
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            //optionsBuilder.UseLazyLoadingProxies(false);
         }
 
         public DbSet<Department> Departments { get; set; }
