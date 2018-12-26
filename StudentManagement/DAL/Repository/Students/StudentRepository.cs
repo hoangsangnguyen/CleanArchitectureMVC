@@ -8,7 +8,7 @@ using DAL.Database;
 using Entity;
 using Microsoft.EntityFrameworkCore;
 
-namespace DAL.Repository
+namespace DAL.Repository.Students
 {
     public class StudentRepository : Repository<Student>, IStudentRepository
     {

@@ -249,6 +249,7 @@
     <Compile Include="AutofacIocAdapter.cs" />
     <Compile Include="AutoMapper\AutoMapperConfiguration.cs" />
     <Compile Include="AutoMapper\DtoEntityCommonMapper.cs" />
+    <Compile Include="MapperExtension.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

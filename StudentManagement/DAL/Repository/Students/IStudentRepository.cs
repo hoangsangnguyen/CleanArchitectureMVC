@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL.Repository
+namespace DAL.Repository.Students
 {
     public interface IStudentRepository : IRepository<Student> { }
 }

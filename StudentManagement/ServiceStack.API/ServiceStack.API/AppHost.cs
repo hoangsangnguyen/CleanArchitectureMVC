@@ -4,6 +4,8 @@ using DAL.Database;
 using DAL.Repository;
 using DAL.Repository.Classes;
 using DAL.Repository.Departments;
+using DAL.Repository.Students;
+using DAL.Repository.Teachers;
 using DAL.UnitOfWork;
 using Entity;
 using Funq;
@@ -12,6 +14,7 @@ using Service.BaseService;
 using Service.ClassService;
 using Service.DepartmentService;
 using Service.StudentService;
+using Service.TeacherService;
 using ServiceStack;
 using ServiceStack.API.ServiceInterface;
 using ServiceStack.API.ServiceModel;
@@ -109,6 +112,8 @@ namespace ServiceStack.API
             builder.RegisterType<StudentRepository>().As<IStudentRepository>();
             builder.RegisterType<DepartmentRepository>().As<IDepartmentRepository>();
             builder.RegisterType<ClassRepository>().As<IClassRepository>();
+            builder.RegisterType<TeacherRepository>().As<ITeacherRepository>();
+
 
 
             builder
@@ -118,7 +123,7 @@ namespace ServiceStack.API
             builder.RegisterType<StudentService>().As<IStudentService>();
             builder.RegisterType<DepartmentService>().As<IDepartmentService>();
             builder.RegisterType<ClassService>().As<IClassService>();
-
+            builder.RegisterType<TeacherService>().As<ITeacherService>();
 
             IContainerAdapter adapter = new AutofacIocAdapter(builder.Build(), container);
             container.Adapter = adapter;

@@ -82,6 +82,8 @@
     <Compile Include="DepartmentApiService.cs" />
     <Compile Include="StudentApiServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TeacherApiService.cs" />
+    <Compile Include="Utils\MapperExtension.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

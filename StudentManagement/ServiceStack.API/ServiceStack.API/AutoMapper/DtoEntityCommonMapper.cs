@@ -3,6 +3,7 @@ using Entity;
 using ServiceStack.API.ServiceModel.Class;
 using ServiceStack.API.ServiceModel.Department;
 using ServiceStack.API.ServiceModel.Student;
+using ServiceStack.API.ServiceModel.Teacher;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,6 @@ namespace API.AutoMapper
     {
         public DtoEntityCommonMapper()
         {
-            #region Enity To Dto
             CreateMap<Student, StudentDto>().ReverseMap();
             CreateMap<UpdateStudent, Student>();
 
@@ -23,11 +23,10 @@ namespace API.AutoMapper
 
             CreateMap<Class, ClassDto>().ReverseMap();
             CreateMap <UpdateClass, Class>();
-            #endregion
 
-            #region Dto to Entity
-
-            #endregion
+            CreateMap<Teacher, TeacherDto>().ReverseMap();
+            CreateMap<UpdateTeacher, Teacher>()
+                 .ForAllMembers(m => m.Condition((source, target, sourceValue) => sourceValue != null));
         }
     }
 }

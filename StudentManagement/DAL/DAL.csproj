@@ -123,6 +123,8 @@
     <Compile Include="Repository\Repository.cs" />
     <Compile Include="Repository\Students\IStudentRepository.cs" />
     <Compile Include="Repository\Students\StudentRepository.cs" />
+    <Compile Include="Repository\Teachers\ITeacherRepository.cs" />
+    <Compile Include="Repository\Teachers\TeacherRepository.cs" />
     <Compile Include="UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />
   </ItemGroup>

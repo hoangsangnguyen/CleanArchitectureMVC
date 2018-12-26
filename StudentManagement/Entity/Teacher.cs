@@ -11,7 +11,7 @@ namespace Entity
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
-        public int SubjectId { get; set; }
+        public int? SubjectId { get; set; }
         public virtual Subject Subject { get; set; }
 
         public int DepartmentId { get; set; }

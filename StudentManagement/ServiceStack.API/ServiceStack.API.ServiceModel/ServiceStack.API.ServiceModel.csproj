@@ -50,6 +50,7 @@
     <Compile Include="Hello.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Student\Student.cs" />
+    <Compile Include="Teacher\Teacher.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
