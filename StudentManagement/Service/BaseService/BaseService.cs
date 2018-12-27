@@ -23,17 +23,19 @@ namespace Service.BaseService
             return entity;
         }
 
-        public virtual async Task<int> Delete(object id)
+        public virtual async Task<T> Delete(object id)
         {
             var entity = await _unitOfWork.Repository.GetById(id);
             _unitOfWork.Repository.Delete(entity);
             await _unitOfWork.Save();
-            return (int)id;
+            return entity;
         }
 
-        public Task<int> Delete(T entity)
+        public async virtual Task<T> Delete(T entity)
         {
-            throw new NotImplementedException();
+            _unitOfWork.Repository.Delete(entity);
+            await _unitOfWork.Save();
+            return entity;
         }
 
         public virtual async Task<IEnumerable<T>> GetAll()
@@ -42,13 +44,13 @@ namespace Service.BaseService
             return entities.AsEnumerable();
         }
 
-        public async Task<T> GetById(object id)
+        public virtual async Task<T> GetById(object id)
         {
             var entity = await _unitOfWork.Repository.GetById(id);
             return entity;
         }
 
-        public async Task<T> Update(T entity)
+        public virtual async Task<T> Update(T entity)
         {
             _unitOfWork.Repository.Update(entity);
             await _unitOfWork.Save();

@@ -10,5 +10,7 @@ namespace Service.ScoreService
 {
     public interface IScoreService : IBaseService<Score>
     {
+        Task<Score> GetById(int SubjectId, int StudentId);
+        Task<Score> Delete(int SubjectId, int StudentId);
     }
 }

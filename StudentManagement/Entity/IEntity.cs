@@ -9,7 +9,6 @@ namespace Entity
 {
     public class IEntity
     {
-        [Key]
-        public int Id { get; set; }
+       
     }
 }

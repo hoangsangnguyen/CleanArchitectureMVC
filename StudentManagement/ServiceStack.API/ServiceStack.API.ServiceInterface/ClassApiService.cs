@@ -74,7 +74,7 @@ namespace ServiceStack.API.ServiceInterface
             response.Success = true;
             response.Message = "Update class success";
             response.StatusCode = (int)HttpStatusCode.OK;
-            response.Results = result;
+            response.Results = result.ConvertTo<ClassDto>();
             return response;
         }
 
@@ -86,7 +86,7 @@ namespace ServiceStack.API.ServiceInterface
             response.Success = true;
             response.Message = $"Delete class with id {request.Id} success";
             response.StatusCode = (int)HttpStatusCode.OK;
-            response.Results = request.Id;
+            response.Results = result.ConvertTo<ClassDto>();
 
             return response;
         }

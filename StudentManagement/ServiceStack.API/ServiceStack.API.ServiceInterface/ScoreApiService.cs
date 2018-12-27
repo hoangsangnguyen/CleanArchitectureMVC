@@ -44,7 +44,7 @@ namespace ServiceStack.API.ServiceInterface
         {
             var response = new BaseResponse();
 
-            var entity = await _scoreService.GetById(request.Id);
+            var entity = await _scoreService.GetById(new { SubjectId = request.SubjectId, StudentId = request.StudentId});
             var dto = entity.ConvertTo<ScoreDto>();
             response.Success = true;
             response.StatusCode = (int)HttpStatusCode.OK;
@@ -53,6 +53,7 @@ namespace ServiceStack.API.ServiceInterface
             return response;
         }
 
+        [Authenticate]
         public async Task<object> Post(CreateScore request)
         {
             var response = new BaseResponse();
@@ -68,13 +69,13 @@ namespace ServiceStack.API.ServiceInterface
         public async Task<object> Put(UpdateScore request)
         {
             var response = new BaseResponse();
-            var entity = await _scoreService.GetById(request.Id);
+            var entity = await _scoreService.GetById(request.SubjectId, request.StudentId);
             request.ToEntity(entity);
             var result = await _scoreService.Update(entity);
             response.Success = true;
             response.Message = "Update score success";
             response.StatusCode = (int)HttpStatusCode.OK;
-            response.Results = result;
+            response.Results = result.ConvertTo<ScoreDto>();
             return response;
         }
 
@@ -82,11 +83,11 @@ namespace ServiceStack.API.ServiceInterface
         {
             var response = new BaseResponse();
 
-            var result = await _scoreService.Delete(request.Id);
+            var result = await _scoreService.Delete(request.SubjectId, request.StudentId);
             response.Success = true;
-            response.Message = $"Delete score with id {request.Id} success";
+            response.Message = $"Delete score with SubjectId {request.SubjectId} and StudentId {request.StudentId} success";
             response.StatusCode = (int)HttpStatusCode.OK;
-            response.Results = request.Id;
+            response.Results = result.ConvertTo<ScoreDto>();
 
             return response;
         }

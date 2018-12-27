@@ -69,7 +69,7 @@ namespace ServiceStack.API.ServiceInterface
             response.Success = true;
             response.Message = "Update department success";
             response.StatusCode = (int)HttpStatusCode.OK;
-            response.Results = result;
+            response.Results = result.ConvertTo<DepartmentDto>();
             return response;
         }
 
@@ -81,7 +81,7 @@ namespace ServiceStack.API.ServiceInterface
             response.Success = true;
             response.Message = $"Delete department with id {request.Id} success";
             response.StatusCode = (int)HttpStatusCode.OK;
-            response.Results = request.Id;
+            response.Results = result.ConvertTo<DepartmentDto>();
 
             return response;
         }

@@ -15,8 +15,13 @@ namespace DAL.Database
         {
         }
 
-        public StudentContext()
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Score>().HasKey(table => new {
+                table.StudentId,
+                table.SubjectId
+            });
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

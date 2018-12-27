@@ -87,7 +87,7 @@ namespace ServiceStack.API.ServiceInterface
             response.Success = true;
             response.Message = $"Delete teacher with id {request.Id} success";
             response.StatusCode = (int)HttpStatusCode.OK;
-            response.Results = request.Id;
+            response.Results = result.ConvertTo<TeacherDto>();
 
             return response;
         }

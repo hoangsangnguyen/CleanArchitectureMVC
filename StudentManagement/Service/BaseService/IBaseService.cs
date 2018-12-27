@@ -13,7 +13,7 @@ namespace Service.BaseService
         Task<T> GetById(object id);
         Task<T> Create(T entity);
         Task<T> Update(T entity);
-        Task<int> Delete(object id);
-        Task<int> Delete(T entity);
+        Task<T> Delete(object id);
+        Task<T> Delete(T entity);
     }
 }

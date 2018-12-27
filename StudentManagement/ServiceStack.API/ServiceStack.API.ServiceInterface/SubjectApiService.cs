@@ -79,7 +79,7 @@ namespace ServiceStack.API.ServiceInterface
             response.Success = true;
             response.Message = $"Delete subject with id {request.Id} success";
             response.StatusCode = HttpStatusCode.OK.ConvertTo<int>();
-            response.Results = request.Id;
+            response.Results = result.ConvertTo<SubjectDto>();
 
             return response;
         }

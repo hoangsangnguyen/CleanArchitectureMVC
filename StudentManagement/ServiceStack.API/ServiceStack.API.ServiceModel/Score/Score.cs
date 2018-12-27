@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ServiceStack.API.ServiceModel.Score
 {
-    public class ScoreDto : BaseDto
+    public class ScoreDto
     {
         public int StudentId { get; set; }
         public string StudentName { get; set; }
@@ -20,11 +20,12 @@ namespace ServiceStack.API.ServiceModel.Score
     [Route("/scores", "GET")]
     public class GetScores : IReturn<BaseResponse> { }
 
-    [Route("/scores/{Id}", "GET")]
+    [Route("/scores/{SubjectId}/{StudentId}", "GET")]
     [Route("/scores", "DELETE")]
     public class ScoreById : IReturn<BaseResponse>
     {
-        public int Id { get; set; }
+        public int StudentId { get; set; }
+        public int SubjectId { get; set; }
     }
 
     [Route("/scores", "POST")]
@@ -38,9 +39,8 @@ namespace ServiceStack.API.ServiceModel.Score
     [Route("/scores", "PUT")]
     public class UpdateScore : IReturn<BaseResponse>
     {
-        public int Id { get; set; }
-        public int? StudentId { get; set; }
-        public int? SubjectId { get; set; }
+        public int StudentId { get; set; }
+        public int SubjectId { get; set; }
         public float? Mark { get; set; }
     }
 
