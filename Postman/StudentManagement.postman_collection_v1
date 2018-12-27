@@ -1,0 +1,771 @@
+{
+	"info": {
+		"_postman_id": "b5b0f39f-8f48-4212-81a5-c55d12c8a481",
+		"name": "StudentManagement",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Departments",
+			"item": [
+				{
+					"name": "Get all",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost/ServiceStack.API/departments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"ServiceStack.API",
+								"departments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create department",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\" : \"Multimedia\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost/ServiceStack.API/departments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"ServiceStack.API",
+								"departments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update department",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Id\" : 8,\n\t\"Name\" : \"Information technology\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost/ServiceStack.API/departments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"ServiceStack.API",
+								"departments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Department",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Id\" : 9\n}"
+						},
+						"url": {
+							"raw": "http://localhost/ServiceStack.API/departments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"ServiceStack.API",
+								"departments"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Class",
+			"item": [
+				{
+					"name": "Get all",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost/ServiceStack.API/classes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"ServiceStack.API",
+								"classes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create class",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Name\" : \"D14CQCP02\",\n\t\"DepartmentId\" : 8\n}"
+						},
+						"url": {
+							"raw": "http://localhost/ServiceStack.API/classes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"ServiceStack.API",
+								"classes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update class",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Name\": \"D14CQCP01\",\n    \"Id\": 14\n}"
+						},
+						"url": {
+							"raw": "http://localhost/ServiceStack.API/classes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"ServiceStack.API",
+								"classes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete class",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Id\" : 13\n}"
+						},
+						"url": {
+							"raw": "http://localhost/ServiceStack.API/classes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"ServiceStack.API",
+								"classes"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Student",
+			"item": [
+				{
+					"name": "Get all",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost/ServiceStack.API/students",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"ServiceStack.API",
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Student",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"FirstName\" : \"Tran\",\n\t\"LastName\" : \"Anh\",\n\t\"ClassId\" : 14,\n\t\"StudentCode\" : \"N04\",\n\t \"DateOfBirth\": \"1996-04-24\"\n\t\n}"
+						},
+						"url": {
+							"raw": "http://localhost/ServiceStack.API/students",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"ServiceStack.API",
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update student",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t \"Id\": 3,\n\t \"DateOfBirth\": \"1997-23-09\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost/ServiceStack.API/students",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"ServiceStack.API",
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Student",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Id\" : 2\n}"
+						},
+						"url": {
+							"raw": "http://localhost/ServiceStack.API/students",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"ServiceStack.API",
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t \"UserName\": \"N14\",\n     \"Password\": \"1996-02-24\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost/ServiceStack.API/students/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"ServiceStack.API",
+								"students",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Teacher",
+			"item": [
+				{
+					"name": "Get all",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost/ServiceStack.API/teachers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"ServiceStack.API",
+								"teachers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create teacher",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"FirstName\" : \"Nguyen\",\n\t\"LastName\" : \"Thi Be\",\n\t\"DepartmentId\" : 8,\n\t\"IsManager\" : false\n}"
+						},
+						"url": {
+							"raw": "http://localhost/ServiceStack.API/teachers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"ServiceStack.API",
+								"teachers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Teacher",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Id\" : 3,\n\t \"DepartmentId\": 8\n}"
+						},
+						"url": {
+							"raw": "http://localhost/ServiceStack.API/teachers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"ServiceStack.API",
+								"teachers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete teacher",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Id\" : 4\t\n}"
+						},
+						"url": {
+							"raw": "http://localhost/ServiceStack.API/teachers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"ServiceStack.API",
+								"teachers"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Subject",
+			"item": [
+				{
+					"name": "Get all",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost/ServiceStack.API/subjects",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"ServiceStack.API",
+								"subjects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create subject",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Name\" : \"C++\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost/ServiceStack.API/subjects",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"ServiceStack.API",
+								"subjects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update subject",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Id\" : 1,\n\t\"Name\" : \"Java\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost/ServiceStack.API/subjects",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"ServiceStack.API",
+								"subjects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete subject",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Id\" : 1\n}"
+						},
+						"url": {
+							"raw": "http://localhost/ServiceStack.API/subjects",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"ServiceStack.API",
+								"subjects"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Score",
+			"item": [
+				{
+					"name": "Get all",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost/ServiceStack.API/scores",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"ServiceStack.API",
+								"scores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create score",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"StudentId\" : 3,\n\t\"SubjectId\" : 2,\n\t\"Mark\" : 10\n}"
+						},
+						"url": {
+							"raw": "http://localhost/ServiceStack.API/scores",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"ServiceStack.API",
+								"scores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update score",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Id\" : 1,\n\t\"Mark\" : 9.5\n}"
+						},
+						"url": {
+							"raw": "http://localhost/ServiceStack.API/scores",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"ServiceStack.API",
+								"scores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete score",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Id\" : 1\n}"
+						},
+						"url": {
+							"raw": "http://localhost/ServiceStack.API/scores",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"ServiceStack.API",
+								"scores"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
