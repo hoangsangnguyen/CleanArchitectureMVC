@@ -23,9 +23,14 @@ namespace ServiceStack.API.ServiceInterface
 
         public async Task<object> Get(GetClasses request)
         {
+            var classEntities = await _classService.GetAll();
+            var dtos = classEntities.ToList().ConvertAll(x =>
+            {
+                var dto = x.ConvertTo<ClassDto>();
+                dto.DepartmentName = x.Department.Name;
+                return dto;
+            });
 
-            var entities = await _classService.GetAll();
-            var dtos = entities.ToList().ConvertAll(x => x.ConvertTo<ClassDto>());
             return new
             {
                 Success = true,
@@ -33,10 +38,9 @@ namespace ServiceStack.API.ServiceInterface
                 Results = dtos,
                 ItemCount = dtos.Count
             };
-
         }
 
-        public async Task<object> Get(ClassById request)
+        public async Task<object> Get(ClassDto request)
         {
             var response = new BaseResponse();
 
@@ -45,72 +49,45 @@ namespace ServiceStack.API.ServiceInterface
             response.Success = true;
             response.StatusCode = (int)HttpStatusCode.OK;
             response.Results = dto;
+
             return response;
         }
 
         public async Task<object> Post(CreateClass request)
         {
             var response = new BaseResponse();
-            try
-            {
-                var entity = request.ConvertTo<Class>();
-                var result = await _classService.Create(entity);
-                response.Success = true;
-                response.StatusCode = HttpStatusCode.Created.ConvertTo<int>();
-                response.Message = "Create class success";
-                response.Results = result;
-                return response;
-            }
-            catch (WebServiceException webEx)
-            {
-                response.Success = false;
-                response.StatusCode = webEx.StatusCode;
-                response.Message = webEx.ErrorMessage;
-            }
+            var entity = request.ConvertTo<Class>();
+            var result = await _classService.Create(entity);
+            response.Success = true;
+            response.StatusCode = (int)HttpStatusCode.Created;
+            response.Message = "Create class success";
+            response.Results = result;
             return response;
         }
 
         public async Task<object> Put(UpdateClass request)
         {
             var response = new BaseResponse();
-            try
-            {
-                var entity = await _classService.GetById(request.Id);
-                Mapper.Map(request, entity);
-                var result = await _classService.Update(entity);
-                response.Success = true;
-                response.Message = "Update class success";
-                response.StatusCode = HttpStatusCode.OK.ConvertTo<int>();
-                response.Results = result;
-                return response;
-            }
-            catch (WebServiceException webEx)
-            {
-                response.Success = false;
-                response.StatusCode = webEx.StatusCode;
-                response.Message = webEx.ErrorMessage;
-            }
+            var entity = await _classService.GetById(request.Id);
+            request.ToEntity(entity);
+            var result = await _classService.Update(entity);
+            response.Success = true;
+            response.Message = "Update class success";
+            response.StatusCode = (int)HttpStatusCode.OK;
+            response.Results = result;
             return response;
         }
 
         public async Task<object> Delete(ClassById request)
         {
             var response = new BaseResponse();
-            try
-            {
-                var result = await _classService.Delete(request.Id);
-                response.Success = true;
-                response.Message = $"Delete class with id {request.Id} success";
-                response.StatusCode = HttpStatusCode.OK.ConvertTo<int>();
-                response.Results = request.Id;
-                return response;
-            }
-            catch (WebServiceException webEx)
-            {
-                response.Success = false;
-                response.StatusCode = webEx.StatusCode;
-                response.Message = webEx.ErrorMessage;
-            }
+
+            var result = await _classService.Delete(request.Id);
+            response.Success = true;
+            response.Message = $"Delete class with id {request.Id} success";
+            response.StatusCode = (int)HttpStatusCode.OK;
+            response.Results = request.Id;
+
             return response;
         }
     }

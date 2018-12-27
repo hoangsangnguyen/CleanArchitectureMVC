@@ -80,10 +80,12 @@
     <Compile Include="BaseService.cs" />
     <Compile Include="ClassApiService.cs" />
     <Compile Include="DepartmentApiService.cs" />
+    <Compile Include="ScoreApiService.cs" />
     <Compile Include="StudentApiServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SubjectApiService.cs" />
     <Compile Include="TeacherApiService.cs" />
-    <Compile Include="Utils\MapperExtension.cs" />
+    <Compile Include="Utils\ConvertExtension.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

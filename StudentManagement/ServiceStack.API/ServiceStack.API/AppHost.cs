@@ -13,7 +13,9 @@ using Microsoft.EntityFrameworkCore;
 using Service.BaseService;
 using Service.ClassService;
 using Service.DepartmentService;
+using Service.ScoreService;
 using Service.StudentService;
+using Service.SubjectService;
 using Service.TeacherService;
 using ServiceStack;
 using ServiceStack.API.ServiceInterface;
@@ -124,6 +126,8 @@ namespace ServiceStack.API
             builder.RegisterType<DepartmentService>().As<IDepartmentService>();
             builder.RegisterType<ClassService>().As<IClassService>();
             builder.RegisterType<TeacherService>().As<ITeacherService>();
+            builder.RegisterType<SubjectService>().As<ISubjectService>();
+            builder.RegisterType<ScoreService>().As<IScoreService>();
 
             IContainerAdapter adapter = new AutofacIocAdapter(builder.Build(), container);
             container.Adapter = adapter;

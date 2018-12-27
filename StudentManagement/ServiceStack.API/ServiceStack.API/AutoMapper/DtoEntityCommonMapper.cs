@@ -15,18 +15,18 @@ namespace API.AutoMapper
     {
         public DtoEntityCommonMapper()
         {
-            CreateMap<Student, StudentDto>().ReverseMap();
-            CreateMap<UpdateStudent, Student>();
+            //CreateMap<Student, StudentDto>().ReverseMap();
+            //CreateMap<UpdateStudent, Student>();
 
-            CreateMap<Department, DepartmentDto>().ReverseMap();
-            CreateMap<UpdateDepartment, Department>();
+            //CreateMap<Department, DepartmentDto>().ReverseMap();
+            //CreateMap<UpdateDepartment, Department>();
 
-            CreateMap<Class, ClassDto>().ReverseMap();
-            CreateMap <UpdateClass, Class>();
+            //CreateMap<Class, ClassDto>().ReverseMap();
+            //CreateMap <UpdateClass, Class>();
 
-            CreateMap<Teacher, TeacherDto>().ReverseMap();
-            CreateMap<UpdateTeacher, Teacher>()
-                 .ForAllMembers(m => m.Condition((source, target, sourceValue) => sourceValue != null));
+            //CreateMap<Teacher, TeacherDto>().ReverseMap();
+            //CreateMap<UpdateTeacher, Teacher>()
+            //     .ForAllMembers(m => m.Condition((source, target, sourceValue) => sourceValue != null));
         }
     }
 }

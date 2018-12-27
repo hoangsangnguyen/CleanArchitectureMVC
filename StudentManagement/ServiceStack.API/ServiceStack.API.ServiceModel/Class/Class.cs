@@ -35,6 +35,6 @@ namespace ServiceStack.API.ServiceModel.Class
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public int DepartmentId { get; set; }
+        public int? DepartmentId { get; set; }
     }
 }

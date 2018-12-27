@@ -14,7 +14,16 @@ namespace Entity
         }
 
         public string FirstName { get; set; }
+
         public string LastName { get; set; }
+
+        [Required]
+        [MaxLength(50)]
+        public string StudentCode { get; set; }
+
+        [Required]
+        [DataType(DataType.Date)]
+        public DateTime? DateOfBirth { get; set; }
 
         public int ClassId { get; set; }
         public virtual Class Class { get; set; }

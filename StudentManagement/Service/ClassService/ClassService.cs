@@ -1,5 +1,6 @@
 ﻿using DAL.UnitOfWork;
 using Entity;
+using Microsoft.EntityFrameworkCore;
 using Service.BaseService;
 using System;
 using System.Collections.Generic;
@@ -14,5 +15,12 @@ namespace Service.ClassService
         public ClassService(IUnitOfWork<Class> unitOfWork) : base(unitOfWork)
         {
         }
+        public async override Task<IEnumerable<Class>> GetAll()
+        {
+            var entities = await _unitOfWork.Repository.GetAll().Include("Department").ToListAsync();
+
+            return entities;
+        }
+
     }
 }

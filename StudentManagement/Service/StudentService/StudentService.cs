@@ -22,5 +22,12 @@ namespace Service.StudentService
 
             return entities;
         }
+
+        public async Task<Student> Login(string UserName, string Password)
+        {
+            var student = await _unitOfWork.Repository.GetAll().SingleAsync(x => x.StudentCode == UserName
+                                                                                    && x.DateOfBirth == DateTime.Parse(Password));
+            return student;
+        }
     }
 }

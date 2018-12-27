@@ -70,10 +70,10 @@ namespace ServiceStack.API.ServiceInterface
         {
             var response = new BaseResponse();
             var entity = await _teacherService.GetById(request.Id);
-            request.MapDtoToEntity(entity);
+            request.ToEntity(entity);
             var result = await _teacherService.Update(entity);
             response.Success = true;
-            response.Message = "Update teacher succees";
+            response.Message = "Update teacher success";
             response.StatusCode = (int)HttpStatusCode.OK;
             response.Results = result;
             return response;
@@ -86,7 +86,7 @@ namespace ServiceStack.API.ServiceInterface
             var result = await _teacherService.Delete(request.Id);
             response.Success = true;
             response.Message = $"Delete teacher with id {request.Id} success";
-            response.StatusCode = HttpStatusCode.OK.ConvertTo<int>();
+            response.StatusCode = (int)HttpStatusCode.OK;
             response.Results = request.Id;
 
             return response;

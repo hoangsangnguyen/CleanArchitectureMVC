@@ -21,130 +21,87 @@ namespace ServiceStack.API.ServiceInterface
             _studentService = studentService;
         }
 
-        public object Any(Hello request)
-        {
-            return new HelloResponse { Result = $"Hello, {request.Name}!" };
-        }
-
         public async Task<object> Get(GetStudents request)
         {
-            try
+            var studentEntities = await _studentService.GetAll();
+            var dtos = studentEntities.ToList().ConvertAll(x =>
             {
-                var studentEntities = await _studentService.GetAll();
-                var dtos = studentEntities.ToList().ConvertAll(x => {
-                    var dto = x.ConvertTo<StudentDto>();
-                    var classOfStudent = x.Class;
-                    dto.ClassName = classOfStudent.Name;
-                    return dto;
-                });
+                var dto = x.ConvertTo<StudentDto>();
+                dto.ClassName = x.Class.Name;
+                return dto;
+            });
 
-                return new
-                {
-                    Success = true,
-                    StatusCode = HttpStatusCode.OK.ConvertTo<int>(),
-                    Results = dtos,
-                    ItemCount = dtos.Count
-                };
-            }
-            catch (WebServiceException webEx)
+            return new
             {
-                Console.WriteLine("Get all student error : " + webEx.ErrorMessage);
-                return new
-                {
-                    Success = false,
-                    StatusCode = webEx.StatusCode,
-                    Message = webEx.ErrorMessage,
-                    ItemCount = 0
-                };
-            }
+                Success = true,
+                StatusCode = (int)HttpStatusCode.OK,
+                Results = dtos,
+                ItemCount = dtos.Count
+            };
         }
 
         public async Task<object> Get(StudentById request)
         {
             var response = new BaseResponse();
 
-            try
-            {
-                var entity = await _studentService.GetById(request.Id);
-                var dto = entity.ConvertTo<StudentDto>();
-                response.Success = true;
-                response.StatusCode = HttpStatusCode.OK.ConvertTo<int>();
-                response.Results = dto;
-            }
-            catch (WebServiceException webEx)
-            {
-                response.Success = false;
-                response.StatusCode = webEx.StatusCode;
-                response.Message = webEx.ErrorMessage;
-            }
+            var entity = await _studentService.GetById(request.Id);
+            var dto = entity.ConvertTo<StudentDto>();
+            response.Success = true;
+            response.StatusCode = (int)HttpStatusCode.OK;
+            response.Results = dto;
+
             return response;
         }
 
         public async Task<object> Post(CreateStudent request)
         {
             var response = new BaseResponse();
-            try
-            {
-                var entity = request.ConvertTo<Student>();
-                var result = await _studentService.Create(entity);
-                response.Success = true;
-                response.StatusCode = HttpStatusCode.Created.ConvertTo<int>();
-                response.Message = "Create student success";
-                response.Results = result;
-                return response;
-            }
-            catch (WebServiceException webEx)
-            {
-                response.Success = false;
-                response.StatusCode = webEx.StatusCode;
-                response.Message = webEx.ErrorMessage;
-            }
+            var entity = request.ConvertTo<Student>();
+            var result = await _studentService.Create(entity);
+            response.Success = true;
+            response.StatusCode = (int)HttpStatusCode.Created;
+            response.Message = "Create student success";
+            response.Results = result.ConvertTo<StudentDto>();
             return response;
         }
 
         public async Task<object> Put(UpdateStudent request)
         {
             var response = new BaseResponse();
-            try
-            {
-                var entity = await _studentService.GetById(request.Id);
-                Mapper.Map(request, entity);
-                var result = await _studentService.Update(entity);
-                response.Success = true;
-                response.Message = "Update student succees";
-                response.StatusCode = HttpStatusCode.OK.ConvertTo<int>();
-                response.Results = result;
-                return response;
-            }
-            catch (WebServiceException webEx)
-            {
-                response.Success = false;
-                response.StatusCode = webEx.StatusCode;
-                response.Message = webEx.ErrorMessage;
-            }
+            var entity = await _studentService.GetById(request.Id);
+            request.ToEntity(entity);
+            var result = await _studentService.Update(entity);
+            response.Success = true;
+            response.Message = "Update student success";
+            response.StatusCode = (int)HttpStatusCode.OK;
+            response.Results = result.ConvertTo<StudentDto>();
             return response;
         }
 
         public async Task<object> Delete(StudentById request)
         {
             var response = new BaseResponse();
-            try
-            {
-                var result = await _studentService.Delete(request.Id);
-                response.Success = true;
-                response.Message = $"Delete student with id {request.Id} success";
-                response.StatusCode = HttpStatusCode.OK.ConvertTo<int>();
-                response.Results = request.Id;
-                return response;
-            }
-            catch (WebServiceException webEx)
-            {
-                response.Success = false;
-                response.StatusCode = webEx.StatusCode;
-                response.Message = webEx.ErrorMessage;
-            }
+
+            var result = await _studentService.Delete(request.Id);
+            response.Success = true;
+            response.Message = $"Delete student with id {request.Id} success";
+            response.StatusCode = (int)HttpStatusCode.OK;
+            response.Results = request.Id;
+
             return response;
         }
 
+        public async Task<object> POST(StudentLogin request)
+        {
+            var response = new BaseResponse();
+
+            var result = await _studentService.Login(request.UserName, request.Password);
+            response.Success = true;
+            response.Message = $"Login for student with id {result.Id} success";
+            response.StatusCode = (int)HttpStatusCode.OK;
+            response.Results = result.ConvertTo<StudentDto>();
+
+            return response;
+        }
     }
 }

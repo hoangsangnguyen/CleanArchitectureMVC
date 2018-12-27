@@ -447,7 +447,6 @@ D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\Service
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API.Tests\bin\Debug\System.ValueTuple.dll
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API.Tests\bin\Debug\Service.dll
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API.Tests\bin\Debug\Entity.dll
-D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API.Tests\bin\Debug\AutoMapper.dll
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API.Tests\bin\Debug\DAL.dll
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API.Tests\bin\Debug\Microsoft.EntityFrameworkCore.dll
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API.Tests\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
@@ -481,8 +480,6 @@ D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\Service
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API.Tests\bin\Debug\Service.dll.config
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API.Tests\bin\Debug\Entity.pdb
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API.Tests\bin\Debug\Entity.dll.config
-D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API.Tests\bin\Debug\AutoMapper.pdb
-D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API.Tests\bin\Debug\AutoMapper.xml
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API.Tests\bin\Debug\DAL.pdb
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API.Tests\bin\Debug\DAL.dll.config
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API.Tests\bin\Debug\Microsoft.EntityFrameworkCore.xml
