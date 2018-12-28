@@ -1,12 +1,11 @@
 ﻿using Entity;
-using ServiceStack.API.ServiceModel.Teacher;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Web;
 
-namespace ServiceStack.API.ServiceInterface
+namespace Backend.ServiceInterface
 {
     public static class ConvertExtension
     {

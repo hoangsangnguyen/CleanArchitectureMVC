@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
+using Backend.ServiceModel;
+using Backend.ServiceModel.Class;
 using Entity;
 using Service.ClassService;
-using ServiceStack.API.ServiceModel;
-using ServiceStack.API.ServiceModel.Class;
+using ServiceStack;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ServiceStack.API.ServiceInterface
+namespace Backend.ServiceInterface
 {
     public class ClassApiService : BaseService
     {

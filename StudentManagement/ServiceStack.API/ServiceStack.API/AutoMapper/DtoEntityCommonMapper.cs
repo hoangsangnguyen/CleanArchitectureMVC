@@ -1,15 +1,11 @@
 ﻿using AutoMapper;
 using Entity;
-using ServiceStack.API.ServiceModel.Class;
-using ServiceStack.API.ServiceModel.Department;
-using ServiceStack.API.ServiceModel.Student;
-using ServiceStack.API.ServiceModel.Teacher;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace API.AutoMapper
+namespace Backend.AutoMapper
 {
     public class DtoEntityCommonMapper : Profile
     {

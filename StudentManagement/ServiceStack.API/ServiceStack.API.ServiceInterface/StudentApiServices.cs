@@ -1,16 +1,16 @@
 ﻿using AutoMapper;
+using Backend.ServiceModel;
+using Backend.ServiceModel.Student;
 using Entity;
 using Service.StudentService;
 using ServiceStack;
-using ServiceStack.API.ServiceModel;
-using ServiceStack.API.ServiceModel.Student;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace ServiceStack.API.ServiceInterface
+namespace Backend.ServiceInterface
 {
     public class StudentApiServices : BaseService
     {

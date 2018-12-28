@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using ServiceStack;
 
-namespace ServiceStack.API.ServiceModel
+namespace Backend.ServiceModel
 {
     [Route("/hello/{Name}")]
     public class Hello : IReturn<HelloResponse>

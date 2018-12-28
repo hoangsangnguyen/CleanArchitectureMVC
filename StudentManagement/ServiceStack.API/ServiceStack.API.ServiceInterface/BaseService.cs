@@ -1,13 +1,14 @@
-﻿using System;
+﻿using ServiceStack;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ServiceStack.API.ServiceInterface
+namespace Backend.ServiceInterface
 {
     [Authenticate]
-   public class BaseService : Service
+   public class BaseService : ServiceStack.Service
     {
     }
 }

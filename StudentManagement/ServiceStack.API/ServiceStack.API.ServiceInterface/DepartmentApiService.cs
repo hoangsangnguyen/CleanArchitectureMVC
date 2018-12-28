@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ServiceStack.API.ServiceModel.Department;
 using System.Net;
-using ServiceStack.API.ServiceModel;
 using Entity;
 using AutoMapper;
+using Backend.ServiceModel.Department;
+using ServiceStack;
+using Backend.ServiceModel;
 
-namespace ServiceStack.API.ServiceInterface
+namespace Backend.ServiceInterface
 {
     public class DepartmentApiService : BaseService
     {

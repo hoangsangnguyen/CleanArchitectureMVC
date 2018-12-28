@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace API.AutoMapper
+namespace Backend.AutoMapper
 {
     public class AutoMapperConfiguration
     {

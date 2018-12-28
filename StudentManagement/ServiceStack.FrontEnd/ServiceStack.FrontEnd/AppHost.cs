@@ -5,13 +5,13 @@ using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Web;
+using FrontEnd.ServiceInterface;
 using Funq;
-using ServiceStack.FrontEnd.ServiceInterface;
 using ServiceStack;
 using ServiceStack.Configuration;
 using ServiceStack.Razor;
 
-namespace ServiceStack.FrontEnd
+namespace FrontEnd
 {
     public class AppHost : AppHostBase
     {

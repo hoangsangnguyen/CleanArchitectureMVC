@@ -1,10 +1,11 @@
-﻿using System;
+﻿using ServiceStack;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ServiceStack.API.ServiceModel.Teacher
+namespace Backend.ServiceModel.Teacher
 {
     public class TeacherDto : BaseDto
     {

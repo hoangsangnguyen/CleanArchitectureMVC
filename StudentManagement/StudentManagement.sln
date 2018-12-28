@@ -9,23 +9,19 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{9
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.csproj", "{3660F69C-5452-4A95-92D2-532803DAFDCF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceStack.API", "ServiceStack.API\ServiceStack.API\ServiceStack.API.csproj", "{4389B305-B381-4B50-B1A8-BBB5259A0524}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend", "ServiceStack.API\ServiceStack.API\Backend.csproj", "{4389B305-B381-4B50-B1A8-BBB5259A0524}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceStack.API.ServiceModel", "ServiceStack.API\ServiceStack.API.ServiceModel\ServiceStack.API.ServiceModel.csproj", "{53E82AC1-DD1D-4C66-B55F-F9F4ACFB2F40}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend.ServiceModel", "ServiceStack.API\ServiceStack.API.ServiceModel\Backend.ServiceModel.csproj", "{53E82AC1-DD1D-4C66-B55F-F9F4ACFB2F40}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceStack.API.ServiceInterface", "ServiceStack.API\ServiceStack.API.ServiceInterface\ServiceStack.API.ServiceInterface.csproj", "{801A0F89-D5F6-49A6-BCEA-6624388C98A4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend.ServiceInterface", "ServiceStack.API\ServiceStack.API.ServiceInterface\Backend.ServiceInterface.csproj", "{801A0F89-D5F6-49A6-BCEA-6624388C98A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceStack.API.Tests", "ServiceStack.API\ServiceStack.API.Tests\ServiceStack.API.Tests.csproj", "{D22B5797-9F2A-4BA7-9636-6EFCE62EBE00}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{A5C150C5-FDB0-4C25-8776-763E0F22F48E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ServiceStack", "ServiceStack", "{A5C150C5-FDB0-4C25-8776-763E0F22F48E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrontEnd", "ServiceStack.FrontEnd\ServiceStack.FrontEnd\FrontEnd.csproj", "{6F86FC59-9DE7-4BF5-8D11-CB7E99DA29FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceStack.FrontEnd", "ServiceStack.FrontEnd\ServiceStack.FrontEnd\ServiceStack.FrontEnd.csproj", "{6F86FC59-9DE7-4BF5-8D11-CB7E99DA29FC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrontEnd.ServiceModel", "ServiceStack.FrontEnd\ServiceStack.FrontEnd.ServiceModel\FrontEnd.ServiceModel.csproj", "{08BEF328-AB7D-48D3-800D-48ACC75C7914}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceStack.FrontEnd.ServiceModel", "ServiceStack.FrontEnd\ServiceStack.FrontEnd.ServiceModel\ServiceStack.FrontEnd.ServiceModel.csproj", "{08BEF328-AB7D-48D3-800D-48ACC75C7914}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceStack.FrontEnd.ServiceInterface", "ServiceStack.FrontEnd\ServiceStack.FrontEnd.ServiceInterface\ServiceStack.FrontEnd.ServiceInterface.csproj", "{582DFB0F-F84D-4E43-9BCA-2A5A86600B7A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceStack.FrontEnd.Tests", "ServiceStack.FrontEnd\ServiceStack.FrontEnd.Tests\ServiceStack.FrontEnd.Tests.csproj", "{B1665387-EF91-4CA0-82BB-66E5781ED800}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrontEnd.ServiceInterface", "ServiceStack.FrontEnd\ServiceStack.FrontEnd.ServiceInterface\FrontEnd.ServiceInterface.csproj", "{582DFB0F-F84D-4E43-9BCA-2A5A86600B7A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FrontEnd", "FrontEnd", "{48945755-1512-4DF4-B5BC-44225A23B24F}"
 EndProject
@@ -59,10 +55,6 @@ Global
 		{801A0F89-D5F6-49A6-BCEA-6624388C98A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{801A0F89-D5F6-49A6-BCEA-6624388C98A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{801A0F89-D5F6-49A6-BCEA-6624388C98A4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D22B5797-9F2A-4BA7-9636-6EFCE62EBE00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D22B5797-9F2A-4BA7-9636-6EFCE62EBE00}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D22B5797-9F2A-4BA7-9636-6EFCE62EBE00}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D22B5797-9F2A-4BA7-9636-6EFCE62EBE00}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6F86FC59-9DE7-4BF5-8D11-CB7E99DA29FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6F86FC59-9DE7-4BF5-8D11-CB7E99DA29FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F86FC59-9DE7-4BF5-8D11-CB7E99DA29FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -75,10 +67,6 @@ Global
 		{582DFB0F-F84D-4E43-9BCA-2A5A86600B7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{582DFB0F-F84D-4E43-9BCA-2A5A86600B7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{582DFB0F-F84D-4E43-9BCA-2A5A86600B7A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B1665387-EF91-4CA0-82BB-66E5781ED800}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B1665387-EF91-4CA0-82BB-66E5781ED800}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B1665387-EF91-4CA0-82BB-66E5781ED800}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B1665387-EF91-4CA0-82BB-66E5781ED800}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -87,11 +75,9 @@ Global
 		{4389B305-B381-4B50-B1A8-BBB5259A0524} = {A5C150C5-FDB0-4C25-8776-763E0F22F48E}
 		{53E82AC1-DD1D-4C66-B55F-F9F4ACFB2F40} = {A5C150C5-FDB0-4C25-8776-763E0F22F48E}
 		{801A0F89-D5F6-49A6-BCEA-6624388C98A4} = {A5C150C5-FDB0-4C25-8776-763E0F22F48E}
-		{D22B5797-9F2A-4BA7-9636-6EFCE62EBE00} = {A5C150C5-FDB0-4C25-8776-763E0F22F48E}
 		{6F86FC59-9DE7-4BF5-8D11-CB7E99DA29FC} = {48945755-1512-4DF4-B5BC-44225A23B24F}
 		{08BEF328-AB7D-48D3-800D-48ACC75C7914} = {48945755-1512-4DF4-B5BC-44225A23B24F}
 		{582DFB0F-F84D-4E43-9BCA-2A5A86600B7A} = {48945755-1512-4DF4-B5BC-44225A23B24F}
-		{B1665387-EF91-4CA0-82BB-66E5781ED800} = {48945755-1512-4DF4-B5BC-44225A23B24F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {04266DF4-78E7-42CC-B575-224865CE5419}

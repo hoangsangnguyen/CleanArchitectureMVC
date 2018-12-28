@@ -1,11 +1,12 @@
-﻿using Entity;
-using ServiceStack.API.ServiceModel.Teacher;
+﻿using Backend.ServiceModel.Teacher;
+using Entity;
+using ServiceStack;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace ServiceStack.API
+namespace Backend
 {
     public static class MapperExtension
     {

@@ -1,7 +1,8 @@
-﻿using Entity;
+﻿using Backend.ServiceModel;
+using Backend.ServiceModel.Subject;
+using Entity;
 using Service.SubjectService;
-using ServiceStack.API.ServiceModel;
-using ServiceStack.API.ServiceModel.Subject;
+using ServiceStack;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ServiceStack.API.ServiceInterface
+namespace Backend.ServiceInterface
 {
     public class SubjectApiService : BaseService
     {

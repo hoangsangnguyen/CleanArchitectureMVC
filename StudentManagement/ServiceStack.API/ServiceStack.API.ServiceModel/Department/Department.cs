@@ -1,10 +1,11 @@
-﻿using System;
+﻿using ServiceStack;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ServiceStack.API.ServiceModel.Department
+namespace Backend.ServiceModel.Department
 {
     public class DepartmentDto : BaseDto
     {

@@ -5,7 +5,7 @@ using ServiceStack.Configuration;
 using System;
 using System.Web;
 
-namespace ServiceStack.API
+namespace Backend
 {
     /// <summary>
     /// Adapater between ServiceStack and Autofac

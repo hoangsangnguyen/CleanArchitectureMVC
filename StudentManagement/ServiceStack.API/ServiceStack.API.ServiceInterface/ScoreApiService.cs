@@ -1,7 +1,8 @@
-﻿using Entity;
+﻿using Backend.ServiceModel;
+using Backend.ServiceModel.Score;
+using Entity;
 using Service.ScoreService;
-using ServiceStack.API.ServiceModel;
-using ServiceStack.API.ServiceModel.Score;
+using ServiceStack;
 using ServiceStack.Auth;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ServiceStack.API.ServiceInterface
+namespace Backend.ServiceInterface
 {
     public class ScoreApiService : BaseService
     {

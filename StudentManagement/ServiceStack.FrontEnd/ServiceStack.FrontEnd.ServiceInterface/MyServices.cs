@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using FrontEnd.ServiceModel;
 using ServiceStack;
-using ServiceStack.FrontEnd.ServiceModel;
 
-namespace ServiceStack.FrontEnd.ServiceInterface
+namespace FrontEnd.ServiceInterface
 {
     public class MyServices : Service
     {

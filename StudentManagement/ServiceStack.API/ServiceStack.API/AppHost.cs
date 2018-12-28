@@ -1,5 +1,5 @@
-﻿using API.AutoMapper;
-using Autofac;
+﻿using Autofac;
+using Backend.ServiceInterface;
 using DAL.Database;
 using DAL.Repository;
 using DAL.Repository.Classes;
@@ -18,15 +18,13 @@ using Service.StudentService;
 using Service.SubjectService;
 using Service.TeacherService;
 using ServiceStack;
-using ServiceStack.API.ServiceInterface;
-using ServiceStack.API.ServiceModel;
 using ServiceStack.Auth;
 using ServiceStack.Caching;
 using ServiceStack.Configuration;
 using ServiceStack.Data;
 using ServiceStack.OrmLite;
 
-namespace ServiceStack.API
+namespace Backend
 {
     //VS.NET Template Info: https://servicestack.net/vs-templates/EmptyAspNet
     public class AppHost : AppHostBase

@@ -5,7 +5,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ServiceStack.API.ServiceModel
+namespace Backend.ServiceModel
 {
     public class BaseResponse
     {
