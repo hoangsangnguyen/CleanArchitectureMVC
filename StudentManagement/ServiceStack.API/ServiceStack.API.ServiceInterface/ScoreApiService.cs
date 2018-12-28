@@ -2,6 +2,7 @@
 using Service.ScoreService;
 using ServiceStack.API.ServiceModel;
 using ServiceStack.API.ServiceModel.Score;
+using ServiceStack.Auth;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -90,6 +91,11 @@ namespace ServiceStack.API.ServiceInterface
             response.Results = result.ConvertTo<ScoreDto>();
 
             return response;
+        }
+
+        public void Authen()
+        {
+            var jwtProvider = AuthenticateService.GetJwtAuthProvider();
         }
     }
 }

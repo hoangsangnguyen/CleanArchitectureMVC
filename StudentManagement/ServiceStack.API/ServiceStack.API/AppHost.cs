@@ -20,8 +20,11 @@ using Service.TeacherService;
 using ServiceStack;
 using ServiceStack.API.ServiceInterface;
 using ServiceStack.API.ServiceModel;
+using ServiceStack.Auth;
+using ServiceStack.Caching;
 using ServiceStack.Configuration;
 using ServiceStack.Data;
+using ServiceStack.OrmLite;
 
 namespace ServiceStack.API
 {
@@ -72,6 +75,34 @@ namespace ServiceStack.API
 
             IContainerAdapter adapter = new AutofacIocAdapter(builder.Build(), container);
             container.Adapter = adapter;
+
+            this.Plugins.Add(new AuthFeature(() => new AuthUserSession(), new IAuthProvider[]
+            {
+                new JwtAuthProvider(AppSettings) { AuthKey = AesUtils.CreateKey()},
+                new CredentialsAuthProvider(AppSettings)
+            }));
+
+            this.Plugins.Add(new RegistrationFeature());
+
+            container.Register<ICacheClient>(new MemoryCacheClient());
+
+            //container.Register<IDbConnectionFactory>(c =>
+            //    new OrmLiteConnectionFactory(AppSettings.GetString("ConnectionString"), SqlServerDialect.Provider));
+
+            //container.Register<IAuthRepository>(c =>
+            //    new OrmLiteAuthRepository(c.Resolve<IDbConnectionFactory>()));
+
+            //container.Resolve<IAuthRepository>().InitSchema();
+
+
+            var userRep = GetAuthRepository();
+            userRep.CreateUserAuth(new UserAuth
+            {
+                Id = 1,
+                UserName = "sang",
+                DisplayName = "hoang sang",
+            }, "123");
+            container.Register<IAuthRepository>(userRep);
         }
     }
 }

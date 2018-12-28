@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ServiceStack.API.ServiceInterface
 {
+    [Authenticate]
    public class BaseService : Service
     {
     }

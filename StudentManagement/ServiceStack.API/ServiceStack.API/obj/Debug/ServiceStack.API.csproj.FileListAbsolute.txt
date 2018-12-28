@@ -1,3 +1,6 @@
+D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\obj\Debug\ServiceStack.API.csprojAssemblyReference.cache
+D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\obj\Debug\ServiceStack.API.dll.config
+D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\obj\Debug\ServiceStack.API.csproj.CoreCompileInputs.cache
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\ServiceStack.API.dll.config
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\ServiceStack.API.dll
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\ServiceStack.API.pdb
@@ -144,6 +147,8 @@ D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\Service
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\ServiceStack.Common.dll
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\ServiceStack.dll
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\ServiceStack.Interfaces.dll
+D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\ServiceStack.OrmLite.dll
+D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\ServiceStack.OrmLite.SqlServer.dll
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\ServiceStack.Server.dll
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\ServiceStack.Text.dll
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\System.Buffers.dll
@@ -197,6 +202,7 @@ D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\Service
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\ServiceStack.Client.xml
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\ServiceStack.Common.xml
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\ServiceStack.Interfaces.xml
+D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\ServiceStack.OrmLite.xml
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\ServiceStack.Server.xml
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\ServiceStack.Text.xml
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\System.Buffers.xml
@@ -213,9 +219,6 @@ D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\Service
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\System.Web.WebPages.xml
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\System.Web.WebPages.Deployment.xml
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\bin\System.Web.WebPages.Razor.xml
-D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\obj\Debug\ServiceStack.API.csprojAssemblyReference.cache
-D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\obj\Debug\ServiceStack.API.dll.config
-D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\obj\Debug\ServiceStack.API.csproj.CoreCompileInputs.cache
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\obj\Debug\ServiceStack.API.csproj.CopyComplete
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\obj\Debug\ServiceStack.API.dll
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.API\ServiceStack.API\obj\Debug\ServiceStack.API.pdb
