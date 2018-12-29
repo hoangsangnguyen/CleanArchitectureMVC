@@ -28,6 +28,8 @@ namespace DAL.Database
         {
             //optionsBuilder.UseLazyLoadingProxies(false);
         }
+        public DbSet<Role> Roles { get; set; }
+        public DbSet<User> Users { get; set; }
 
         public DbSet<Department> Departments { get; set; }
         public DbSet<Class> Classes { get; set; }

@@ -17,7 +17,9 @@ using Service.ScoreService;
 using Service.StudentService;
 using Service.SubjectService;
 using Service.TeacherService;
+using Service.UserService;
 using ServiceStack;
+using ServiceStack.API.ServiceInterface.Utils;
 using ServiceStack.Auth;
 using ServiceStack.Caching;
 using ServiceStack.Configuration;
@@ -76,31 +78,19 @@ namespace Backend
 
             this.Plugins.Add(new AuthFeature(() => new AuthUserSession(), new IAuthProvider[]
             {
-                new JwtAuthProvider(AppSettings) { AuthKey = AesUtils.CreateKey()},
-                new CredentialsAuthProvider(AppSettings)
+                new CustomCredentialsProvider(container.Resolve<IUserService>())
             }));
 
-            this.Plugins.Add(new RegistrationFeature());
+            //this.Plugins.Add(new RegistrationFeature());
 
-            container.Register<ICacheClient>(new MemoryCacheClient());
+            var userRep = new InMemoryAuthRepository();
+            container.Register<IUserAuthRepository>(userRep);
 
-            //container.Register<IDbConnectionFactory>(c =>
-            //    new OrmLiteConnectionFactory(AppSettings.GetString("ConnectionString"), SqlServerDialect.Provider));
+            //container.Register<ICacheClient>(new MemoryCacheClient());
 
-            //container.Register<IAuthRepository>(c =>
-            //    new OrmLiteAuthRepository(c.Resolve<IDbConnectionFactory>()));
-
-            //container.Resolve<IAuthRepository>().InitSchema();
-
-
-            var userRep = GetAuthRepository();
-            userRep.CreateUserAuth(new UserAuth
-            {
-                Id = 1,
-                UserName = "sang",
-                DisplayName = "hoang sang",
-            }, "123");
-            container.Register<IAuthRepository>(userRep);
+            string hash;
+            string salt;
+            new SaltedHash().GetHashAndSaltString("password", out hash, out salt);
         }
     }
 }

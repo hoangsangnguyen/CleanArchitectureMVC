@@ -10,3 +10,15 @@ D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\Entity\obj\Debug\Entity.
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\Entity\obj\Debug\Entity.csproj.CopyComplete
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\Entity\obj\Debug\Entity.dll
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\Entity\obj\Debug\Entity.pdb
+D:\Workspace\Web\CleanArchitectureMVC\StudentManagement\Entity\bin\Debug\Entity.dll.config
+D:\Workspace\Web\CleanArchitectureMVC\StudentManagement\Entity\bin\Debug\Entity.dll
+D:\Workspace\Web\CleanArchitectureMVC\StudentManagement\Entity\bin\Debug\Entity.pdb
+D:\Workspace\Web\CleanArchitectureMVC\StudentManagement\Entity\bin\Debug\EntityFramework.dll
+D:\Workspace\Web\CleanArchitectureMVC\StudentManagement\Entity\bin\Debug\EntityFramework.SqlServer.dll
+D:\Workspace\Web\CleanArchitectureMVC\StudentManagement\Entity\bin\Debug\EntityFramework.xml
+D:\Workspace\Web\CleanArchitectureMVC\StudentManagement\Entity\bin\Debug\EntityFramework.SqlServer.xml
+D:\Workspace\Web\CleanArchitectureMVC\StudentManagement\Entity\obj\Debug\Entity.csprojAssemblyReference.cache
+D:\Workspace\Web\CleanArchitectureMVC\StudentManagement\Entity\obj\Debug\Entity.csproj.CoreCompileInputs.cache
+D:\Workspace\Web\CleanArchitectureMVC\StudentManagement\Entity\obj\Debug\Entity.csproj.CopyComplete
+D:\Workspace\Web\CleanArchitectureMVC\StudentManagement\Entity\obj\Debug\Entity.dll
+D:\Workspace\Web\CleanArchitectureMVC\StudentManagement\Entity\obj\Debug\Entity.pdb

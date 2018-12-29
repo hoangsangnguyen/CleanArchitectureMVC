@@ -278,7 +278,9 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>59245</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost/Backend.API</IISUrl>
+          <IISUrl>http://localhost/Backend</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://localhost:52789/</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

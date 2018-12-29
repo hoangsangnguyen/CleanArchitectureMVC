@@ -86,6 +86,7 @@
     <Compile Include="SubjectApiService.cs" />
     <Compile Include="TeacherApiService.cs" />
     <Compile Include="Utils\ConvertExtension.cs" />
+    <Compile Include="Utils\CustomCredentialsProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

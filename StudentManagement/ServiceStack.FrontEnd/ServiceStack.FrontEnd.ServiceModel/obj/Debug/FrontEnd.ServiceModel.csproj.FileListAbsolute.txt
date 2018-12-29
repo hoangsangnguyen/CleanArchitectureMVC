@@ -6,3 +6,12 @@ D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.FrontEnd\Se
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.FrontEnd\ServiceStack.FrontEnd.ServiceModel\obj\Debug\FrontEnd.ServiceModel.csproj.CopyComplete
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.FrontEnd\ServiceStack.FrontEnd.ServiceModel\obj\Debug\ServiceStack.FrontEnd.ServiceModel.dll
 D:\Sang\Version2\CleanArchitectureMVC\StudentManagement\ServiceStack.FrontEnd\ServiceStack.FrontEnd.ServiceModel\obj\Debug\ServiceStack.FrontEnd.ServiceModel.pdb
+D:\Workspace\Web\CleanArchitectureMVC\StudentManagement\ServiceStack.FrontEnd\ServiceStack.FrontEnd.ServiceModel\bin\Debug\ServiceStack.FrontEnd.ServiceModel.dll
+D:\Workspace\Web\CleanArchitectureMVC\StudentManagement\ServiceStack.FrontEnd\ServiceStack.FrontEnd.ServiceModel\bin\Debug\ServiceStack.FrontEnd.ServiceModel.pdb
+D:\Workspace\Web\CleanArchitectureMVC\StudentManagement\ServiceStack.FrontEnd\ServiceStack.FrontEnd.ServiceModel\bin\Debug\ServiceStack.Interfaces.dll
+D:\Workspace\Web\CleanArchitectureMVC\StudentManagement\ServiceStack.FrontEnd\ServiceStack.FrontEnd.ServiceModel\bin\Debug\ServiceStack.Interfaces.xml
+D:\Workspace\Web\CleanArchitectureMVC\StudentManagement\ServiceStack.FrontEnd\ServiceStack.FrontEnd.ServiceModel\obj\Debug\FrontEnd.ServiceModel.csprojAssemblyReference.cache
+D:\Workspace\Web\CleanArchitectureMVC\StudentManagement\ServiceStack.FrontEnd\ServiceStack.FrontEnd.ServiceModel\obj\Debug\FrontEnd.ServiceModel.csproj.CoreCompileInputs.cache
+D:\Workspace\Web\CleanArchitectureMVC\StudentManagement\ServiceStack.FrontEnd\ServiceStack.FrontEnd.ServiceModel\obj\Debug\FrontEnd.ServiceModel.csproj.CopyComplete
+D:\Workspace\Web\CleanArchitectureMVC\StudentManagement\ServiceStack.FrontEnd\ServiceStack.FrontEnd.ServiceModel\obj\Debug\ServiceStack.FrontEnd.ServiceModel.dll
+D:\Workspace\Web\CleanArchitectureMVC\StudentManagement\ServiceStack.FrontEnd\ServiceStack.FrontEnd.ServiceModel\obj\Debug\ServiceStack.FrontEnd.ServiceModel.pdb

@@ -52,10 +52,12 @@
     <Compile Include="Department.cs" />
     <Compile Include="IEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Role.cs" />
     <Compile Include="Score.cs" />
     <Compile Include="Student.cs" />
     <Compile Include="Subject.cs" />
     <Compile Include="Teacher.cs" />
+    <Compile Include="User.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

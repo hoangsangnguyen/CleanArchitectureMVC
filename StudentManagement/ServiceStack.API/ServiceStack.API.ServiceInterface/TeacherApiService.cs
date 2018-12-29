@@ -55,6 +55,7 @@ namespace Backend.ServiceInterface
             return response;
         }
 
+        [RequiresAnyRole("admin", "manager")]
         public async Task<object> Post(CreateTeacher request)
         {
             var response = new BaseResponse();
