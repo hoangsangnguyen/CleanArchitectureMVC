@@ -1,0 +1,870 @@
+{
+	"info": {
+		"_postman_id": "399d4853-87d2-408a-990c-a99ef67b6f4b",
+		"name": "StudentManagement",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Departments",
+			"item": [
+				{
+					"name": "Get all",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{student}}/departments",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"departments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create department",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\" : \"Multimedia\"\n}"
+						},
+						"url": {
+							"raw": "{{student}}/departments",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"departments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update department",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Id\" : 8,\n\t\"Name\" : \"Information technology\"\n}"
+						},
+						"url": {
+							"raw": "{{student}}/departments",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"departments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Department",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Id\" : 9\n}"
+						},
+						"url": {
+							"raw": "{{student}}/departments",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"departments"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Class",
+			"item": [
+				{
+					"name": "Get all",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{student}}/classes",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"classes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create class",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Name\" : \"D14CQCP02\",\n\t\"DepartmentId\" : 8\n}"
+						},
+						"url": {
+							"raw": "{{student}}/classes",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"classes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update class",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Name\": \"D14CQCP01\",\n    \"Id\": 14\n}"
+						},
+						"url": {
+							"raw": "{{student}}/classes",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"classes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete class",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Id\" : 13\n}"
+						},
+						"url": {
+							"raw": "{{student}}/classes",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"classes"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Student",
+			"item": [
+				{
+					"name": "Get all",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{student}}/students",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Student",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"FirstName\" : \"Tran\",\n\t\"LastName\" : \"Anh\",\n\t\"ClassId\" : 14,\n\t\"StudentCode\" : \"N04\",\n\t \"DateOfBirth\": \"1996-04-24\"\n\t\n}"
+						},
+						"url": {
+							"raw": "{{student}}/students",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update student",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t \"Id\": 3,\n\t \"DateOfBirth\": \"1997-23-09\"\n}"
+						},
+						"url": {
+							"raw": "{{student}}/students",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Student",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Id\" : 2\n}"
+						},
+						"url": {
+							"raw": "http://localhost/ServiceStack.API/students",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"ServiceStack.API",
+								"students"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Teacher",
+			"item": [
+				{
+					"name": "Get all",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{student}}/teachers",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"teachers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create teacher",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"FirstName\" : \"Nguyen\",\n\t\"LastName\" : \"Thi Cê\",\n\t\"DepartmentId\" : 8,\n\t\"IsManager\" : false\n}"
+						},
+						"url": {
+							"raw": "{{student}}/teachers",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"teachers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Teacher",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Id\" : 3,\n\t \"DepartmentId\": 8\n}"
+						},
+						"url": {
+							"raw": "{{student}}/teachers",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"teachers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete teacher",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Id\" : 4\t\n}"
+						},
+						"url": {
+							"raw": "{{student}}/teachers",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"teachers"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Subject",
+			"item": [
+				{
+					"name": "Get all",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{student}}/subjects",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"subjects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create subject",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Name\" : \"C++\"\n}"
+						},
+						"url": {
+							"raw": "{{student}}/subjects",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"subjects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update subject",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Id\" : 1,\n\t\"Name\" : \"Java\"\n}"
+						},
+						"url": {
+							"raw": "{{student}}/subjects",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"subjects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete subject",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Id\" : 1\n}"
+						},
+						"url": {
+							"raw": "{{student}}/subjects",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"subjects"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Score",
+			"item": [
+				{
+					"name": "Get all",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{student}}/scores",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"scores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create score",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"StudentId\" : 3,\n\t\"SubjectId\" : 2,\n\t\"Mark\" : 10\n}"
+						},
+						"url": {
+							"raw": "{{student}}/scores",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"scores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update score",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Id\" : 1,\n\t\"Mark\" : 9.5\n}"
+						},
+						"url": {
+							"raw": "{{student}}/scores",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"scores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete score",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Id\" : 1\n}"
+						},
+						"url": {
+							"raw": "{{student}}/scores",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"scores"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"provider\" : \"credentials\",\n\t\"UserName\" : \"cucan\",\n\t\"Password\" : 123456\n}"
+						},
+						"url": {
+							"raw": "{{student}}/auth",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"FirstName\" : \"Cần\",\n\t\"LastName\" : \"Cù\",\n\t\"DisplayName\" : \"Cần Văn Cù\",\n\t\"UserName\" : \"cucan\",\n\t\"Password\" : 123456,\n\t\"RoleId\" : \"manager\"\n}"
+						},
+						"url": {
+							"raw": "{{student}}/users",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{student}}/users",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User By Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{student}}/users/13",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"users",
+								"13"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update user",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Id\" : 14,\n\t\"FirstName\" : \"Minh\"\n}"
+						},
+						"url": {
+							"raw": "{{student}}/users",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update role",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Id\" : 15,\n\t\"RoleId\" : \"manager\"\n}"
+						},
+						"url": {
+							"raw": "{{student}}/users/updaterole",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"users",
+								"updaterole"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
