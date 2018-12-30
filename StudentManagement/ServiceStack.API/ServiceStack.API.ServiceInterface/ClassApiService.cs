@@ -53,7 +53,7 @@ namespace Backend.ServiceInterface
 
             return response;
         }
-
+        [RequiresAnyRole("admin", "manager")]
         public async Task<object> Post(CreateClass request)
         {
             var response = new BaseResponse();
@@ -65,7 +65,7 @@ namespace Backend.ServiceInterface
             response.Results = result;
             return response;
         }
-
+        [RequiresAnyRole("admin", "manager")]
         public async Task<object> Put(UpdateClass request)
         {
             var response = new BaseResponse();
@@ -78,7 +78,7 @@ namespace Backend.ServiceInterface
             response.Results = result.ConvertTo<ClassDto>();
             return response;
         }
-
+        [RequiresAnyRole("admin", "manager")]
         public async Task<object> Delete(ClassById request)
         {
             var response = new BaseResponse();

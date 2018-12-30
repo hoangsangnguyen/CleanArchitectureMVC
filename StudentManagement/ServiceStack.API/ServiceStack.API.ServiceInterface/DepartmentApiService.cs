@@ -13,6 +13,7 @@ using Backend.ServiceModel;
 
 namespace Backend.ServiceInterface
 {
+   
     public class DepartmentApiService : BaseService
     {
         private readonly IDepartmentService _departmentService;
@@ -48,7 +49,7 @@ namespace Backend.ServiceInterface
 
             return response;
         }
-
+        [RequiresAnyRole("admin", "manager")]
         public async Task<object> Post(CreateDepartment request)
         {
             var response = new BaseResponse();
@@ -60,7 +61,7 @@ namespace Backend.ServiceInterface
             response.Results = result;
             return response;
         }
-
+        [RequiresAnyRole("admin", "manager")]
         public async Task<object> Put(UpdateDepartment request)
         {
             var response = new BaseResponse();
@@ -73,7 +74,7 @@ namespace Backend.ServiceInterface
             response.Results = result.ConvertTo<DepartmentDto>();
             return response;
         }
-
+        [RequiresAnyRole("admin", "manager")]
         public async Task<object> Delete(DepartmentById request)
         {
             var response = new BaseResponse();

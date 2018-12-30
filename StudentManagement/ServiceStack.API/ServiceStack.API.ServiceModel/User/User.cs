@@ -49,6 +49,12 @@ namespace ServiceStack.API.ServiceModel.User
         public string DisplayName { get; set; }
         public string Password { get; set; }
         public string Salt { get; set; }
+    }
+
+    [Route("/users/updateRole", "PUT")]
+    public class UpdateUserRole : IReturn<BaseResponse>
+    {
+        public int Id { get; set; }
         public string RoleId { get; set; }
     }
 }

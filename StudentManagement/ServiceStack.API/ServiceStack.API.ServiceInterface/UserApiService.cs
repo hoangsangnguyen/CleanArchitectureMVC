@@ -49,7 +49,7 @@ namespace ServiceStack.API.ServiceInterface
             var entity = await _userService.GetById(request.Id);
 
             // check user is owner
-            if (!base.HasRole(entity.UserName)) throw new MethodAccessException();
+            if (!base.IsAdminOrOwner(entity.UserName)) throw new MethodAccessException();
 
             var dto = entity.ConvertTo<UserDto>();
             response.Success = true;
@@ -85,13 +85,27 @@ namespace ServiceStack.API.ServiceInterface
             var entity = await _userService.GetById(request.Id);
 
             // check user is owner
-            if (!base.HasRole(entity.UserName)) throw new MethodAccessException();
+            if (!base.IsAdminOrManagerOrOwner(entity.UserName, entity.RoleId)) throw new MethodAccessException();
 
             request.ToEntity(entity);
+            var result = await _userService.Update(entity);
+            response.Success = true;
+            response.Message = "Update user success";
+            response.StatusCode = (int)HttpStatusCode.OK;
+            response.Results = result.ConvertTo<UserDto>();
+            return response;
+        }
+
+        [RequiresAnyRole("admin", "manager")]
+        public async Task<object> Put(UpdateUserRole request)
+        {
+            var response = new BaseResponse();
+            var entity = await _userService.GetById(request.Id);
 
             // check isValid Role
-            if (!base.IsUserValidRole(entity.RoleId)) throw new MethodAccessException();
+            if (!base.IsUserValidRole(request.RoleId)) throw new MethodAccessException();
 
+            request.ToEntity(entity);
             var result = await _userService.Update(entity);
             response.Success = true;
             response.Message = "Update user success";

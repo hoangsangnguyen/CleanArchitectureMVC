@@ -11,12 +11,22 @@ namespace Backend.ServiceInterface
     [Authenticate]
    public class BaseService : ServiceStack.Service
    {
-        public bool HasRole(string userName)
+        public bool IsAdminOrOwner(string userName)
         {
             var userSession = base.SessionAs<AuthUserSession>();
-            if (userSession.Roles.Contains("admin"))
+            if (userSession.Roles.Contains(RoleEnum.Admin.ToDescription()))
                 return true;
             var userNameSession =  userSession.UserAuthName;
+            return userName == userNameSession;
+        }
+
+        public bool IsAdminOrManagerOrOwner(string userName, string roleId)
+        {
+            var userSession = base.SessionAs<AuthUserSession>();
+            if (userSession.Roles.Contains(RoleEnum.Admin.ToDescription())  // is admin
+                || (userSession.Roles.Contains(RoleEnum.Manager.ToDescription())) && !roleId.Equals(RoleEnum.Manager.ToDescription())) // is manager changing role of teacher or student
+                return true;
+            var userNameSession = userSession.UserAuthName;
             return userName == userNameSession;
         }
 

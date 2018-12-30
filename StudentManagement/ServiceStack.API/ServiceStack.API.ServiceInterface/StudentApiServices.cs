@@ -52,7 +52,7 @@ namespace Backend.ServiceInterface
 
             return response;
         }
-
+        [RequiresAnyRole("admin", "manager")]
         public async Task<object> Post(CreateStudent request)
         {
             var response = new BaseResponse();
@@ -64,7 +64,7 @@ namespace Backend.ServiceInterface
             response.Results = result.ConvertTo<StudentDto>();
             return response;
         }
-
+        [RequiresAnyRole("admin", "manager")]
         public async Task<object> Put(UpdateStudent request)
         {
             var response = new BaseResponse();
@@ -77,7 +77,7 @@ namespace Backend.ServiceInterface
             response.Results = result.ConvertTo<StudentDto>();
             return response;
         }
-
+        [RequiresAnyRole("admin", "manager")]
         public async Task<object> Delete(StudentById request)
         {
             var response = new BaseResponse();
@@ -91,17 +91,5 @@ namespace Backend.ServiceInterface
             return response;
         }
 
-        public async Task<object> POST(StudentLogin request)
-        {
-            var response = new BaseResponse();
-
-            var result = await _studentService.Login(request.UserName, request.Password);
-            response.Success = true;
-            response.Message = $"Login for student with id {result.Id} success";
-            response.StatusCode = (int)HttpStatusCode.OK;
-            response.Results = result.ConvertTo<StudentDto>();
-
-            return response;
-        }
     }
 }

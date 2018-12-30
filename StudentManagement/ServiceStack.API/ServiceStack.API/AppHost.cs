@@ -107,7 +107,7 @@ namespace Backend
             var userRep = new InMemoryAuthRepository();
             container.Register<IUserAuthRepository>(userRep);
 
-            //container.Register<ICacheClient>(new MemoryCacheClient());
+            container.Register<ICacheClient>(new MemoryCacheClient());
 
             //string hash;
             //string salt;

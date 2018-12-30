@@ -55,7 +55,7 @@ namespace Backend.ServiceInterface
             return response;
         }
 
-        [Authenticate]
+        [RequiresAnyRole("admin", "manager")]
         public async Task<object> Post(CreateScore request)
         {
             var response = new BaseResponse();
@@ -67,7 +67,7 @@ namespace Backend.ServiceInterface
             response.Results = result;
             return response;
         }
-
+        [RequiresAnyRole("admin", "manager")]
         public async Task<object> Put(UpdateScore request)
         {
             var response = new BaseResponse();
@@ -80,7 +80,7 @@ namespace Backend.ServiceInterface
             response.Results = result.ConvertTo<ScoreDto>();
             return response;
         }
-
+        [RequiresAnyRole("admin", "manager")]
         public async Task<object> Delete(ScoreById request)
         {
             var response = new BaseResponse();
@@ -93,10 +93,6 @@ namespace Backend.ServiceInterface
 
             return response;
         }
-
-        public void Authen()
-        {
-            var jwtProvider = AuthenticateService.GetJwtAuthProvider();
-        }
+      
     }
 }

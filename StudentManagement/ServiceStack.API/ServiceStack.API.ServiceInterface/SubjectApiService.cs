@@ -46,7 +46,7 @@ namespace Backend.ServiceInterface
 
             return response;
         }
-
+        [RequiresAnyRole("admin", "manager")]
         public async Task<object> Post(CreateSubject request)
         {
             var response = new BaseResponse();
@@ -58,7 +58,7 @@ namespace Backend.ServiceInterface
             response.Results = result;
             return response;
         }
-
+        [RequiresAnyRole("admin", "manager")]
         public async Task<object> Put(UpdateSubject request)
         {
             var response = new BaseResponse();
@@ -71,7 +71,7 @@ namespace Backend.ServiceInterface
             response.Results = result;
             return response;
         }
-
+        [RequiresAnyRole("admin", "manager")]
         public async Task<object> Delete(SubjectById request)
         {
             var response = new BaseResponse();

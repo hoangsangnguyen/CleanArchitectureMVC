@@ -67,7 +67,7 @@ namespace Backend.ServiceInterface
             response.Results = result;
             return response;
         }
-
+        [RequiresAnyRole("admin", "manager")]
         public async Task<object> Put(UpdateTeacher request)
         {
             var response = new BaseResponse();
@@ -80,7 +80,7 @@ namespace Backend.ServiceInterface
             response.Results = result;
             return response;
         }
-
+        [RequiresAnyRole("admin", "manager")]
         public async Task<object> Delete(TeacherById request)
         {
             var response = new BaseResponse();
