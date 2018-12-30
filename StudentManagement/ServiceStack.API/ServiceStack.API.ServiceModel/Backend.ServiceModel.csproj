@@ -53,6 +53,7 @@
     <Compile Include="Student\Student.cs" />
     <Compile Include="Subject\Subject.cs" />
     <Compile Include="Teacher\Teacher.cs" />
+    <Compile Include="User\User.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

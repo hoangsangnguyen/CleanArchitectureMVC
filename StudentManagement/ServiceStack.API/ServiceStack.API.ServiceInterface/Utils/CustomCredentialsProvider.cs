@@ -20,8 +20,8 @@ namespace ServiceStack.API.ServiceInterface.Utils
         }
         public override bool TryAuthenticate(IServiceBase authService, string userName, string password)
         {
-            Task<User> task = Task.Run<User>(async () => await _userService.Login(userName, password));
-            return userName.EqualsIgnoreCase(task.Result.UserName)  && password.Equals(task.Result.Password);
+            Task<User> task = Task.Run<User>(async () => await _userService.GetUserByUserName(userName));
+            return new SaltedHash().VerifyHashString(password, task.Result.Password, task.Result.Salt);
         }
 
         public async Task<User> GetUser(string userName, string password)
@@ -32,12 +32,12 @@ namespace ServiceStack.API.ServiceInterface.Utils
 
         public override IHttpResult OnAuthenticated(IServiceBase authService, IAuthSession session, IAuthTokens tokens, Dictionary<string, string> authInfo)
         {
-            Console.WriteLine("USER NAME : " + session.UserAuthName);
-
             Task<User> task = Task.Run<User>(async () => await _userService.GetUserByUserName(session.UserAuthName));
             var user = task.Result;
             session.DisplayName = user.DisplayName;
             session.Roles = new List<string> { user.Role.SystemName };
+            session.FirstName = user.FirstName;
+            session.LastName = user.LastName;
             return base.OnAuthenticated(authService, session, tokens, authInfo);
         }
     }

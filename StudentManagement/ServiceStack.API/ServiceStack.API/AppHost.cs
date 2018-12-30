@@ -1,4 +1,5 @@
-﻿using Autofac;
+﻿using System.Linq;
+using Autofac;
 using Backend.ServiceInterface;
 using DAL.Database;
 using DAL.Repository;
@@ -76,6 +77,26 @@ namespace Backend
             IContainerAdapter adapter = new AutofacIocAdapter(builder.Build(), container);
             container.Adapter = adapter;
 
+            //seed data
+            
+            var db = container.Resolve<StudentContext>();
+            if (!db.Users.Any())
+            {
+                new SaltedHash().GetHashAndSaltString("123456", out string hashedPassword, out string salt);
+
+                db.Users.AddAsync(new User
+                {
+                    FirstName = "Nguyễn",
+                    LastName = "Sang",
+                    DisplayName = "Sang Nguyễn",
+                    UserName = "sangnguyen",
+                    Password = hashedPassword,
+                    Salt = salt,
+                    RoleId = "admin"
+                });
+                db.SaveChanges();
+            }
+
             this.Plugins.Add(new AuthFeature(() => new AuthUserSession(), new IAuthProvider[]
             {
                 new CustomCredentialsProvider(container.Resolve<IUserService>())
@@ -88,9 +109,9 @@ namespace Backend
 
             //container.Register<ICacheClient>(new MemoryCacheClient());
 
-            string hash;
-            string salt;
-            new SaltedHash().GetHashAndSaltString("password", out hash, out salt);
+            //string hash;
+            //string salt;
+            //new SaltedHash().GetHashAndSaltString("password", out hash, out salt);
         }
     }
 }

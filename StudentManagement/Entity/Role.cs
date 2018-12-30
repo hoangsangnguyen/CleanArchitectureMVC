@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -18,5 +19,17 @@ namespace Entity
         [Required]
         public string Display { get; set; }
 
+    }
+
+    public enum RoleEnum
+    {
+        [Description("admin")]
+        Admin,
+        [Description("manager")]
+        Manager,
+        [Description("teacher")]
+        Teacher,
+        [Description("student")]
+        Student
     }
 }
