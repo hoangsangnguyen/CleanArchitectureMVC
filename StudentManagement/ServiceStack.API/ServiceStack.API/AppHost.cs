@@ -44,7 +44,10 @@ namespace Backend
         /// </summary>
         public override void Configure(Container container)
         {
-            this.Plugins.Add(new CorsFeature());
+            this.Plugins.Add(new CorsFeature(allowedOrigins: "*",
+                                            allowedMethods: "GET, POST, PUT, DELETE, OPTIONS",
+                                            allowedHeaders: "Content-Type, Access-Control-Allow-Origin",
+                                            allowCredentials: true));
 
             var builder = new ContainerBuilder();
 
@@ -78,7 +81,7 @@ namespace Backend
             container.Adapter = adapter;
 
             //seed data
-            
+
             var db = container.Resolve<StudentContext>();
             if (!db.Users.Any())
             {
@@ -99,6 +102,7 @@ namespace Backend
 
             this.Plugins.Add(new AuthFeature(() => new AuthUserSession(), new IAuthProvider[]
             {
+                //new CustomJwtAuthProvider(container.Resolve<IUserService>())
                 new CustomCredentialsProvider(container.Resolve<IUserService>())
             }));
 

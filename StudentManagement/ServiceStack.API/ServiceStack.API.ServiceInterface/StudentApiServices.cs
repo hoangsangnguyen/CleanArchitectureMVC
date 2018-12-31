@@ -23,7 +23,7 @@ namespace Backend.ServiceInterface
 
         public async Task<object> Get(GetStudents request)
         {
-            var studentEntities = await _studentService.GetAll();
+            var studentEntities = await _studentService.GetAll(includeProperties: "class");
             var dtos = studentEntities.ToList().ConvertAll(x =>
             {
                 var dto = x.ConvertTo<StudentDto>();

@@ -15,14 +15,6 @@ namespace Service.StudentService
         public StudentService(IUnitOfWork<Student> unitOfWork) : base(unitOfWork)
         {
         }
-
-        public async override Task<IEnumerable<Student>> GetAll()
-        {
-            var entities = await _unitOfWork.Repository.GetAll().Include("Class").ToListAsync();
-
-            return entities;
-        }
-
         public async Task<Student> Login(string UserName, string Password)
         {
             var student = await _unitOfWork.Repository.GetAll().SingleAsync(x => x.StudentCode == UserName

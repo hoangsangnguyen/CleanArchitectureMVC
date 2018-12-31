@@ -11,25 +11,22 @@
                 $http.post(url + '/auth', { 'Username': $scope.userName, 'Password': $scope.password })
                     .success(function (response) {
                         console.log('Response ', response);
+                        getDepartments(response);
+                    });
+            }
+
+            var getDepartments = function (session) {
+                $http.get(url + '/departments')
+                    .success(function (response) {
+                        console.log('Response ', response);
                     });
             }
 
             var data = {
                 'Username' : $scope.userName,
-                'Password' : $scope.password
+                'Password': $scope.password,
+                //'provider' : "credentials",
             };
-            //$scope.$watch('name', function () {
-            //    if ($scope.name) {
-            //        $http.get('/hello/' + $scope.name)
-            //            .success(function (response) {
-            //                $scope.helloResult = response.Result;
-            //            });
-            //    }
-            //});
-
-            //$scope.testFunction = function () {
-            //    return true;
-            //};
         }
     ]);
 })();

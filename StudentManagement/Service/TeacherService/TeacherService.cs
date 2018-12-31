@@ -15,12 +15,5 @@ namespace Service.TeacherService
         public TeacherService(IUnitOfWork<Teacher> unitOfWork) : base(unitOfWork)
         {
         }
-        public async override Task<IEnumerable<Teacher>> GetAll()
-        {
-            var entities = await _unitOfWork.Repository.GetAll().Include("Department").Include("Subject").ToListAsync();
-
-            return entities;
-        }
-
     }
 }

@@ -6,7 +6,8 @@
         'ngRoute',
         'helloApp.controllers',
         'navigation.controllers',
-        'login.controllers'
+        'login.controllers',
+        'departments.controllers',
     ]);
 
     module.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
@@ -14,6 +15,7 @@
         $routeProvider.when('/view1', { templateUrl: '/partials/partial1.html' });
         $routeProvider.when('/view2', { templateUrl: '/partials/partial2.html' });
         $routeProvider.when('/auth/login', { templateUrl: '/partials/auth/login/index.html', controller: 'loginCtrl' });
+        $routeProvider.when('/departments', { templateUrl: '/partials/departments/index.html', controller: 'departmentsCtrl' });
         $routeProvider.when('/404', { templateUrl: '/partials/404.html' });
         $routeProvider.otherwise({ redirectTo: '/404' });
 

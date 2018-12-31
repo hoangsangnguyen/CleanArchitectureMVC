@@ -10,7 +10,9 @@ namespace DAL.Repository
 {
     public interface IRepository<T> where T : IEntity
     {
-        IQueryable<T> GetAll();        
+        IQueryable<T> GetAll(Expression<Func<T, bool>> filter = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            string includeProperties = "");        
         Task<T> GetById(object id);
         void Create(T entity);
         void Update(T entity);

@@ -25,7 +25,7 @@ namespace ServiceStack.API.ServiceInterface
         [RequiredRole("admin")]
         public async Task<object> Get(GetUsers request)
         {
-            var userEntities = await _userService.GetAll();
+            var userEntities = await _userService.GetAll(includeProperties: "role");
             var dtos = userEntities.ToList().ConvertAll(x =>
             {
                 var dto = x.ConvertTo<UserDto>();

@@ -15,11 +15,5 @@ namespace DAL.Repository.Students
         public StudentRepository(StudentContext context) : base(context)
         {
         }
-
-        public override IQueryable<Student> GetAll()
-        {
-            var entites = this._context.Students.Include(x => x.Class);
-            return entites;
-        }
     }
 }

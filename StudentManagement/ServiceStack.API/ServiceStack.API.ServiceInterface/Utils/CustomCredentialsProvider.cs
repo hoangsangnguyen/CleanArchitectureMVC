@@ -38,6 +38,7 @@ namespace ServiceStack.API.ServiceInterface.Utils
             session.Roles = new List<string> { user.Role.SystemName };
             session.FirstName = user.FirstName;
             session.LastName = user.LastName;
+            var response = session.GetAuthTokens();
             return base.OnAuthenticated(authService, session, tokens, authInfo);
         }
     }

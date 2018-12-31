@@ -1,8 +1,10 @@
 ﻿using DAL.UnitOfWork;
 using Entity;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace Service.BaseService
@@ -38,9 +40,11 @@ namespace Service.BaseService
             return entity;
         }
 
-        public virtual async Task<IEnumerable<T>> GetAll()
+        public virtual async Task<IEnumerable<T>> GetAll(Expression<Func<T, bool>> filter = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            string includeProperties = "")
         {
-            var entities = await Task.FromResult(_unitOfWork.Repository.GetAll());
+            var entities = await _unitOfWork.Repository.GetAll(filter, orderBy, includeProperties).ToListAsync();
             return entities.AsEnumerable();
         }
 

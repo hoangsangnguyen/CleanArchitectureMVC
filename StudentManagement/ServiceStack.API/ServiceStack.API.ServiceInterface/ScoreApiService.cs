@@ -24,7 +24,7 @@ namespace Backend.ServiceInterface
 
         public async Task<object> Get(GetScores request)
         {
-            var scoreEntities = await _scoreService.GetAll();
+            var scoreEntities = await _scoreService.GetAll(includeProperties: "student, subject");
             var dtos = scoreEntities.ToList().ConvertAll(x =>
             {
                 var dto = x.ConvertTo<ScoreDto>();

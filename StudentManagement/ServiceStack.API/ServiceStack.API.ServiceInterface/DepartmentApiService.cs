@@ -10,6 +10,7 @@ using AutoMapper;
 using Backend.ServiceModel.Department;
 using ServiceStack;
 using Backend.ServiceModel;
+using System.Linq.Expressions;
 
 namespace Backend.ServiceInterface
 {
@@ -25,7 +26,11 @@ namespace Backend.ServiceInterface
 
         public async Task<object> Get(GetDepartments request)
         {
-            var classEntities = await _departmentService.GetAll();
+            Expression<Func<Department, bool>> filter = null;
+            if (!request.Name.IsNullOrEmpty())
+                filter = x => x.Name.Contains(request.Name);
+
+            var classEntities = await _departmentService.GetAll(filter: filter);
             var dtos = classEntities.ToList().ConvertAll(x => x.ConvertTo<DepartmentDto>());
 
             return new
@@ -49,7 +54,7 @@ namespace Backend.ServiceInterface
 
             return response;
         }
-        [RequiresAnyRole("admin", "manager")]
+        //[RequiresAnyRole("admin", "manager")]
         public async Task<object> Post(CreateDepartment request)
         {
             var response = new BaseResponse();
@@ -61,7 +66,7 @@ namespace Backend.ServiceInterface
             response.Results = result;
             return response;
         }
-        [RequiresAnyRole("admin", "manager")]
+       // [RequiresAnyRole("admin", "manager")]
         public async Task<object> Put(UpdateDepartment request)
         {
             var response = new BaseResponse();
@@ -74,7 +79,7 @@ namespace Backend.ServiceInterface
             response.Results = result.ConvertTo<DepartmentDto>();
             return response;
         }
-        [RequiresAnyRole("admin", "manager")]
+       // [RequiresAnyRole("admin", "manager")]
         public async Task<object> Delete(DepartmentById request)
         {
             var response = new BaseResponse();

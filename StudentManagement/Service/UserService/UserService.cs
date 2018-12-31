@@ -22,12 +22,6 @@ namespace Service.UserService
             return user;
         }
 
-        public async override Task<IEnumerable<User>> GetAll()
-        {
-            var users = await _unitOfWork.Repository.GetAll().Include("Role").ToListAsync();
-            return users;
-        }
-
         public async Task<User> GetUserByUserName(string userName)
         {
             var user = await _unitOfWork.Repository.GetAll().Include("Role").FirstAsync(x => x.UserName.Equals(userName));

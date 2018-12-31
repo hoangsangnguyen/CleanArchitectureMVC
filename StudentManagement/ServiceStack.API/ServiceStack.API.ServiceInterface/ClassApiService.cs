@@ -24,7 +24,7 @@ namespace Backend.ServiceInterface
 
         public async Task<object> Get(GetClasses request)
         {
-            var classEntities = await _classService.GetAll();
+            var classEntities = await _classService.GetAll(includeProperties: "Department");
             var dtos = classEntities.ToList().ConvertAll(x =>
             {
                 var dto = x.ConvertTo<ClassDto>();
