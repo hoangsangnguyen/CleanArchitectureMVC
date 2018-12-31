@@ -15,7 +15,11 @@ namespace Backend.ServiceModel.Class
     }
 
     [Route("/classes", "GET")]
-    public class GetClasses : IReturn<BaseResponse> { }
+    [Route("/classes/{Name}/{DepartmentId}", "GET")]
+    public class GetClasses : IReturn<BaseResponse> {
+        public string Name { get; set; }
+        public Nullable<int> DepartmentId { get; set; }
+    }
 
     [Route("/classes/{Id}", "GET")]
     [Route("/classes", "DELETE")]

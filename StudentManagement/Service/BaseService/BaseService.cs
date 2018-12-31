@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace Service.BaseService
@@ -46,6 +47,22 @@ namespace Service.BaseService
         {
             var entities = await _unitOfWork.Repository.GetAll(filter, orderBy, includeProperties).ToListAsync();
             return entities.AsEnumerable();
+        }
+
+        public virtual async Task<IEnumerable<object>> GetModelsWithKeys(params string[] keys)
+        {
+            foreach(string key in keys)
+            {
+                var propertyInfo = typeof(T).GetProperty(key);
+                if (propertyInfo == null)
+                    throw new EntryPointNotFoundException();
+            }
+
+            var entities = await _unitOfWork.Repository.GetAll().Select(
+                x => new {
+                }).ToListAsync();
+
+            return entities;
         }
 
         public virtual async Task<T> GetById(object id)

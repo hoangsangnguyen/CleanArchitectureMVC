@@ -7,6 +7,7 @@ using ServiceStack;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,12 @@ namespace Backend.ServiceInterface
 
         public async Task<object> Get(GetClasses request)
         {
+            Expression<Func<Class, bool>> filter = null;
+            if (!request.Name.IsNullOrEmpty())
+                filter = x => x.Name.Contains(request.Name);
+            if (request.DepartmentId != null)
+                filter = x => x.DepartmentId == request.DepartmentId;
+
             var classEntities = await _classService.GetAll(includeProperties: "Department");
             var dtos = classEntities.ToList().ConvertAll(x =>
             {
@@ -53,7 +60,7 @@ namespace Backend.ServiceInterface
 
             return response;
         }
-        [RequiresAnyRole("admin", "manager")]
+        //[RequiresAnyRole("admin", "manager")]
         public async Task<object> Post(CreateClass request)
         {
             var response = new BaseResponse();
@@ -65,7 +72,7 @@ namespace Backend.ServiceInterface
             response.Results = result;
             return response;
         }
-        [RequiresAnyRole("admin", "manager")]
+        //[RequiresAnyRole("admin", "manager")]
         public async Task<object> Put(UpdateClass request)
         {
             var response = new BaseResponse();
@@ -78,7 +85,7 @@ namespace Backend.ServiceInterface
             response.Results = result.ConvertTo<ClassDto>();
             return response;
         }
-        [RequiresAnyRole("admin", "manager")]
+        //[RequiresAnyRole("admin", "manager")]
         public async Task<object> Delete(ClassById request)
         {
             var response = new BaseResponse();

@@ -30,8 +30,8 @@ namespace Backend.ServiceInterface
             if (!request.Name.IsNullOrEmpty())
                 filter = x => x.Name.Contains(request.Name);
 
-            var classEntities = await _departmentService.GetAll(filter: filter);
-            var dtos = classEntities.ToList().ConvertAll(x => x.ConvertTo<DepartmentDto>());
+            var departmentEntities = await _departmentService.GetAll(filter: filter);
+            var dtos = departmentEntities.ToList().ConvertAll(x => x.ConvertTo<DepartmentDto>());
 
             return new
             {
@@ -41,6 +41,26 @@ namespace Backend.ServiceInterface
                 ItemCount = dtos.Count
             };
         }
+
+        public async Task<object> Get(DepartmentById request)
+        {
+            var entity = await _departmentService.GetById(request.Id);
+            var dto = entity.ConvertTo<DepartmentDto>();
+
+            return new
+            {
+                Success = true,
+                StatusCode = (int)HttpStatusCode.OK,
+                Results = dto,
+            };
+        }
+
+        public async Task<object> Get(DepartmentViewNameId request)
+        {
+            var models = await _departmentService.GetModelsWithKeys("Id", "Name");
+            return models;
+        }
+
 
         public async Task<object> Get(DepartmentDto request)
         {

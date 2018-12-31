@@ -114,6 +114,7 @@
     <Content Include="default.cshtml" />
     <Content Include="js\app.js" />
     <Content Include="js\auth\login\controllers.js" />
+    <Content Include="js\class\controllers.js" />
     <Content Include="js\departments\controllers.js" />
     <Content Include="js\hello\controllers.js" />
     <Content Include="js\kendo\angular.min.js" />
@@ -1148,6 +1149,7 @@
     <Content Include="js\kendo\pako_deflate.min.js" />
     <Content Include="js\navigation\controllers.js" />
     <Content Include="partials\auth\login\index.html" />
+    <Content Include="partials\class\index.html" />
     <Content Include="partials\departments\index.html" />
     <Content Include="partials\hello\hello.html" />
     <Content Include="Scripts\_references.js" />
