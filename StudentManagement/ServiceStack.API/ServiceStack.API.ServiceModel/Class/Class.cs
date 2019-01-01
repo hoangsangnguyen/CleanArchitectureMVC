@@ -21,8 +21,7 @@ namespace Backend.ServiceModel.Class
         public Nullable<int> DepartmentId { get; set; }
     }
 
-    [Route("/classes/{Id}", "GET")]
-    [Route("/classes", "DELETE")]
+    [Route("/classes/{Id}", "GET, DELETE")]
     public class ClassById : IReturn<BaseResponse>
     {
         public int Id { get; set; }

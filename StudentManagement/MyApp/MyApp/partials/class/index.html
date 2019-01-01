@@ -2,6 +2,12 @@
     <h3 class="pull-left">
         Class List
     </h3>
+    <div class="pull-right">
+        <a href="/class/new" class="btn bg-blue">
+            <i class="fa fa-plus-square"></i>
+            Create
+        </a>
+    </div>
 </div>
 
 <div class="content" ng-controller="classCtrl">
@@ -30,7 +36,7 @@
                                     <label class="control-label">Department:</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <input class="form-control" ng-model="departmentId" id="DepartmentId" >
+                                    <input class="form-control" ng-model="departmentId" id="DepartmentId" style="width: 100%;" >
                                 </div>
                             </div>
                         </div>

@@ -20,6 +20,8 @@
         $routeProvider.when('/departments/new', { templateUrl: '/partials/departments/create.html' });
         $routeProvider.when('/departments/:id', { templateUrl: '/partials/departments/edit.html' });
         $routeProvider.when('/class', { templateUrl: '/partials/class/index.html', controller: 'classCtrl' });
+        $routeProvider.when('/class/new', { templateUrl: '/partials/class/create.html', controller: 'createClassCtrl' });
+        $routeProvider.when('/class/:id', { templateUrl: '/partials/class/edit.html', controller: 'editClassCtrl' });
         $routeProvider.when('/404', { templateUrl: '/partials/404.html' });
         $routeProvider.otherwise({ redirectTo: '/404' });
 

@@ -25,13 +25,9 @@ namespace Backend.ServiceInterface
 
         public async Task<object> Get(GetClasses request)
         {
-            Expression<Func<Class, bool>> filter = null;
-            if (!request.Name.IsNullOrEmpty())
-                filter = x => x.Name.Contains(request.Name);
-            if (request.DepartmentId != null)
-                filter = x => x.DepartmentId == request.DepartmentId;
-
-            var classEntities = await _classService.GetAll(includeProperties: "Department");
+            Expression<Func<Class, bool>> filter = x => (request.Name == null || x.Name.Contains(request.Name))
+                                                        && (request.DepartmentId == null || x.DepartmentId == request.DepartmentId);
+            var classEntities = await _classService.GetAll(filter: filter, includeProperties: "Department");
             var dtos = classEntities.ToList().ConvertAll(x =>
             {
                 var dto = x.ConvertTo<ClassDto>();
@@ -45,6 +41,19 @@ namespace Backend.ServiceInterface
                 StatusCode = (int)HttpStatusCode.OK,
                 Results = dtos,
                 ItemCount = dtos.Count
+            };
+        }
+
+        public async Task<object> Get(ClassById request)
+        {
+            var entity = await _classService.GetById(request.Id);
+            var dto = entity.ConvertTo<ClassDto>();
+
+            return new
+            {
+                Success = true,
+                StatusCode = (int)HttpStatusCode.OK,
+                Results = dto,
             };
         }
 
