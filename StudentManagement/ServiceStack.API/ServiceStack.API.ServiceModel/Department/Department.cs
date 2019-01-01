@@ -23,8 +23,7 @@ namespace Backend.ServiceModel.Department
         public string Name { get; set; }
     }
 
-    [Route("/departments/{Id}", "GET")]
-    [Route("/departments", "DELETE")]
+    [Route("/departments/{Id}", "GET, Delete")]
     public class DepartmentById : IReturn<BaseResponse>
     {
         public int Id { get; set; }

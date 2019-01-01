@@ -1150,7 +1150,10 @@
     <Content Include="js\navigation\controllers.js" />
     <Content Include="partials\auth\login\index.html" />
     <Content Include="partials\class\index.html" />
+    <Content Include="partials\departments\create.html" />
+    <Content Include="partials\departments\edit.html" />
     <Content Include="partials\departments\index.html" />
+    <Content Include="partials\departments\_addEdit.html" />
     <Content Include="partials\hello\hello.html" />
     <Content Include="Scripts\_references.js" />
     <Content Include="partials\partial1.html" />

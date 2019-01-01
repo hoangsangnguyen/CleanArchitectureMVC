@@ -3,11 +3,12 @@
     "use strict";
 
     var app = angular.module('departments.controllers', []);
+    var rootUrl = "http://localhost/Backend/departments";
 
     app.controller('departmentsCtrl', ['$scope', '$http',
         function ($scope, $http) {
             $scope.name = "";
-            var crudServiceBaseUrl = "http://localhost/Backend/departments",
+            var crudServiceBaseUrl = rootUrl,
                 dataSource = new kendo.data.DataSource({
                     dataType: "json",
                     transport: {
@@ -62,10 +63,16 @@
                 dataSource: dataSource,
                 pageable: true,
                 height: 550,
-                toolbar: ["create"],
                 columns: [
                     { field: "Name", title: "Name" },
-                    { command: ["edit", "destroy"], title: "&nbsp;", width: "250px" }],
+                    {
+                        field: "Id",
+                        title: " ",
+                        width: 100,
+                        headerAttributes: { style: "text-align:center" },
+                        attributes: { style: "text-align:center" },
+                        template: '<a class="btn btn-default" href="/departments/#=Id#"><i class="fa fa-pencil"></i>Detail</a>'
+                    }],
                 editable: {
                     mode: "popup",
                     template: kendo.template($("#popup_editor").html()),
@@ -98,5 +105,70 @@
 
         }
     ]);
+
+    app.controller('createDepartmentCtrl', ['$scope', '$http', '$location',
+        function ($scope, $http, $location) {
+            $scope.onSave = function () {
+                $http.post(rootUrl, JSON.stringify({ Name: $scope.name }))
+                    .then(function (response) {
+                        console.log(response.data);
+                        $location.path("/departments");
+                    }).catch(function (e) {
+                        console.log('Error: ', e);
+                        throw e;
+                    }).finally(function () {
+                    });
+            }
+
+            $scope.onBack = function () {
+                $location.path("/departments");
+            }
+
+        }
+    ]);
+
+    app.controller('editDepartmentCtrl', ['$scope', '$http', '$location', '$routeParams',
+        function ($scope, $http, $location, $routeParams) {
+            var id = $routeParams.id;
+            $(document).ready(function () {
+                $http.get(rootUrl + '/' + id)
+                    .then(function (response) {
+                        $scope.name = response.data.Results.Name;
+                    }).catch(function (e) {
+                        console.log('Error: ', e);
+                        throw e;
+                    }).finally(function () {
+                    });
+            });
+
+            $scope.onSave = function () {
+                $http.put(rootUrl, JSON.stringify({ Id: id, Name: $scope.name }))
+                    .then(function (response) {
+                        $location.path("/departments");
+                    }).catch(function (e) {
+                        console.log('Error: ', e);
+                        throw e;
+                    }).finally(function () {
+                    });
+            }
+
+            $scope.onBack = function () {
+                $location.path("/departments");
+            }
+
+            $scope.onDelete = function () {
+                $http.delete(rootUrl + '/' + id)
+                    .then(function (response) {
+                        $location.path("/departments");
+                    }).catch(function (e) {
+                        console.log('Error: ', e);
+                        throw e;
+                    }).finally(function () {
+                    });
+            }
+
+        }
+    ]);
+
 })();
 

@@ -17,6 +17,8 @@
         $routeProvider.when('/view2', { templateUrl: '/partials/partial2.html' });
         $routeProvider.when('/auth/login', { templateUrl: '/partials/auth/login/index.html', controller: 'loginCtrl' });
         $routeProvider.when('/departments', { templateUrl: '/partials/departments/index.html', controller: 'departmentsCtrl' });
+        $routeProvider.when('/departments/new', { templateUrl: '/partials/departments/create.html' });
+        $routeProvider.when('/departments/:id', { templateUrl: '/partials/departments/edit.html' });
         $routeProvider.when('/class', { templateUrl: '/partials/class/index.html', controller: 'classCtrl' });
         $routeProvider.when('/404', { templateUrl: '/partials/404.html' });
         $routeProvider.otherwise({ redirectTo: '/404' });
