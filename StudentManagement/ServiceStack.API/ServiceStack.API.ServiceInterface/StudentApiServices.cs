@@ -23,7 +23,7 @@ namespace Backend.ServiceInterface
 
         public async Task<object> Get(GetStudents request)
         {
-            var studentEntities = await _studentService.GetAll(includeProperties: "class");
+            var studentEntities = await _studentService.GetAll(includeProperties: "Class");
             var dtos = studentEntities.ToList().ConvertAll(x =>
             {
                 var dto = x.ConvertTo<StudentDto>();
@@ -52,7 +52,7 @@ namespace Backend.ServiceInterface
 
             return response;
         }
-        [RequiresAnyRole("admin", "manager")]
+        //[RequiresAnyRole("admin", "manager")]
         public async Task<object> Post(CreateStudent request)
         {
             var response = new BaseResponse();
@@ -64,7 +64,7 @@ namespace Backend.ServiceInterface
             response.Results = result.ConvertTo<StudentDto>();
             return response;
         }
-        [RequiresAnyRole("admin", "manager")]
+        //[RequiresAnyRole("admin", "manager")]
         public async Task<object> Put(UpdateStudent request)
         {
             var response = new BaseResponse();
@@ -77,7 +77,7 @@ namespace Backend.ServiceInterface
             response.Results = result.ConvertTo<StudentDto>();
             return response;
         }
-        [RequiresAnyRole("admin", "manager")]
+        //[RequiresAnyRole("admin", "manager")]
         public async Task<object> Delete(StudentById request)
         {
             var response = new BaseResponse();

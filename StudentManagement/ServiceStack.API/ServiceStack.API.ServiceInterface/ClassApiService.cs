@@ -57,18 +57,12 @@ namespace Backend.ServiceInterface
             };
         }
 
-        public async Task<object> Get(ClassDto request)
+        public async Task<object> Get(ClassesViewNameId request)
         {
-            var response = new BaseResponse();
-
-            var entity = await _classService.GetById(request.Id);
-            var dto = entity.ConvertTo<ClassDto>();
-            response.Success = true;
-            response.StatusCode = (int)HttpStatusCode.OK;
-            response.Results = dto;
-
-            return response;
+            var models = await _classService.GetModelsWithKeys("Id", "Name");
+            return models;
         }
+
         //[RequiresAnyRole("admin", "manager")]
         public async Task<object> Post(CreateClass request)
         {

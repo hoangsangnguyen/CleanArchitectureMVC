@@ -27,6 +27,11 @@ namespace Backend.ServiceModel.Class
         public int Id { get; set; }
     }
 
+    [Route("/classes/viewmodel", "GET")]
+    public class ClassesViewNameId : IReturn<BaseResponse>
+    {
+    }
+
     [Route("/classes", "POST")]
     public class CreateClass : IReturn<BaseResponse>
     {

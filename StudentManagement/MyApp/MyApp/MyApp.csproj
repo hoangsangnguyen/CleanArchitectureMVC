@@ -1148,6 +1148,7 @@
     <Content Include="js\kendo\messages\kendo.messages.zh-TW.min.js" />
     <Content Include="js\kendo\pako_deflate.min.js" />
     <Content Include="js\navigation\controllers.js" />
+    <Content Include="js\students\controllers.js" />
     <Content Include="partials\auth\login\index.html" />
     <Content Include="partials\class\create.html" />
     <Content Include="partials\class\edit.html" />
@@ -1157,6 +1158,7 @@
     <Content Include="partials\departments\index.html" />
     <Content Include="partials\departments\_addEdit.html" />
     <Content Include="partials\hello\hello.html" />
+    <Content Include="partials\students\index.html" />
     <Content Include="Scripts\_references.js" />
     <Content Include="partials\partial1.html" />
     <Content Include="partials\partial2.html" />

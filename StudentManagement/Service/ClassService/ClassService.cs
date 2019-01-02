@@ -16,5 +16,16 @@ namespace Service.ClassService
         public ClassService(IUnitOfWork<Class> unitOfWork) : base(unitOfWork)
         {
         }
+
+        public override async Task<IEnumerable<object>> GetModelsWithKeys(params string[] keys)
+        {
+            var models = await _unitOfWork.Repository.GetAll().Select(
+                x => new
+                {
+                    Id = x.Id,
+                    Name = x.Name
+                }).ToListAsync();
+            return models;
+        }
     }
 }

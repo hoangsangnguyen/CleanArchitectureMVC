@@ -61,19 +61,6 @@ namespace Backend.ServiceInterface
             return models;
         }
 
-
-        public async Task<object> Get(DepartmentDto request)
-        {
-            var response = new BaseResponse();
-
-            var entity = await _departmentService.GetById(request.Id);
-            var dto = entity.ConvertTo<DepartmentDto>();
-            response.Success = true;
-            response.StatusCode = (int)HttpStatusCode.OK;
-            response.Results = dto;
-
-            return response;
-        }
         //[RequiresAnyRole("admin", "manager")]
         public async Task<object> Post(CreateDepartment request)
         {
