@@ -5,28 +5,31 @@
     var app = angular.module('login.controllers', []);
     var url = 'http://localhost/Backend';
 
-    app.controller('loginCtrl', ['$scope', '$http',
-        function ($scope, $http) {
+    app.controller('loginCtrl', ['$scope', '$http', '$window',
+        function ($scope, $http, $window) {
             $scope.login = function () {
-                $http.post(url + '/auth', { 'Username': $scope.userName, 'Password': $scope.password })
+                $http.post(url + '/auth', getData())
                     .success(function (response) {
-                        console.log('Response ', response);
-                        getDepartments(response);
+                        console.log('Response ', response.BearerToken);
+                        $window.localStorage.setItem('token', 'Bearer ' + response.BearerToken);
                     });
             }
 
-            var getDepartments = function (session) {
-                $http.get(url + '/departments')
+            var getDepartments = function () {
+                $http.get(url + '/departments', { headers: { 'Authorization': $window.localStorage.getItem('token')} })
                     .success(function (response) {
                         console.log('Response ', response);
                     });
             }
-
-            var data = {
-                'Username' : $scope.userName,
-                'Password': $scope.password,
-                //'provider' : "credentials",
-            };
+            function getData() {
+                var data = {
+                    Username: $scope.userName,
+                    Password: $scope.password,
+                    provider: 'credentials'
+                };
+                return data;
+            }
+           
         }
     ]);
 })();

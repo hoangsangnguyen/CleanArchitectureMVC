@@ -8,8 +8,8 @@ using Entity;
 
 namespace Backend.ServiceInterface
 {
-    //[Authenticate]
-   public class BaseService : ServiceStack.Service
+    [Authenticate]
+    public class BaseService : ServiceStack.Service
    {
         public bool IsAdminOrOwner(string userName)
         {

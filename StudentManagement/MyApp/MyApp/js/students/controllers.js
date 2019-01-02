@@ -5,8 +5,9 @@
     var app = angular.module('students.controllers', []);
     var rootUrl = "http://localhost/Backend";
 
-    app.controller('studentsCtrl', ['$scope', '$http',
-        function ($scope, $http) {
+    app.controller('studentsCtrl', ['$scope', '$http', '$window', '$location',
+        function ($scope, $http, $window, $location) {
+
             function initView() {
                 $scope.toDay = new Date();
 
@@ -29,7 +30,8 @@
                             read: {
                                 url: rootUrl + "/classes/viewmodel",
                                 dataType: "json",
-                                data: filterClass
+                                data: filterClass,
+                                headers: { 'Authorization': $window.localStorage.getItem('token') },
                             }
                         }
                     }
@@ -49,25 +51,8 @@
                             read: {
                                 url: crudServiceBaseUrl,
                                 dataType: "json",
-                                data: additionalData
-                            },
-                            update: {
-                                url: crudServiceBaseUrl,
-                                dataType: "json",
-                                type: "put",
-                                contentType: "application/json; charset=utf-8"
-                            },
-                            destroy: {
-                                url: crudServiceBaseUrl,
-                                dataType: "json",
-                                type: "delete",
-                                contentType: "application/json; charset=utf-8"
-                            },
-                            create: {
-                                url: crudServiceBaseUrl,
-                                type: "post",
-                                dataType: "json",
-                                contentType: "application/json; charset=utf-8",
+                                data: additionalData,
+                                headers: { 'Authorization': $window.localStorage.getItem('token') },
                             },
                             parameterMap: function (options, operation) {
                                 if (operation === "read")
@@ -110,12 +95,7 @@
                             headerAttributes: { style: "text-align:center" },
                             attributes: { style: "text-align:center" },
                             template: '<a class="btn btn-default" href="/students/#=Id#"><i class="fa fa-pencil"></i>Detail</a>'
-                        }],
-                    editable: {
-                        mode: "popup",
-                        template: kendo.template($("#popup_editor").html()),
-                        confirmation: "Delete",
-                    }
+                        }]
                 });
 
                 function additionalData() {
@@ -131,11 +111,13 @@
             }
 
             $(document).ready(function () {
+                var token = $window.localStorage.getItem('token');
+                if (token === null) {
+                    $location.path("/auth/login");
+                    return;
+                }
                 initView();
             });
-
-            
-
 
             $scope.onSearch = function () {
                 var grid = $('#grid').data('kendoGrid');
@@ -154,8 +136,8 @@
         }
     ]);
 
-    app.controller('createStudentsCtrl', ['$scope', '$http', '$location',
-        function ($scope, $http, $location) {
+    app.controller('createStudentsCtrl', ['$scope', '$http', '$location', '$window',
+        function ($scope, $http, $location, $window) {
             function initView() {
                 $scope.toDay = new Date();
 
@@ -178,7 +160,9 @@
                             read: {
                                 url: rootUrl + "/classes/viewmodel",
                                 dataType: "json",
-                                data: filterClass
+                                data: filterClass,
+                                headers: { 'Authorization': $window.localStorage.getItem('token') },
+
                             }
                         }
                     }
@@ -193,11 +177,21 @@
             }
 
             $(document).ready(function () {
+                var token = $window.localStorage.getItem('token');
+                if (token === null) {
+                    $location.path("/auth/login");
+                    return;
+                }
                 initView();
             });
 
             $scope.onSave = function () {
-                $http.post(rootUrl + '/students', getData())
+                $http({
+                    method: 'POST',
+                    url: rootUrl + '/students',
+                    data: getData(),
+                    headers: { 'Authorization': $window.localStorage.getItem('token') },
+                })
                     .then(function (response) {
                         $location.path("/students");
                     }).catch(function (e) {
@@ -223,12 +217,12 @@
                 $location.path("/students");
             }
 
-            
+
         }
     ]);
 
-    app.controller('editStudentsCtrl', ['$scope', '$http', '$location', '$routeParams',
-        function ($scope, $http, $location, $routeParams) {
+    app.controller('editStudentsCtrl', ['$scope', '$http', '$location', '$routeParams', '$window',
+        function ($scope, $http, $location, $routeParams, $window) {
             var id = $routeParams.id;
 
             function initView() {
@@ -267,30 +261,45 @@
                 }
             }
             $(document).ready(function () {
+                var token = $window.localStorage.getItem('token');
+                if (token === null) {
+                    $location.path("/auth/login");
+                    return;
+                }
+
                 initView();
-                $http.get(rootUrl + '/students/' + id)
-                    .then(function (response) {
-                        $scope.firstName = response.data.Results.FirstName;
-                        $scope.lastName = response.data.Results.LastName;
-                        $scope.studentCode = response.data.Results.StudentCode;
-                        $("#ClassId").data("kendoComboBox").value(response.data.Results.ClassId);
-                        $("#DateOfBirth").data("kendoDatePicker").value(response.data.Results.DateOfBirth);
-                    }).catch(function (e) {
-                        console.log('Error: ', e);
-                        throw e;
-                    }).finally(function () {
-                    });
+                $http({
+                    method: 'GET',
+                    url: rootUrl + '/students/',
+                    headers: { 'Authorization': $window.localStorage.getItem('token') },
+                })
+                .then(function (response) {
+                    $scope.firstName = response.data.Results.FirstName;
+                    $scope.lastName = response.data.Results.LastName;
+                    $scope.studentCode = response.data.Results.StudentCode;
+                    $("#ClassId").data("kendoComboBox").value(response.data.Results.ClassId);
+                    $("#DateOfBirth").data("kendoDatePicker").value(response.data.Results.DateOfBirth);
+                }).catch(function (e) {
+                    console.log('Error: ', e);
+                    throw e;
+                }).finally(function () {
+                });
             });
 
             $scope.onSave = function () {
-                $http.put(rootUrl + '/students', getData())
-                    .then(function (response) {
-                        $location.path("/students");
-                    }).catch(function (e) {
-                        console.log('Error: ', e);
-                        throw e;
-                    }).finally(function () {
-                    });
+                $http({
+                    method: 'PUT',
+                    url: rootUrl + '/students',
+                    data: getData(),
+                    headers: { 'Authorization': $window.localStorage.getItem('token') },
+                })
+                .then(function (response) {
+                    $location.path("/students");
+                }).catch(function (e) {
+                    console.log('Error: ', e);
+                    throw e;
+                }).finally(function () {
+                });
             }
 
             $scope.onBack = function () {
@@ -298,14 +307,18 @@
             }
 
             $scope.onDelete = function () {
-                $http.delete(rootUrl + '/students/' + id)
-                    .then(function (response) {
-                        $location.path("/students");
-                    }).catch(function (e) {
-                        console.log('Error: ', e);
-                        throw e;
-                    }).finally(function () {
-                    });
+                $http({
+                    method: 'DELETE',
+                    url: rootUrl + '/students/' + id,
+                    headers: { 'Authorization': $window.localStorage.getItem('token') },
+                })
+                .then(function (response) {
+                    $location.path("/students");
+                }).catch(function (e) {
+                    console.log('Error: ', e);
+                    throw e;
+                }).finally(function () {
+                });
             }
 
             function getData() {

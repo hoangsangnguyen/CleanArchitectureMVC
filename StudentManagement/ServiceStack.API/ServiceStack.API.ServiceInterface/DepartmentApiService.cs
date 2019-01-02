@@ -63,7 +63,7 @@ namespace Backend.ServiceInterface
             return models;
         }
 
-        //[RequiresAnyRole("admin", "manager")]
+        [RequiresAnyRole("admin", "manager")]
         public async Task<object> Post(CreateDepartment request)
         {
             var response = new BaseResponse();

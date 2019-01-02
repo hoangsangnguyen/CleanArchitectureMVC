@@ -17,6 +17,7 @@ namespace Entity
         public string SystemName { get; set; }
 
         [Required]
+        [MaxLength(50)]
         public string Display { get; set; }
 
     }

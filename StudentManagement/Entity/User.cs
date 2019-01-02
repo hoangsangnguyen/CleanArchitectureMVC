@@ -21,6 +21,7 @@ namespace Entity
         public string LastName { get; set; }
 
         [Required]
+        [MaxLength(50)]
         public string DisplayName { get; set; }
 
         [Required]
@@ -28,9 +29,11 @@ namespace Entity
         public string UserName { get; set; }
 
         [Required]
+        [MaxLength(255)]
         public string Password { get; set; }
 
         [Required]
+        [MaxLength(255)]   
         public string Salt { get; set; }
 
         [Required]

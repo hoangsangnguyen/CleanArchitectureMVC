@@ -5,113 +5,104 @@
     var app = angular.module('class.controllers', []);
     var rootUrl = "http://localhost/Backend";
 
-    app.controller('classCtrl', ['$scope', '$http',
-        function ($scope, $http) {
-            $("#DepartmentId").kendoComboBox({
-                filter: "contains",
-                dataTextField: "Name",
-                dataValueField: "Id",
-                placeholder: "Select department...",
-                minLength: 0,
-                dataSource: {
-                    dataType: "json",
-                    serverFiltering: true,
-                    transport: {
-                        read: {
-                            url: rootUrl + "/departments/viewmodel",
-                            dataType: "json",
-                            data: filterDepartment
-                        }
-                    }
+    app.controller('classCtrl', ['$scope', '$http', '$window', '$location',
+        function ($scope, $http, $window, $location) {
+            $(document).ready(function () {
+                var token = $window.localStorage.getItem('token');
+                if (token === null) {
+                    $location.path("/auth/login");
+                    return;
                 }
+
+                initView();
             });
 
-            function filterDepartment() {
-                var data = {
-                    Name: $("#DepartmentId").data("kendoComboBox").value()
-                };
-                return data;
-            }
-
-            var crudServiceBaseUrl = rootUrl + "/classes",
-                dataSource = new kendo.data.DataSource({
-                    dataType: "json",
-                    transport: {
-                        read: {
-                            url: crudServiceBaseUrl,
-                            dataType: "json",
-                            data: additionalData
-                        },
-                        update: {
-                            url: crudServiceBaseUrl,
-                            dataType: "json",
-                            type: "put",
-                            contentType: "application/json; charset=utf-8"
-                        },
-                        destroy: {
-                            url: crudServiceBaseUrl,
-                            dataType: "json",
-                            type: "delete",
-                            contentType: "application/json; charset=utf-8"
-                        },
-                        create: {
-                            url: crudServiceBaseUrl,
-                            type: "post",
-                            dataType: "json",
-                            contentType: "application/json; charset=utf-8",
-                        },
-                        parameterMap: function (options, operation) {
-                            if (operation === "read")
-                                return options;
-
-                            else if (options.models)
-                                return kendo.stringify(options.models[0]);
-                        }
-                    },
-                    batch: true,
-                    pageSize: 20,
-                    schema: {
-                        data: "Results",
-                        total: "ItemCount",
-                        model: {
-                            id: "Id",
-                            fields: {
-                                FirstName: { validation: { required: true } },
-                                LastName: { validation: { required: true } },
-                                Score: { type: "number", validation: { min: 0, max: 10, required: true } }
+            function initView() {
+                $("#DepartmentId").kendoComboBox({
+                    filter: "contains",
+                    dataTextField: "Name",
+                    dataValueField: "Id",
+                    placeholder: "Select department...",
+                    minLength: 0,
+                    dataSource: {
+                        dataType: "json",
+                        serverFiltering: true,
+                        transport: {
+                            read: {
+                                url: rootUrl + "/departments/viewmodel",
+                                dataType: "json",
+                                data: filterDepartment,
+                                headers: { 'Authorization': $window.localStorage.getItem('token') },
                             }
                         }
                     }
                 });
 
-            $("#grid").kendoGrid({
-                dataSource: dataSource,
-                pageable: true,
-                height: 550,
-                columns: [
-                    { field: "Name", title: "Name" },
-                    { field: "DepartmentName", title: "Department" },
-                    {
-                        field: "Id",
-                        title: " ",
-                        width: 100,
-                        headerAttributes: { style: "text-align:center" },
-                        attributes: { style: "text-align:center" },
-                        template: '<a class="btn btn-default" href="/class/#=Id#"><i class="fa fa-pencil"></i>Detail</a>'
-                    }],
-                editable: {
-                    mode: "popup",
-                    template: kendo.template($("#popup_editor").html()),
-                    confirmation: "Delete",
+                function filterDepartment() {
+                    var data = {
+                        Name: $("#DepartmentId").data("kendoComboBox").value()
+                    };
+                    return data;
                 }
-            });
 
-            function additionalData() {
-                var data = {
-                    Name: $scope.name,
-                    DepartmentId: $("#DepartmentId").data("kendoComboBox").value()
+                var crudServiceBaseUrl = rootUrl + "/classes",
+                    dataSource = new kendo.data.DataSource({
+                        dataType: "json",
+                        transport: {
+                            read: {
+                                url: crudServiceBaseUrl,
+                                dataType: "json",
+                                data: additionalData,
+                                headers: { 'Authorization': $window.localStorage.getItem('token') },
+                            },
+                            parameterMap: function (options, operation) {
+                                if (operation === "read")
+                                    return options;
+
+                                else if (options.models)
+                                    return kendo.stringify(options.models[0]);
+                            }
+                        },
+                        batch: true,
+                        pageSize: 20,
+                        schema: {
+                            data: "Results",
+                            total: "ItemCount",
+                            model: {
+                                //id: "Id",
+                                //fields: {
+                                //    FirstName: { validation: { required: true } },
+                                //    LastName: { validation: { required: true } },
+                                //    Score: { type: "number", validation: { min: 0, max: 10, required: true } }
+                                //}
+                            }
+                        }
+                    });
+
+                $("#grid").kendoGrid({
+                    dataSource: dataSource,
+                    pageable: true,
+                    height: 550,
+                    columns: [
+                        { field: "Name", title: "Name" },
+                        { field: "DepartmentName", title: "Department" },
+                        {
+                            field: "Id",
+                            title: " ",
+                            width: 100,
+                            headerAttributes: { style: "text-align:center" },
+                            attributes: { style: "text-align:center" },
+                            template: '<a class="btn btn-default" href="/class/#=Id#"><i class="fa fa-pencil"></i>Detail</a>'
+                        }]
+                });
+
+                function additionalData() {
+                    var data = {
+                        Name: $scope.name,
+                        DepartmentId: $("#DepartmentId").data("kendoComboBox").value()
+                    }
+                    return data;
                 }
-                return data;
             }
 
             $scope.onSearch = function () {
@@ -132,9 +123,19 @@
     ]);
 
 
-    app.controller('createClassCtrl', ['$scope', '$http', '$location',
-        function ($scope, $http, $location) {
+    app.controller('createClassCtrl', ['$scope', '$http', '$location', '$window',
+        function ($scope, $http, $location, $window) {
             $(document).ready(function () {
+                var token = $window.localStorage.getItem('token');
+                if (token === null) {
+                    $location.path("/auth/login");
+                    return;
+                }
+
+                initView();
+            });
+
+            function initView() {
                 $("#departmentId").kendoComboBox({
                     dataTextField: "Name",
                     dataValueField: "Id",
@@ -147,16 +148,20 @@
                             read: {
                                 url: rootUrl + "/departments/viewmodel",
                                 dataType: "json",
+                                headers: { 'Authorization': $window.localStorage.getItem('token') },
                             }
                         }
                     }
                 });
-
-
-            });
+            }
 
             $scope.onSave = function () {
-                $http.post(rootUrl + '/classes', JSON.stringify({ Name: $scope.name, DepartmentId: $("#departmentId").data("kendoComboBox").value() }))
+                $http({
+                    method: 'POST',
+                    url: rootUrl + '/classes',
+                    data: JSON.stringify({ Name: $scope.name, DepartmentId: $("#departmentId").data("kendoComboBox").value() }),
+                    headers: { 'Authorization': $window.localStorage.getItem('token') }
+                })
                     .then(function (response) {
                         $location.path("/class");
                     }).catch(function (e) {
@@ -172,11 +177,21 @@
         }
     ]);
 
-    app.controller('editClassCtrl', ['$scope', '$http', '$location', '$routeParams',
-        function ($scope, $http, $location, $routeParams) {
+    app.controller('editClassCtrl', ['$scope', '$http', '$location', '$routeParams', '$window',
+        function ($scope, $http, $location, $routeParams, $window) {
             var id = $routeParams.id;
-
             $(document).ready(function () {
+                var token = $window.localStorage.getItem('token');
+                if (token === null) {
+                    $location.path("/auth/login");
+                    return;
+                }
+
+                initView();
+            });
+
+
+            function initView() {
                 $("#departmentId").kendoComboBox({
                     dataTextField: "Name",
                     dataValueField: "Id",
@@ -189,12 +204,17 @@
                             read: {
                                 url: rootUrl + "/departments/viewmodel",
                                 dataType: "json",
+                                headers: { 'Authorization': $window.localStorage.getItem('token') },
                             }
                         }
                     }
                 });
 
-                $http.get(rootUrl + '/classes/' + id)
+                $http({
+                    method: 'GET',
+                    url: rootUrl + '/classes/' + id,
+                    headers: { 'Authorization': $window.localStorage.getItem('token') },
+                })
                     .then(function (response) {
                         $scope.name = response.data.Results.Name;
                         $("#departmentId").data("kendoComboBox").value(response.data.Results.DepartmentId);
@@ -203,10 +223,15 @@
                         throw e;
                     }).finally(function () {
                     });
-            });
+            }
 
             $scope.onSave = function () {
-                $http.put(rootUrl + '/classes', JSON.stringify({ Id: id, Name: $scope.name, DepartmentId: $("#departmentId").data("kendoComboBox").value() }))
+                $http({
+                    method: 'PUT',
+                    url: rootUrl + '/classes',
+                    data: JSON.stringify({ Id: id, Name: $scope.name, DepartmentId: $("#departmentId").data("kendoComboBox").value() }),
+                    headers: { 'Authorization': $window.localStorage.getItem('token') },
+                })
                     .then(function (response) {
                         $location.path("/class");
                     }).catch(function (e) {
@@ -221,7 +246,11 @@
             }
 
             $scope.onDelete = function () {
-                $http.delete(rootUrl + '/classes/' + id)
+                $http({
+                    method: 'DELETE',
+                    url: rootUrl + '/classes/' + id,
+                    headers: { 'Authorization': $window.localStorage.getItem('token') },
+                })
                     .then(function (response) {
                         $location.path("/class");
                     }).catch(function (e) {

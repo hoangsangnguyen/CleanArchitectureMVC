@@ -44,9 +44,10 @@ namespace Backend
         /// </summary>
         public override void Configure(Container container)
         {
+            AppSettings = new AppSettings();
             this.Plugins.Add(new CorsFeature(allowedOrigins: "*",
                                             allowedMethods: "GET, POST, PUT, DELETE, OPTIONS",
-                                            allowedHeaders: "Content-Type, Access-Control-Allow-Origin",
+                                            allowedHeaders: "Content-Type, Access-Control-Allow-Origin, Authorization",
                                             allowCredentials: true));
 
             var builder = new ContainerBuilder();
@@ -103,6 +104,7 @@ namespace Backend
             this.Plugins.Add(new AuthFeature(() => new AuthUserSession(), new IAuthProvider[]
             {
                 //new CustomJwtAuthProvider(container.Resolve<IUserService>())
+                new JwtAuthProvider(AppSettings),
                 new CustomCredentialsProvider(container.Resolve<IUserService>())
             }));
 
