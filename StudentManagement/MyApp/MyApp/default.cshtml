@@ -48,14 +48,16 @@
                 </button>
                 <a class="navbar-brand" href="/">School Management</a>
             </div>
-            <div class="navbar-collapse collapse">
+            <div class="navbar-collapse collapse" id="menu">
                 <ul class="nav navbar-nav">
                     <li ng-class="{ active: IsRouteActive('/departments')}"><a href="/departments">Departments</a></li>
                     <li ng-class="{ active: IsRouteActive('/class')}"><a href="/class">Class</a></li>
                     <li ng-class="{ active: IsRouteActive('/students')}"><a href="/students">Students</a></li>
                     <li ng-class="{ active: IsRouteActive('/subjects')}"><a href="/subjects">Subjects</a></li>
                     <li ng-class="{ active: IsRouteActive('/scores')}"><a href="/scores">Scores</a></li>
-                    <li ng-class="{ active: IsRouteActive('/auth/login')}"><a href="/auth/login">Login</a></li>
+                    <li ng-class="{ active: IsRouteActive('/auth/login')}"><a id="displayName" href="/auth/login">{{DisplayName}}</a></li>
+                    <li ng-class="{ active: IsRouteActive('/auth/login')}"><a id="login" href="/auth/login">{{Login}}</a></li>
+                    <li><a id="logout" ng-click="onLogout()">{{Logout}}</a></li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div>
