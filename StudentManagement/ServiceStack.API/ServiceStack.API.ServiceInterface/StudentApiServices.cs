@@ -60,6 +60,12 @@ namespace Backend.ServiceInterface
 
             return response;
         }
+        public async Task<object> Get(StudentsViewNameId request)
+        {
+            var models = await _studentService.GetModelsWithKeys("Id", "Name");
+            return models;
+        }
+
         //[RequiresAnyRole("admin", "manager")]
         public async Task<object> Post(CreateStudent request)
         {

@@ -25,7 +25,11 @@ namespace Backend.ServiceInterface
 
         public async Task<object> Get(GetScores request)
         {
-            var scoreEntities = await _scoreService.GetAll(includeProperties: "student, subject");
+            Expression<Func<Score, bool>> filter = x => (request.StudentId == null || x.StudentId == request.StudentId)
+                                                        && (request.SubjectId == null || x.SubjectId == request.SubjectId)
+                                                        && (request.Mark == null || x.Mark == request.Mark);
+
+            var scoreEntities = await _scoreService.GetAll(filter: filter, includeProperties: "Student,Subject");
             var dtos = scoreEntities.ToList().ConvertAll(x =>
             {
                 var dto = x.ConvertTo<ScoreDto>();
@@ -57,7 +61,7 @@ namespace Backend.ServiceInterface
             return response;
         }
 
-        [RequiresAnyRole("admin", "manager")]
+        //[RequiresAnyRole("admin", "manager")]
         public async Task<object> Post(CreateScore request)
         {
             var response = new BaseResponse();
@@ -69,11 +73,12 @@ namespace Backend.ServiceInterface
             response.Results = result;
             return response;
         }
-        [RequiresAnyRole("admin", "manager")]
+        //[RequiresAnyRole("admin", "manager")]
         public async Task<object> Put(UpdateScore request)
         {
             var response = new BaseResponse();
-            var entity = await _scoreService.GetById(request.SubjectId, request.StudentId);
+            Expression<Func<Score, bool>> keySelector = x => x.StudentId == request.StudentId && x.SubjectId == request.SubjectId;
+            var entity = await _scoreService.GetById(keySelector: keySelector);
             request.ToEntity(entity);
             var result = await _scoreService.Update(entity);
             response.Success = true;
@@ -82,12 +87,12 @@ namespace Backend.ServiceInterface
             response.Results = result.ConvertTo<ScoreDto>();
             return response;
         }
-        [RequiresAnyRole("admin", "manager")]
+        //[RequiresAnyRole("admin", "manager")]
         public async Task<object> Delete(ScoreById request)
         {
             var response = new BaseResponse();
-
-            var result = await _scoreService.Delete(request.SubjectId, request.StudentId);
+            Expression<Func<Score, bool>> keySelector = x => x.StudentId == request.StudentId && x.SubjectId == request.SubjectId;
+            var result = await _scoreService.Delete(keySelector: keySelector);
             response.Success = true;
             response.Message = $"Delete score with SubjectId {request.SubjectId} and StudentId {request.StudentId} success";
             response.StatusCode = (int)HttpStatusCode.OK;
@@ -95,6 +100,6 @@ namespace Backend.ServiceInterface
 
             return response;
         }
-      
+
     }
 }

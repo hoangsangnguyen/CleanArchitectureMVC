@@ -1,0 +1,69 @@
+﻿<div class="content" ng-controller="editScoresCtrl">
+    <div class="content-header clearfix">
+        <h3 class="pull-left">
+            Edit score
+        </h3>
+        <div class="pull-right">
+            <button type="button" class="btn bg-blue" ng-click="onBack()">
+                <i class="fa fa-floppy-o"></i>
+                Back
+            </button>
+            <button type="button" class="btn bg-blue" ng-click="onSave()">
+                <i class="fa fa-floppy-o"></i>
+                Save
+            </button>
+            <button type="button" class="btn bg-red" ng-click="onDelete()">
+                <i class="fa fa-floppy-o"></i>
+                Delete
+            </button>
+        </div>
+    </div>
+
+    <div class="form-horizontal">
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group form-custom">
+                                <div class="col-md-3">
+                                    <label class="control-label">Student:</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <input class="form-control" ng-model="studentId" id="StudentId" style="width: 100%;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group form-custom">
+                                <div class="col-md-3">
+                                    <label class="control-label">Subject:</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <input class="form-control" ng-model="subjectId" id="SubjectId" style="width: 100%;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group form-custom">
+                                <div class="col-md-3">
+                                    <label class="control-label">Mark:</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <input class="form-control" ng-model="mark" id="Mark" type="number" max="10" min="0" placeholder="Type mark">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

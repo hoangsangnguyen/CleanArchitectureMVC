@@ -52,6 +52,13 @@ namespace Backend.ServiceInterface
 
             return response;
         }
+
+        public async Task<object> Get(SubjectsViewNameId request)
+        {
+            var models = await _subjectService.GetModelsWithKeys("Id", "Name");
+            return models;
+        }
+
         //[RequiresAnyRole("admin", "manager")]
         public async Task<object> Post(CreateSubject request)
         {

@@ -15,11 +15,16 @@ namespace Service.StudentService
         public StudentService(IUnitOfWork<Student> unitOfWork) : base(unitOfWork)
         {
         }
-        public async Task<Student> Login(string UserName, string Password)
+
+        public override async Task<IEnumerable<object>> GetModelsWithKeys(params string[] keys)
         {
-            var student = await _unitOfWork.Repository.GetAll().SingleAsync(x => x.StudentCode == UserName
-                                                                                    && x.DateOfBirth == DateTime.Parse(Password));
-            return student;
+            var models = await _unitOfWork.Repository.GetAll().Select(
+                x => new
+                {
+                    Id = x.Id,
+                    Name = x.FirstName + " " + x.LastName
+                }).ToListAsync();
+            return models;
         }
     }
 }

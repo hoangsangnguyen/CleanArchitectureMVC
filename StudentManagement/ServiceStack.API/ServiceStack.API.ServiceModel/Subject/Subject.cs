@@ -23,6 +23,11 @@ namespace Backend.ServiceModel.Subject
         public int Id { get; set; }
     }
 
+    [Route("/subjects/viewmodel", "GET")]
+    public class SubjectsViewNameId : IReturn<BaseResponse>
+    {
+    }
+
     [Route("/subjects", "POST")]
     public class CreateSubject : IReturn<BaseResponse>
     {

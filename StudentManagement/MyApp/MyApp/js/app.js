@@ -10,7 +10,8 @@
         'departments.controllers',
         'class.controllers',
         'students.controllers',
-        'subjects.controllers'
+        'subjects.controllers',
+        'scores.controllers'
     ]);
 
     module.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
@@ -30,6 +31,9 @@
         $routeProvider.when('/subjects', { templateUrl: '/partials/subjects/index.html', controller: 'subjectsCtrl' });
         $routeProvider.when('/subjects/new', { templateUrl: '/partials/subjects/create.html', controller: 'createSubjectsCtrl' });
         $routeProvider.when('/subjects/:id', { templateUrl: '/partials/subjects/edit.html', controller: 'editSubjectsCtrl' });
+        $routeProvider.when('/scores', { templateUrl: '/partials/scores/index.html', controller: 'scoresCtrl' });
+        $routeProvider.when('/scores/new', { templateUrl: '/partials/scores/create.html', controller: 'createScoresCtrl' });
+        $routeProvider.when('/scores/:StudentId/:SubjectId', { templateUrl: '/partials/scores/edit.html', controller: 'editScoresCtrl' });
         $routeProvider.when('/404', { templateUrl: '/partials/404.html' });
         $routeProvider.otherwise({ redirectTo: '/404' });
 

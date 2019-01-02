@@ -33,6 +33,11 @@ namespace Backend.ServiceModel.Student
         public int Id { get; set; }
     }
 
+    [Route("/students/viewmodel", "GET")]
+    public class StudentsViewNameId : IReturn<BaseResponse>
+    {
+    }
+
     [Route("/students", "POST")]
     public class CreateStudent : IReturn<BaseResponse>
     {
