@@ -145,7 +145,7 @@
                 return false;
             }
 
-            $("#FirstName").keydown(function (event) {
+            $("".concat("#FirstName,", "#LastName,", "#StudentCode", "#ClassId,", "#dateOfBirth")).keydown(function (event) {
                 if (event.keyCode === 13) {
                     $scope.onSearch();
                     return false;
@@ -283,7 +283,7 @@
             });
 
             $scope.onSave = function () {
-                $http.put(rootUrl + '/students', JSON.stringify({ Id: id, Name: $scope.name, DepartmentId: $("#departmentId").data("kendoComboBox").value() }))
+                $http.put(rootUrl + '/students', getData())
                     .then(function (response) {
                         $location.path("/students");
                     }).catch(function (e) {
@@ -306,6 +306,18 @@
                         throw e;
                     }).finally(function () {
                     });
+            }
+
+            function getData() {
+                var data = {
+                    Id: id,
+                    FirstName: $scope.firstName,
+                    LastName: $scope.lastName,
+                    StudentCode: $scope.studentCode,
+                    ClassId: $("#ClassId").data("kendoComboBox").value(),
+                    DateOfBirth: kendo.toString($('#DateOfBirth').data('kendoDatePicker').value(), 'yyyy-MM-dd')
+                }
+                return data;
             }
 
         }

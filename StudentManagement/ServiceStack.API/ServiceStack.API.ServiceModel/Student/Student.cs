@@ -27,8 +27,7 @@ namespace Backend.ServiceModel.Student
         public string DateOfBirth { get; set; }
     }
 
-    [Route("/students/{Id}", "GET")]
-    [Route("/students", "DELETE")]
+    [Route("/students/{Id}", "GET, DELETE")]
     public class StudentById : IReturn<BaseResponse>
     {
         public int Id { get; set; }
