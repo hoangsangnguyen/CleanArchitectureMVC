@@ -32,30 +32,24 @@ namespace ServiceStack.API.ServiceInterface.Utils
 
         public override IHttpResult OnAuthenticated(IServiceBase authService, IAuthSession session, IAuthTokens tokens, Dictionary<string, string> authInfo)
         {
-            
             return base.OnAuthenticated(authService, session, tokens, authInfo);
         }
 
         public override object Authenticate(IServiceBase authService, IAuthSession session, Authenticate request)
         {
-            session.DisplayName = "hoangSang";
-            return  base.Authenticate(authService, session, request);
-            //Task<User> task = Task.Run<User>(async () => await _userService.GetUserByUserName(session.UserName));
-            //var user = task.Result;
-            //session.DisplayName = user.DisplayName;
-            //session.Roles = new List<string> { user.Role.SystemName };
-            //session.FirstName = user.FirstName;
-            //session.LastName = user.LastName;
+            Task<User> task = Task.Run<User>(async () => await _userService.GetUserByUserName(session.UserName));
+            var user = task.Result;
+            var authenticate = base.Authenticate(authService, session, request) as AuthenticateResponse;
+            authenticate.DisplayName = user.DisplayName;
+            authenticate.UserId = user.Id.ToString();
+            var meta = new Dictionary<string, string>
+            {
+                {"Role", user.Role.SystemName},
+            };
 
-            //return new
-            //{
-            //    SessionId = session.Id,
-            //    UserName = user.DisplayName,
-            //    Role = new List<string> { user.Role.SystemName },
-            //    FirstName = user.FirstName,
-            //    LastName = user.LastName
-            //};
+            authenticate.Meta = meta;
+
+            return authenticate;
         }
-
     }
 }

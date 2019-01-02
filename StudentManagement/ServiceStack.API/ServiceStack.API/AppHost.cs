@@ -47,7 +47,7 @@ namespace Backend
             AppSettings = new AppSettings();
             this.Plugins.Add(new CorsFeature(allowedOrigins: "*",
                                             allowedMethods: "GET, POST, PUT, DELETE, OPTIONS",
-                                            allowedHeaders: "Content-Type, Access-Control-Allow-Origin, Authorization",
+                                            allowedHeaders: "Content-Type, Access-Control-Allow-Origin, Authorization, UseTokenCookie",
                                             allowCredentials: true));
 
             var builder = new ContainerBuilder();
