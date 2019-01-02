@@ -24,7 +24,11 @@ namespace Backend.ServiceInterface
 
         public async Task<object> Get(GetSubjects request)
         {
-            var subjectEntities = await _subjectService.GetAll();
+            Expression<Func<Subject, bool>> filter = null;
+            if (!request.Name.IsNullOrEmpty())
+                filter = x => x.Name.Contains(request.Name);
+
+            var subjectEntities = await _subjectService.GetAll(filter: filter);
             var dtos = subjectEntities.ToList().ConvertAll(x => x.ConvertTo<SubjectDto>());
             return new
             {
@@ -48,7 +52,7 @@ namespace Backend.ServiceInterface
 
             return response;
         }
-        [RequiresAnyRole("admin", "manager")]
+        //[RequiresAnyRole("admin", "manager")]
         public async Task<object> Post(CreateSubject request)
         {
             var response = new BaseResponse();
@@ -60,7 +64,7 @@ namespace Backend.ServiceInterface
             response.Results = result;
             return response;
         }
-        [RequiresAnyRole("admin", "manager")]
+        //[RequiresAnyRole("admin", "manager")]
         public async Task<object> Put(UpdateSubject request)
         {
             var response = new BaseResponse();
@@ -74,7 +78,7 @@ namespace Backend.ServiceInterface
             response.Results = result;
             return response;
         }
-        [RequiresAnyRole("admin", "manager")]
+        //[RequiresAnyRole("admin", "manager")]
         public async Task<object> Delete(SubjectById request)
         {
             var response = new BaseResponse();
