@@ -16,12 +16,6 @@ namespace Service.UserService
         {
         }
 
-        public async override Task<User> GetById(object id)
-        {
-            var user = await _unitOfWork.Repository.GetAll().Include("Role").FirstAsync(x => x.Id == (int)id);
-            return user;
-        }
-
         public async Task<User> GetUserByUserName(string userName)
         {
             var user = await _unitOfWork.Repository.GetAll().Include("Role").FirstAsync(x => x.UserName.Equals(userName));

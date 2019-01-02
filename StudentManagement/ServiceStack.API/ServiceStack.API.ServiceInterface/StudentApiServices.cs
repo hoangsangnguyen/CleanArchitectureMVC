@@ -7,6 +7,7 @@ using ServiceStack;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Net;
 using System.Threading.Tasks;
 
@@ -23,7 +24,12 @@ namespace Backend.ServiceInterface
 
         public async Task<object> Get(GetStudents request)
         {
-            var studentEntities = await _studentService.GetAll(includeProperties: "Class");
+            Expression<Func<Student, bool>> filter = x => (request.FirstName == null || x.FirstName.Contains(request.FirstName))
+                                                       && (request.LastName == null || x.LastName.Contains(request.LastName))
+                                                       && (request.StudentCode == null || x.StudentCode.Contains(request.StudentCode))
+                                                       && (request.DateOfBirth == null || (x.DateOfBirth.HasValue && x.DateOfBirth.Value.ToString("yyyy-MM-dd").Equals(request.DateOfBirth)))
+                                                       && (request.ClassId == null || x.ClassId == request.ClassId);
+            var studentEntities = await _studentService.GetAll(filter: filter, includeProperties: "Class");
             var dtos = studentEntities.ToList().ConvertAll(x =>
             {
                 var dto = x.ConvertTo<StudentDto>();
@@ -43,9 +49,11 @@ namespace Backend.ServiceInterface
         public async Task<object> Get(StudentById request)
         {
             var response = new BaseResponse();
-
-            var entity = await _studentService.GetById(request.Id);
+            Expression<Func<Student, bool>> keySelector = x => x.Id == request.Id;
+            var entity = await _studentService.GetById(keySelector: keySelector, includeProperties: "Class");
             var dto = entity.ConvertTo<StudentDto>();
+            dto.ClassName = entity.Class.Name;
+
             response.Success = true;
             response.StatusCode = (int)HttpStatusCode.OK;
             response.Results = dto;
@@ -68,7 +76,8 @@ namespace Backend.ServiceInterface
         public async Task<object> Put(UpdateStudent request)
         {
             var response = new BaseResponse();
-            var entity = await _studentService.GetById(request.Id);
+            Expression<Func<Student, bool>> keySelector = x => x.Id == request.Id;
+            var entity = await _studentService.GetById(keySelector: keySelector);
             request.ToEntity(entity);
             var result = await _studentService.Update(entity);
             response.Success = true;
@@ -81,8 +90,8 @@ namespace Backend.ServiceInterface
         public async Task<object> Delete(StudentById request)
         {
             var response = new BaseResponse();
-
-            var result = await _studentService.Delete(request.Id);
+            Expression<Func<Student, bool>> keySelector = x => x.Id == request.Id;
+            var result = await _studentService.Delete(keySelector:keySelector);
             response.Success = true;
             response.Message = $"Delete student with id {request.Id} success";
             response.StatusCode = (int)HttpStatusCode.OK;

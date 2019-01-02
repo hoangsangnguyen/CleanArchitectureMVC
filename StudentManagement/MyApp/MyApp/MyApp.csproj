@@ -1158,6 +1158,8 @@
     <Content Include="partials\departments\index.html" />
     <Content Include="partials\departments\_addEdit.html" />
     <Content Include="partials\hello\hello.html" />
+    <Content Include="partials\students\create.html" />
+    <Content Include="partials\students\edit.html" />
     <Content Include="partials\students\index.html" />
     <Content Include="Scripts\_references.js" />
     <Content Include="partials\partial1.html" />

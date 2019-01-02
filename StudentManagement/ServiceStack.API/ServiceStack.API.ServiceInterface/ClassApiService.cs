@@ -46,7 +46,9 @@ namespace Backend.ServiceInterface
 
         public async Task<object> Get(ClassById request)
         {
-            var entity = await _classService.GetById(request.Id);
+            Expression<Func<Class, bool>> keySelector = x => x.Id == request.Id;
+
+            var entity = await _classService.GetById(keySelector: keySelector);
             var dto = entity.ConvertTo<ClassDto>();
 
             return new
@@ -79,7 +81,8 @@ namespace Backend.ServiceInterface
         public async Task<object> Put(UpdateClass request)
         {
             var response = new BaseResponse();
-            var entity = await _classService.GetById(request.Id);
+            Expression<Func<Class, bool>> keySelector = x => x.Id == request.Id;
+            var entity = await _classService.GetById(keySelector: keySelector);
             request.ToEntity(entity);
             var result = await _classService.Update(entity);
             response.Success = true;
@@ -92,8 +95,8 @@ namespace Backend.ServiceInterface
         public async Task<object> Delete(ClassById request)
         {
             var response = new BaseResponse();
-
-            var result = await _classService.Delete(request.Id);
+            Expression<Func<Class, bool>> keySelector = x => x.Id == request.Id;
+            var result = await _classService.Delete(keySelector: keySelector);
             response.Success = true;
             response.Message = $"Delete class with id {request.Id} success";
             response.StatusCode = (int)HttpStatusCode.OK;

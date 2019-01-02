@@ -7,6 +7,7 @@ using ServiceStack;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,8 +46,9 @@ namespace Backend.ServiceInterface
         public async Task<object> Get(TeacherById request)
         {
             var response = new BaseResponse();
+            Expression<Func<Teacher, bool>> keySelector = x => x.Id == request.Id;
 
-            var entity = await _teacherService.GetById(request.Id);
+            var entity = await _teacherService.GetById(keySelector: keySelector);
             var dto = entity.ConvertTo<TeacherDto>();
             response.Success = true;
             response.StatusCode = (int)HttpStatusCode.OK;
@@ -71,7 +73,8 @@ namespace Backend.ServiceInterface
         public async Task<object> Put(UpdateTeacher request)
         {
             var response = new BaseResponse();
-            var entity = await _teacherService.GetById(request.Id);
+            Expression<Func<Teacher, bool>> keySelector = x => x.Id == request.Id;
+            var entity = await _teacherService.GetById(keySelector: keySelector);
             request.ToEntity(entity);
             var result = await _teacherService.Update(entity);
             response.Success = true;
@@ -84,8 +87,8 @@ namespace Backend.ServiceInterface
         public async Task<object> Delete(TeacherById request)
         {
             var response = new BaseResponse();
-
-            var result = await _teacherService.Delete(request.Id);
+            Expression<Func<Teacher, bool>> keySelector = x => x.Id == request.Id;
+            var result = await _teacherService.Delete(keySelector: keySelector);
             response.Success = true;
             response.Message = $"Delete teacher with id {request.Id} success";
             response.StatusCode = (int)HttpStatusCode.OK;

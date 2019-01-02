@@ -7,6 +7,7 @@ using ServiceStack.Auth;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,8 +46,9 @@ namespace Backend.ServiceInterface
         public async Task<object> Get(ScoreById request)
         {
             var response = new BaseResponse();
+            Expression<Func<Score, bool>> keySelector = x => x.StudentId == request.StudentId && x.SubjectId == request.SubjectId;
 
-            var entity = await _scoreService.GetById(new { SubjectId = request.SubjectId, StudentId = request.StudentId});
+            var entity = await _scoreService.GetById(keySelector: keySelector);
             var dto = entity.ConvertTo<ScoreDto>();
             response.Success = true;
             response.StatusCode = (int)HttpStatusCode.OK;

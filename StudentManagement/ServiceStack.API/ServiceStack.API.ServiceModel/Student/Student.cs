@@ -11,13 +11,21 @@ namespace Backend.ServiceModel.Student
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public int ClassId { get; set; }
         public string ClassName { get; set; }
         public string StudentCode { get; set; }
         public string DateOfBirth { get; set; }
     }
 
     [Route("/students", "GET")]
-    public class GetStudents : IReturn<BaseResponse>{}
+    [Route("/students/{FirstName}/{LastName}/{StudentCode}/{DateOfBirth}", "GET")]
+    public class GetStudents : IReturn<BaseResponse>{
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public Nullable<int> ClassId { get; set; }
+        public string StudentCode { get; set; }
+        public string DateOfBirth { get; set; }
+    }
 
     [Route("/students/{Id}", "GET")]
     [Route("/students", "DELETE")]

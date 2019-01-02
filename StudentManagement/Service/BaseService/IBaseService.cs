@@ -14,10 +14,10 @@ namespace Service.BaseService
             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
             string includeProperties = "");
         Task<IEnumerable<object>> GetModelsWithKeys(params string[] keys);
-        Task<T> GetById(object id);
+        Task<T> GetById(Expression<Func<T, bool>> keySelector, string includeProperties = "");
         Task<T> Create(T entity);
         Task<T> Update(T entity);
-        Task<T> Delete(object id);
+        Task<T> Delete(Expression<Func<T, bool>> keySelector);
         Task<T> Delete(T entity);
     }
 }

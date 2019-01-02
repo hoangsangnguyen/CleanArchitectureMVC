@@ -1,0 +1,89 @@
+﻿<div class="content" ng-controller="createStudentsCtrl">
+    <div class="content-header clearfix">
+        <h3 class="pull-left">
+            Create new student
+        </h3>
+        <div class="pull-right">
+            <button type="button" class="btn bg-blue" ng-click="onBack()">
+                <i class="fa fa-floppy-o"></i>
+                Back
+            </button>
+            <button type="button" class="btn bg-blue" ng-click="onSave()">
+                <i class="fa fa-floppy-o"></i>
+                Save
+            </button>
+        </div>
+    </div>
+
+    <div class="form-horizontal">
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group form-custom">
+                                <div class="col-md-3">
+                                    <label class="control-label">First name:</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <input class="form-control" ng-model="firstName" id="FirstName" type="text" placeholder="Type first name">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group form-custom">
+                                <div class="col-md-3">
+                                    <label class="control-label">Last name:</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <input class="form-control" ng-model="lastName" id="LastName" type="text" placeholder="Type last name">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group form-custom">
+                                <div class="col-md-3">
+                                    <label class="control-label">Student code:</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <input class="form-control" ng-model="studentCode" id="StudentCode" type="text" placeholder="Type student code">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group form-custom">
+                                <div class="col-md-3">
+                                    <label class="control-label">Class:</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <input class="form-control" ng-model="classId" id="ClassId" style="width: 100%;">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group form-custom">
+                                <div class="col-md-3">
+                                    <label class="control-label">Date of birth:</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <!--<input id="dateOfBirth" value="10/10/2011" title="datepicker" style="width: 100%" />-->
+                                    <input type="datetime" id="DateOfBirth"
+                                           name="dateOfBirth"
+                                           style="width: 100%" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

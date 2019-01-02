@@ -16,12 +16,6 @@ namespace Service.ScoreService
         {
         }
 
-        public override Task<Score> GetById(object request)
-        {
-            throw new NullReferenceException();
-            //var entity = await _unitOfWork.Repository.GetAll().FirstAsync(x => x.StudentId == (int)request.StudentId);
-        }
-
         public async Task<Score> GetById(int SubjectId, int StudentId)
         {
             var entity = await _unitOfWork.Repository.GetAll().FirstAsync(x => x.StudentId == StudentId && x.SubjectId == SubjectId);

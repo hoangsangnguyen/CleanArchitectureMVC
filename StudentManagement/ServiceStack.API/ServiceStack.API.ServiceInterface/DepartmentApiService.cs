@@ -44,7 +44,9 @@ namespace Backend.ServiceInterface
 
         public async Task<object> Get(DepartmentById request)
         {
-            var entity = await _departmentService.GetById(request.Id);
+            Expression<Func<Department, bool>> keySelector = x => x.Id == request.Id;
+
+            var entity = await _departmentService.GetById(keySelector: keySelector);
             var dto = entity.ConvertTo<DepartmentDto>();
 
             return new
@@ -77,7 +79,8 @@ namespace Backend.ServiceInterface
         public async Task<object> Put(UpdateDepartment request)
         {
             var response = new BaseResponse();
-            var entity = await _departmentService.GetById(request.Id);
+            Expression<Func<Department, bool>> keySelector = x => x.Id == request.Id;
+            var entity = await _departmentService.GetById(keySelector: keySelector);
             request.ToEntity(entity);
             var result = await _departmentService.Update(entity);
             response.Success = true;
@@ -90,8 +93,8 @@ namespace Backend.ServiceInterface
         public async Task<object> Delete(DepartmentById request)
         {
             var response = new BaseResponse();
-
-            var result = await _departmentService.Delete(request.Id);
+            Expression<Func<Department, bool>> keySelector = x => x.Id == request.Id;
+            var result = await _departmentService.Delete(keySelector: keySelector);
             response.Success = true;
             response.Message = $"Delete department with id {request.Id} success";
             response.StatusCode = (int)HttpStatusCode.OK;

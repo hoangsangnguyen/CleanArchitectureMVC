@@ -10,7 +10,6 @@
         'departments.controllers',
         'class.controllers',
         'students.controllers',
-
     ]);
 
     module.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
@@ -25,7 +24,8 @@
         $routeProvider.when('/class/new', { templateUrl: '/partials/class/create.html', controller: 'createClassCtrl' });
         $routeProvider.when('/class/:id', { templateUrl: '/partials/class/edit.html', controller: 'editClassCtrl' });
         $routeProvider.when('/students', { templateUrl: '/partials/students/index.html', controller: 'studentsCtrl' });
-
+        $routeProvider.when('/students/new', { templateUrl: '/partials/students/create.html', controller: 'createStudentsCtrl' });
+        $routeProvider.when('/students/:id', { templateUrl: '/partials/students/edit.html', controller: 'editStudentsCtrl' });
         $routeProvider.when('/404', { templateUrl: '/partials/404.html' });
         $routeProvider.otherwise({ redirectTo: '/404' });
 

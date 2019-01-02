@@ -26,9 +26,9 @@ namespace Service.BaseService
             return entity;
         }
 
-        public virtual async Task<T> Delete(object id)
+        public virtual async Task<T> Delete(Expression<Func<T, bool>> keySelector)
         {
-            var entity = await _unitOfWork.Repository.GetById(id);
+            var entity = await _unitOfWork.Repository.GetById(keySelector: keySelector);
             _unitOfWork.Repository.Delete(entity);
             await _unitOfWork.Save();
             return entity;
@@ -65,9 +65,9 @@ namespace Service.BaseService
             return entities;
         }
 
-        public virtual async Task<T> GetById(object id)
+        public virtual async Task<T> GetById(Expression<Func<T, bool>> keySelector, string includeProperties = "")
         {
-            var entity = await _unitOfWork.Repository.GetById(id);
+            var entity = await _unitOfWork.Repository.GetById(keySelector, includeProperties);
             return entity;
         }
 

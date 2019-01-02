@@ -12,10 +12,9 @@
 
                 $("#dateOfBirth").kendoDatePicker({
                     culture: "vi-VN",
-                    format: "yyyy-MM-dd"
+                    format: "yyyy-MM-dd",
+                    dateInput: true
                 });
-                $("#dateOfBirth")
-                    .prop("readonly", "readonly");
 
                 $("#ClassId").kendoComboBox({
                     filter: "contains",
@@ -122,8 +121,9 @@
                 function additionalData() {
                     var data = {
                         FirstName: $scope.firstName,
-                        FirstName: $scope.firstName,
-                        FirstName: $scope.firstName,
+                        LastName: $scope.lastName,
+                        StudentCode: $scope.studentCode,
+                        DateOfBirth: kendo.toString($('#dateOfBirth').data('kendoDatePicker').value(), 'yyyy-MM-dd'),
                         DepartmentId: $("#ClassId").data("kendoComboBox").value()
                     }
                     return data;
@@ -154,34 +154,52 @@
         }
     ]);
 
-
-    app.controller('createClassCtrl', ['$scope', '$http', '$location',
+    app.controller('createStudentsCtrl', ['$scope', '$http', '$location',
         function ($scope, $http, $location) {
-            $(document).ready(function () {
-                $("#departmentId").kendoComboBox({
+            function initView() {
+                $scope.toDay = new Date();
+
+                $("#DateOfBirth").kendoDatePicker({
+                    culture: "vi-VN",
+                    format: "yyyy-MM-dd",
+                    dateInput: true
+                });
+
+                $("#ClassId").kendoComboBox({
+                    filter: "contains",
                     dataTextField: "Name",
                     dataValueField: "Id",
-                    filter: "contains",
-                    autoBind: true,
+                    placeholder: "Select class...",
+                    minLength: 0,
                     dataSource: {
-                        dataType: "odata",
+                        dataType: "json",
                         serverFiltering: true,
                         transport: {
                             read: {
-                                url: rootUrl + "/departments/viewmodel",
+                                url: rootUrl + "/classes/viewmodel",
                                 dataType: "json",
+                                data: filterClass
                             }
                         }
                     }
                 });
 
+                function filterClass() {
+                    var data = {
+                        Name: $("#ClassId").data("kendoComboBox").value()
+                    };
+                    return data;
+                }
+            }
 
+            $(document).ready(function () {
+                initView();
             });
 
             $scope.onSave = function () {
-                $http.post(rootUrl + '/classes', JSON.stringify({ Name: $scope.name, DepartmentId: $("#departmentId").data("kendoComboBox").value() }))
+                $http.post(rootUrl + '/students', getData())
                     .then(function (response) {
-                        $location.path("/class");
+                        $location.path("/students");
                     }).catch(function (e) {
                         console.log('Error: ', e);
                         throw e;
@@ -189,38 +207,74 @@
                     });
             }
 
-            $scope.onBack = function () {
-                $location.path("/class");
+            function getData() {
+                var data = {
+                    FirstName: $scope.firstName,
+                    LastName: $scope.lastName,
+                    StudentCode: $scope.studentCode,
+                    ClassId: $("#ClassId").data("kendoComboBox").value(),
+                    DateOfBirth: kendo.toString($('#DateOfBirth').data('kendoDatePicker').value(), 'yyyy-MM-dd')
+                }
+                return data;
             }
+
+
+            $scope.onBack = function () {
+                $location.path("/students");
+            }
+
+            
         }
     ]);
 
-    app.controller('editClassCtrl', ['$scope', '$http', '$location', '$routeParams',
+    app.controller('editStudentsCtrl', ['$scope', '$http', '$location', '$routeParams',
         function ($scope, $http, $location, $routeParams) {
             var id = $routeParams.id;
 
-            $(document).ready(function () {
-                $("#departmentId").kendoComboBox({
+            function initView() {
+                $scope.toDay = new Date();
+
+                $("#DateOfBirth").kendoDatePicker({
+                    culture: "vi-VN",
+                    format: "yyyy-MM-dd",
+                    dateInput: true
+                });
+
+                $("#ClassId").kendoComboBox({
+                    filter: "contains",
                     dataTextField: "Name",
                     dataValueField: "Id",
-                    filter: "contains",
-                    autoBind: true,
+                    placeholder: "Select class...",
+                    minLength: 0,
                     dataSource: {
-                        dataType: "odata",
+                        dataType: "json",
                         serverFiltering: true,
                         transport: {
                             read: {
-                                url: rootUrl + "/departments/viewmodel",
+                                url: rootUrl + "/classes/viewmodel",
                                 dataType: "json",
+                                data: filterClass
                             }
                         }
                     }
                 });
 
-                $http.get(rootUrl + '/classes/' + id)
+                function filterClass() {
+                    var data = {
+                        Name: $("#ClassId").data("kendoComboBox").value()
+                    };
+                    return data;
+                }
+            }
+            $(document).ready(function () {
+                initView();
+                $http.get(rootUrl + '/students/' + id)
                     .then(function (response) {
-                        $scope.name = response.data.Results.Name;
-                        $("#departmentId").data("kendoComboBox").value(response.data.Results.DepartmentId);
+                        $scope.firstName = response.data.Results.FirstName;
+                        $scope.lastName = response.data.Results.LastName;
+                        $scope.studentCode = response.data.Results.StudentCode;
+                        $("#ClassId").data("kendoComboBox").value(response.data.Results.ClassId);
+                        $("#DateOfBirth").data("kendoDatePicker").value(response.data.Results.DateOfBirth);
                     }).catch(function (e) {
                         console.log('Error: ', e);
                         throw e;
@@ -229,9 +283,9 @@
             });
 
             $scope.onSave = function () {
-                $http.put(rootUrl + '/classes', JSON.stringify({ Id: id, Name: $scope.name, DepartmentId: $("#departmentId").data("kendoComboBox").value() }))
+                $http.put(rootUrl + '/students', JSON.stringify({ Id: id, Name: $scope.name, DepartmentId: $("#departmentId").data("kendoComboBox").value() }))
                     .then(function (response) {
-                        $location.path("/class");
+                        $location.path("/students");
                     }).catch(function (e) {
                         console.log('Error: ', e);
                         throw e;
@@ -240,13 +294,13 @@
             }
 
             $scope.onBack = function () {
-                $location.path("/class");
+                $location.path("/students");
             }
 
             $scope.onDelete = function () {
-                $http.delete(rootUrl + '/classes/' + id)
+                $http.delete(rootUrl + '/students/' + id)
                     .then(function (response) {
-                        $location.path("/class");
+                        $location.path("/students");
                     }).catch(function (e) {
                         console.log('Error: ', e);
                         throw e;

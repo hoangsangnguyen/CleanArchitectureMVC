@@ -45,9 +45,14 @@ namespace DAL.Repository
             return query;
         }
 
-        public async Task<T> GetById(object id)
+        public async Task<T> GetById(Expression<Func<T, bool>> keySelector, string includeProperties = "")
         {
-            return await _dbSet.FindAsync(id);
+            IQueryable<T> query = _dbSet;
+            foreach (var includeProperty in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+            {
+                query = query.Include(includeProperty);
+            }
+            return await query.FirstAsync(keySelector);
         }
 
         public void Create(T entity)

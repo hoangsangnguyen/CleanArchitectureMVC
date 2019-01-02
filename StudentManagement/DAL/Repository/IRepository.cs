@@ -13,7 +13,7 @@ namespace DAL.Repository
         IQueryable<T> GetAll(Expression<Func<T, bool>> filter = null,
             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
             string includeProperties = "");        
-        Task<T> GetById(object id);
+        Task<T> GetById(Expression<Func<T, bool>> keySelector, string includeProperties = "");
         void Create(T entity);
         void Update(T entity);
 
