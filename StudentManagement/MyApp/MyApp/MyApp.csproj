@@ -114,6 +114,7 @@
     <Content Include="default.cshtml" />
     <Content Include="js\app.js" />
     <Content Include="js\auth\login\controllers.js" />
+    <Content Include="js\auth\users\controllers.js" />
     <Content Include="js\class\controllers.js" />
     <Content Include="js\departments\controllers.js" />
     <Content Include="js\hello\controllers.js" />
@@ -1151,7 +1152,11 @@
     <Content Include="js\scores\controllers.js" />
     <Content Include="js\students\controllers.js" />
     <Content Include="js\subjects\controllers.js" />
+    <Content Include="js\teachers\controllers.js" />
     <Content Include="partials\auth\login\index.html" />
+    <Content Include="partials\auth\users\create.html" />
+    <Content Include="partials\auth\users\edit.html" />
+    <Content Include="partials\auth\users\index.html" />
     <Content Include="partials\class\create.html" />
     <Content Include="partials\class\edit.html" />
     <Content Include="partials\class\index.html" />
@@ -1169,6 +1174,9 @@
     <Content Include="partials\subjects\create.html" />
     <Content Include="partials\subjects\edit.html" />
     <Content Include="partials\subjects\index.html" />
+    <Content Include="partials\teachers\create.html" />
+    <Content Include="partials\teachers\edit.html" />
+    <Content Include="partials\teachers\index.html" />
     <Content Include="Scripts\_references.js" />
     <Content Include="partials\partial1.html" />
     <Content Include="partials\partial2.html" />

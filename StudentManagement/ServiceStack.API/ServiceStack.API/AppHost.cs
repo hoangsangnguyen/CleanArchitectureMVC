@@ -103,7 +103,7 @@ namespace Backend
 
             this.Plugins.Add(new AuthFeature(() => new AuthUserSession(), new IAuthProvider[]
             {
-                //new CustomJwtAuthProvider(container.Resolve<IUserService>())
+                //new CustomJwtAuthProvider(container.Resolve<IUserService>(), AppSettings),
                 new JwtAuthProvider(AppSettings),
                 new CustomCredentialsProvider(container.Resolve<IUserService>())
             }));

@@ -25,7 +25,12 @@ namespace Backend.ServiceInterface
 
         public async Task<object> Get(GetTeachers request)
         {
-            var teacherEntities = await _teacherService.GetAll(includeProperties: "Department, Subject");
+            Expression<Func<Teacher, bool>> filter = x => (request.FirstName == null || x.FirstName.Contains(request.FirstName))
+                                                      && (request.LastName == null || x.LastName.Contains(request.LastName))
+                                                      && (request.IsManager == null || x.IsManager == request.IsManager)
+                                                      && (request.DepartmentId == null || x.DepartmentId == request.DepartmentId);
+
+            var teacherEntities = await _teacherService.GetAll(filter: filter, includeProperties: "Department,Subject");
             var dtos = teacherEntities.ToList().ConvertAll(x =>
             {
                 var dto = x.ConvertTo<TeacherDto>();

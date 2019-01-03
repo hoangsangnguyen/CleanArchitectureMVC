@@ -115,6 +115,8 @@
     <Compile Include="DepartmentService\DepartmentService.cs" />
     <Compile Include="DepartmentService\IDepartmentService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoleService\IRoleService.cs" />
+    <Compile Include="RoleService\RoleService.cs" />
     <Compile Include="ScoreService\IScoreService.cs" />
     <Compile Include="ScoreService\ScoreService.cs" />
     <Compile Include="StudentService\IStudentService.cs" />

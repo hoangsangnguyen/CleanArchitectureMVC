@@ -66,7 +66,7 @@ namespace Backend.ServiceInterface
             return models;
         }
 
-        //[RequiresAnyRole("admin", "manager")]
+        [RequiresAnyRole("admin", "manager")]
         public async Task<object> Post(CreateStudent request)
         {
             var response = new BaseResponse();
@@ -78,7 +78,7 @@ namespace Backend.ServiceInterface
             response.Results = result.ConvertTo<StudentDto>();
             return response;
         }
-        //[RequiresAnyRole("admin", "manager")]
+        [RequiresAnyRole("admin", "manager")]
         public async Task<object> Put(UpdateStudent request)
         {
             var response = new BaseResponse();
@@ -92,7 +92,7 @@ namespace Backend.ServiceInterface
             response.Results = result.ConvertTo<StudentDto>();
             return response;
         }
-        //[RequiresAnyRole("admin", "manager")]
+        [RequiresAnyRole("admin", "manager")]
         public async Task<object> Delete(StudentById request)
         {
             var response = new BaseResponse();

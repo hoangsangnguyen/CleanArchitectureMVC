@@ -12,8 +12,6 @@
                 } else {
                     initViewAfterLogin();
                 }
-
-                $location.path('/');
             });
 
             $rootScope.$on("LoginSucceed", function () {

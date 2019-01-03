@@ -1,6 +1,7 @@
 ﻿using Entity;
 using Service.UserService;
 using ServiceStack.Auth;
+using ServiceStack.Configuration;
 using ServiceStack.Web;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace ServiceStack.API.ServiceInterface.Utils
     {
         private readonly IUserService _userService;
 
-        public CustomJwtAuthProvider(IUserService userService)
+        public CustomJwtAuthProvider(IUserService userService, IAppSettings appSettings)
         {
             _userService = userService;
         }

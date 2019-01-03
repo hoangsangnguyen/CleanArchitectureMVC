@@ -32,6 +32,8 @@ namespace ServiceStack.API.ServiceInterface.Utils
 
         public override IHttpResult OnAuthenticated(IServiceBase authService, IAuthSession session, IAuthTokens tokens, Dictionary<string, string> authInfo)
         {
+            Task<User> task = Task.Run<User>(async () => await _userService.GetUserByUserName(session.UserAuthName));
+            session.Roles = new List<string> { task.Result.Role.SystemName };
             return base.OnAuthenticated(authService, session, tokens, authInfo);
         }
 
@@ -40,6 +42,7 @@ namespace ServiceStack.API.ServiceInterface.Utils
             var authenticate = base.Authenticate(authService, session, request) as AuthenticateResponse;
             Task<User> task = Task.Run<User>(async () => await _userService.GetUserByUserName(authenticate.UserName));
             var user = task.Result;
+            session.Roles = new List<string> { user.Role.SystemName };
             authenticate.DisplayName = user.DisplayName;
             authenticate.UserId = user.Id.ToString();
             var meta = new Dictionary<string, string>
