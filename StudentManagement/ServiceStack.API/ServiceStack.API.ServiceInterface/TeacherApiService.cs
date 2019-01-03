@@ -4,6 +4,8 @@ using Backend.ServiceModel.Teacher;
 using Entity;
 using Service.TeacherService;
 using ServiceStack;
+using ServiceStack.API.ServiceInterface;
+using ServiceStack.API.ServiceModel.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,10 +19,12 @@ namespace Backend.ServiceInterface
     public class TeacherApiService : BaseService
     {
         private readonly ITeacherService _teacherService;
+        private readonly UserApiService _userApiService;
 
-        public TeacherApiService(ITeacherService teacherService)
+        public TeacherApiService(ITeacherService teacherService, UserApiService userApiService)
         {
             _teacherService = teacherService;
+            _userApiService = userApiService;
         }
 
         public async Task<object> Get(GetTeachers request)
@@ -68,6 +72,21 @@ namespace Backend.ServiceInterface
             var response = new BaseResponse();
             var entity = request.ConvertTo<Teacher>();
             var result = await _teacherService.Create(entity);
+
+            if (request.CreateNewUserLogin)
+            {
+                var userLogin = new CreateUser()
+                {
+                    FirstName = entity.FirstName,
+                    LastName = entity.LastName,
+                    DisplayName = entity.FirstName + " " + entity.LastName,
+                    UserName = entity.FirstName.ToLower() + entity.LastName.ToLower(),
+                    Password = entity.FirstName.ToLower() + entity.LastName.ToLower(),
+                    RoleId = RoleEnum.Teacher.ToDescription()
+                };
+                await _userApiService.Post(userLogin);
+            }
+
             response.Success = true;
             response.StatusCode = (int)HttpStatusCode.Created;
             response.Message = "Create teacher success";

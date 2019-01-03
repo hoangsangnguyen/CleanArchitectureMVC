@@ -104,7 +104,7 @@
                         LastName: $scope.lastName,
                         StudentCode: $scope.studentCode,
                         DateOfBirth: kendo.toString($('#dateOfBirth').data('kendoDatePicker').value(), 'yyyy-MM-dd'),
-                        DepartmentId: $("#ClassId").data("kendoComboBox").value()
+                        ClassId: $("#ClassId").data("kendoComboBox").value()
                     }
                     return data;
                 }
@@ -116,6 +116,13 @@
                     $location.path("/auth/login");
                     return;
                 }
+                // update view by role name
+                var role = JSON.parse($window.localStorage.getItem('userInfo')).Role;
+                var roleName = JSON.parse(role).SystemName;
+                if (roleName !== 'admin' && roleName !== 'manager') {
+                    document.getElementById('createArea').style.display = "none";
+                }
+
                 initView();
             });
 
@@ -182,6 +189,8 @@
                     $location.path("/auth/login");
                     return;
                 }
+                
+
                 initView();
             });
 
@@ -207,7 +216,8 @@
                     LastName: $scope.lastName,
                     StudentCode: $scope.studentCode,
                     ClassId: $("#ClassId").data("kendoComboBox").value(),
-                    DateOfBirth: kendo.toString($('#DateOfBirth').data('kendoDatePicker').value(), 'yyyy-MM-dd')
+                    DateOfBirth: kendo.toString($('#DateOfBirth').data('kendoDatePicker').value(), 'yyyy-MM-dd'),
+                    CreateNewUserLogin: document.getElementById('CreateNewUserLogin').checked
                 }
                 return data;
             }
@@ -247,7 +257,8 @@
                             read: {
                                 url: rootUrl + "/classes/viewmodel",
                                 dataType: "json",
-                                data: filterClass
+                                data: filterClass,
+                                headers: { 'Authorization': $window.localStorage.getItem('token') },
                             }
                         }
                     }
@@ -267,23 +278,29 @@
                     return;
                 }
 
+                // update view by role name
+                var role = JSON.parse($window.localStorage.getItem('userInfo')).Role;
+                var roleName = JSON.parse(role).SystemName;
+                if (roleName !== 'admin' && roleName !== 'manager') {
+                    document.getElementById('btnSave').style.display = "none";
+                    document.getElementById('btnDelete').style.display = "none";
+                }
+
                 initView();
                 $http({
                     method: 'GET',
                     url: rootUrl + '/students/',
                     headers: { 'Authorization': $window.localStorage.getItem('token') },
                 })
-                .then(function (response) {
-                    $scope.firstName = response.data.Results.FirstName;
-                    $scope.lastName = response.data.Results.LastName;
-                    $scope.studentCode = response.data.Results.StudentCode;
-                    $("#ClassId").data("kendoComboBox").value(response.data.Results.ClassId);
-                    $("#DateOfBirth").data("kendoDatePicker").value(response.data.Results.DateOfBirth);
-                }).catch(function (e) {
-                    console.log('Error: ', e);
-                    throw e;
-                }).finally(function () {
-                });
+                    .then(function (response) {
+                        $scope.firstName = response.data.Results.FirstName;
+                        $scope.lastName = response.data.Results.LastName;
+                        $scope.studentCode = response.data.Results.StudentCode;
+                        $("#ClassId").data("kendoComboBox").value(response.data.Results.ClassId);
+                        $("#DateOfBirth").data("kendoDatePicker").value(response.data.Results.DateOfBirth);
+                    }), function (err) {
+                        //
+                    };
             });
 
             $scope.onSave = function () {

@@ -5,8 +5,8 @@
     var app = angular.module('teachers.controllers', []);
     var rootUrl = "http://localhost/Backend";
 
-    app.controller('teachersCtrl', ['$scope', '$http', '$window', '$location',
-        function ($scope, $http, $window, $location) {
+    app.controller('teachersCtrl', ['$scope', '$http', '$window', '$location', '$rootScope',
+        function ($scope, $http, $window, $location, $rootScope) {
 
             function initView() {
                 $("#DepartmentId").kendoComboBox({
@@ -119,6 +119,14 @@
                     $location.path("/auth/login");
                     return;
                 }
+
+                // update view by role name
+                var role = JSON.parse($window.localStorage.getItem('userInfo')).Role;
+                var roleName = JSON.parse(role).SystemName;
+                if (roleName !== 'admin' && roleName !== 'manager') {
+                    document.getElementById('createArea').style.display = "none";
+                }
+
                 initView();
             });
 
@@ -200,7 +208,8 @@
                     FirstName: $scope.firstName,
                     LastName: $scope.lastName,
                     DepartmentId: $("#DepartmentId").data("kendoComboBox").value(),
-                    IsManager: document.getElementById('isManager').checked
+                    IsManager: document.getElementById('isManager').checked,
+                    CreateNewUserLogin: document.getElementById('CreateNewUserLogin').checked
                 }
                 return data;
             }
@@ -250,23 +259,31 @@
                     url: rootUrl + '/teachers/' + id,
                     headers: { 'Authorization': $window.localStorage.getItem('token') },
                 })
-                    .then(function (response) {
-                        console.log(response);
-                        $scope.firstName = response.data.Results.FirstName;
-                        $scope.lastName = response.data.Results.LastName;
-                        $("#DepartmentId").data("kendoComboBox").value(response.data.Results.DepartmentId);
-                        document.getElementById('isManager').checked = response.data.Results.IsManager;
-                    }).catch(function (e) {
-                        console.log('Error: ', e);
-                        throw e;
-                    }).finally(function () {
-                    });
+                .then(function (response) {
+                    console.log(response);
+                    $scope.firstName = response.data.Results.FirstName;
+                    $scope.lastName = response.data.Results.LastName;
+                    $("#DepartmentId").data("kendoComboBox").value(response.data.Results.DepartmentId);
+                    document.getElementById('isManager').checked = response.data.Results.IsManager;
+                }).catch(function (e) {
+                    console.log('Error: ', e);
+                    throw e;
+                }).finally(function () {
+                });
             }
             $(document).ready(function () {
                 var token = $window.localStorage.getItem('token');
                 if (token === null) {
                     $location.path("/auth/login");
                     return;
+                }
+
+                // update view by role name
+                var role = JSON.parse($window.localStorage.getItem('userInfo')).Role;
+                var roleName = JSON.parse(role).SystemName;
+                if (roleName !== 'admin' && roleName !== 'manager') {
+                    document.getElementById('btnSave').style.display = "none";
+                    document.getElementById('btnDelete').style.display = "none";
                 }
                 initView();
             });

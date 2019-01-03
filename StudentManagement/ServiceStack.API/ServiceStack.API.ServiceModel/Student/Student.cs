@@ -46,6 +46,8 @@ namespace Backend.ServiceModel.Student
         public int ClassId { get; set; }
         public string StudentCode { get; set; }
         public string DateOfBirth { get; set; }
+
+        public bool CreateNewUserLogin { get; set; }
     }
 
     [Route("/students", "PUT")]

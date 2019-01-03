@@ -41,6 +41,7 @@ namespace Backend.ServiceModel.Teacher
         public int? SubjectId { get; set; }
         public int DepartmentId { get; set; }
         public bool IsManager { get; set; }
+        public bool CreateNewUserLogin { get; set; }
     }
 
     [Route("/teachers", "PUT")]

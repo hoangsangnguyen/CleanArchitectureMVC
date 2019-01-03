@@ -23,6 +23,13 @@
                     });
             }
 
+            $("".concat("#Password")).keydown(function (event) {
+                if (event.keyCode === 13) {
+                    $scope.login();
+                    return false;
+                }
+            });
+
             function getData() {
                 var data = {
                     Username: $scope.userName,

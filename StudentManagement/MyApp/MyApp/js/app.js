@@ -14,6 +14,7 @@
         'scores.controllers',
         'teachers.controllers',
         'users.controllers',
+        'roles.controllers',
 
     ]);
 
@@ -43,6 +44,9 @@
         $routeProvider.when('/auth/users', { templateUrl: '/partials/auth/users/index.html', controller: 'usersCtrl' });
         $routeProvider.when('/auth/users/new', { templateUrl: '/partials/auth/users/create.html', controller: 'createUsersCtrl' });
         $routeProvider.when('/auth/users/:id', { templateUrl: '/partials/auth/users/edit.html', controller: 'editUsersCtrl' });
+        $routeProvider.when('/auth/roles', { templateUrl: '/partials/auth/roles/index.html', controller: 'rolesCtrl' });
+        $routeProvider.when('/auth/roles/new', { templateUrl: '/partials/auth/roles/create.html', controller: 'createRolesCtrl' });
+        $routeProvider.when('/auth/roles/:SystemName', { templateUrl: '/partials/auth/roles/edit.html', controller: 'editRolesCtrl' });
         $routeProvider.when('/404', { templateUrl: '/partials/404.html' });
         $routeProvider.otherwise({ redirectTo: '/404' });
 

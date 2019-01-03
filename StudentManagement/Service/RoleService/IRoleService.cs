@@ -10,5 +10,6 @@ namespace Service.RoleService
 {
     public interface IRoleService : IBaseService<Role>
     {
+        Task<IEnumerable<Role>> GetAvaiableRolesForUserCreation(int userLevel);
     }
 }

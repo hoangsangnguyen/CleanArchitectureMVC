@@ -56,7 +56,8 @@
                     <li ng-class="{ active: IsRouteActive('/students')}"><a href="/students">Students</a></li>
                     <li ng-class="{ active: IsRouteActive('/subjects')}"><a href="/subjects">Subjects</a></li>
                     <li ng-class="{ active: IsRouteActive('/scores')}"><a href="/scores">Scores</a></li>
-                    <li ng-class="{ active: IsRouteActive('/auth/users')}"><a href="/auth/users">Users</a></li>
+                    <li ng-class="{ active: IsRouteActive('/auth/users')}"><a id="users" href="/auth/users">{{Users}}</a></li>
+                    <li ng-class="{ active: IsRouteActive('/auth/roles')}"><a id="roles" href="/auth/roles">{{Roles}}</a></li>
                     <li><a id="displayName" href="#">{{DisplayName}}</a></li>
                     <li ng-class="{ active: IsRouteActive('/auth/login')}"><a id="login" href="/auth/login">{{Login}}</a></li>
                     <li><a id="logout" ng-click="onLogout()">{{Logout}}</a></li>
@@ -80,6 +81,7 @@
     <script src="~/js/subjects/controllers.js"></script>
     <script src="~/js/scores/controllers.js"></script>
     <script src="~/js/auth/users/controllers.js"></script>
+    <script src="~/js/auth/roles/controllers.js"></script>
 
 
     <script src="/js/app.js"></script>

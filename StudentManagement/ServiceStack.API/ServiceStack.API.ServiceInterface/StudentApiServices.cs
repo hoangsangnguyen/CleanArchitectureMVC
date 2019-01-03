@@ -3,7 +3,10 @@ using Backend.ServiceModel;
 using Backend.ServiceModel.Student;
 using Entity;
 using Service.StudentService;
+using Service.UserService;
 using ServiceStack;
+using ServiceStack.API.ServiceInterface;
+using ServiceStack.API.ServiceModel.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,10 +19,12 @@ namespace Backend.ServiceInterface
     public class StudentApiServices : BaseService
     {
         private readonly IStudentService _studentService;
+        private readonly UserApiService _userService;
 
-        public StudentApiServices(IStudentService studentService)
+        public StudentApiServices(IStudentService studentService, UserApiService userService)
         {
             _studentService = studentService;
+            _userService = userService;
         }
 
         public async Task<object> Get(GetStudents request)
@@ -72,12 +77,28 @@ namespace Backend.ServiceInterface
             var response = new BaseResponse();
             var entity = request.ConvertTo<Student>();
             var result = await _studentService.Create(entity);
+
+            if (request.CreateNewUserLogin)
+            {
+                var userLogin = new CreateUser()
+                {
+                    FirstName = entity.FirstName,
+                    LastName = entity.LastName,
+                    DisplayName = entity.FirstName + " " + entity.LastName,
+                    UserName = entity.StudentCode,
+                    Password = entity.DateOfBirth.HasValue ? entity.DateOfBirth.Value.ToString("yyyy-MM-dd") : entity.StudentCode,
+                    RoleId = RoleEnum.Student.ToDescription()
+                };
+                await _userService.Post(userLogin);
+            }
+
             response.Success = true;
             response.StatusCode = (int)HttpStatusCode.Created;
             response.Message = "Create student success";
             response.Results = result.ConvertTo<StudentDto>();
             return response;
         }
+
         [RequiresAnyRole("admin", "manager")]
         public async Task<object> Put(UpdateStudent request)
         {

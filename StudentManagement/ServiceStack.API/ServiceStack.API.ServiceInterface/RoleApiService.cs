@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace ServiceStack.API.ServiceInterface
 {
+    [RequiredRole("admin")]
     public class RoleApiService : BaseService
     {
         private readonly IRoleService _roleService;
@@ -53,6 +54,12 @@ namespace ServiceStack.API.ServiceInterface
         public async Task<object> Get(RoleViewNameId request)
         {
             var models = await _roleService.GetModelsWithKeys("SystemName", "Display");
+            return models;
+        }
+
+        public async Task<object> GetAvaiableRolesForUserCreation(RoleLevel request)
+        {
+            var models = await _roleService.GetAvaiableRolesForUserCreation(request.Level);
             return models;
         }
 

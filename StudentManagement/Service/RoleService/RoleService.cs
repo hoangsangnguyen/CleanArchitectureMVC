@@ -16,6 +16,12 @@ namespace Service.RoleService
         {
         }
 
+        public async Task<IEnumerable<Role>> GetAvaiableRolesForUserCreation(int level)
+        {
+            var rolesEntities = await _unitOfWork.Repository.GetAll().Where(role => role.Level > level).ToListAsync();
+            return rolesEntities;
+        }
+
         public override async Task<IEnumerable<object>> GetModelsWithKeys(params string[] keys)
         {
             var models = await _unitOfWork.Repository.GetAll().Select(

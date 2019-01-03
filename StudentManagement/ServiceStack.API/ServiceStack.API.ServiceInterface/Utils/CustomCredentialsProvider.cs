@@ -47,7 +47,7 @@ namespace ServiceStack.API.ServiceInterface.Utils
             authenticate.UserId = user.Id.ToString();
             var meta = new Dictionary<string, string>
             {
-                {"Role", user.Role.SystemName},
+                {"Role", JSON.stringify(user.Role) },
             };
 
             authenticate.Meta = meta;

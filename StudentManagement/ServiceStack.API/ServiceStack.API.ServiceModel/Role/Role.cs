@@ -11,6 +11,7 @@ namespace ServiceStack.API.ServiceModel.Role
     {
         public string SystemName { get; set; }
         public string Display { get; set; }
+        public int Level { get; set; }
     }
 
     [Route("/roles", "GET")]
@@ -30,6 +31,12 @@ namespace ServiceStack.API.ServiceModel.Role
     [Route("/roles/viewmodel", "GET")]
     public class RoleViewNameId : IReturn<BaseResponse>
     {
+    }
+
+    [Route("/roles/roleForUserCreation/{Level}", "GET")]
+    public class RoleLevel : IReturn<BaseResponse>
+    {
+        public int Level { get; set; }
     }
 
     [Route("/roles", "POST")]
