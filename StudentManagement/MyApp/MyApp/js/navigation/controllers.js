@@ -22,7 +22,7 @@
             });
 
             function initViewAfterLogin() {
-                $scope.DisplayName = $window.localStorage.getItem('displayName');
+                $scope.DisplayName = JSON.parse($window.localStorage.getItem('userInfo')).DisplayName;
                 $('#menu ul li #displayName').show();
 
                 $scope.Logout = 'Logout';

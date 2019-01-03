@@ -37,9 +37,9 @@ namespace ServiceStack.API.ServiceInterface.Utils
 
         public override object Authenticate(IServiceBase authService, IAuthSession session, Authenticate request)
         {
-            Task<User> task = Task.Run<User>(async () => await _userService.GetUserByUserName(session.UserName));
-            var user = task.Result;
             var authenticate = base.Authenticate(authService, session, request) as AuthenticateResponse;
+            Task<User> task = Task.Run<User>(async () => await _userService.GetUserByUserName(authenticate.UserName));
+            var user = task.Result;
             authenticate.DisplayName = user.DisplayName;
             authenticate.UserId = user.Id.ToString();
             var meta = new Dictionary<string, string>
