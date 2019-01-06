@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿(function () {
     'use strict';
     angular
@@ -15,3 +16,12 @@
         appName = 'School Management';
     };
 })();
+=======
+﻿const AppConstants = {
+    api: 'http://localhost/Backend/',
+    jwtKey: 'jwtToken',
+    appName: 'School Management'
+};
+
+export default AppConstants;
+>>>>>>> 0a9a0109244b9850d7aa04f08ba85e6791359475
