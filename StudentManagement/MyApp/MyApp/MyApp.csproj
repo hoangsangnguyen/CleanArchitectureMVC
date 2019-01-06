@@ -129,7 +129,9 @@
     <Content Include="js\config\app.constants.js" />
     <Content Include="js\config\app.run.js" />
     <Content Include="js\config\auth.interceptor.js" />
-    <Content Include="js\departments\department.controllers.js" />
+    <Content Include="js\departments\department.create.controller.js" />
+    <Content Include="js\departments\department.create.html" />
+    <Content Include="js\departments\department.list.controllers.js" />
     <Content Include="js\departments\department.list.html" />
     <Content Include="js\hello\controllers.js" />
     <Content Include="js\home\home.controller.js" />

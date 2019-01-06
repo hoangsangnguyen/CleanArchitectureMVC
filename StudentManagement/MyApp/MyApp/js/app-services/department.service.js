@@ -30,7 +30,7 @@
         }
 
         function Create(department) {
-            return $http.post(AppConstants.api + '/departments', user).then(handleSuccess, handleError('Error creating user'));
+            return $http.post(AppConstants.api + '/departments', department).then(handleSuccess, handleError('Error creating user'));
         }
 
         function Update(user) {

@@ -100,6 +100,12 @@
                 controllerAs: 'vm'
             })
 
+            .when('/departments/new', {
+                controller: 'DepartmentCreateController',
+                templateUrl: '/js/departments/department.create.html',
+                controllerAs: 'vm'
+            })
+
 
             //.when('/register', {
             //    controller: 'RegisterController',
