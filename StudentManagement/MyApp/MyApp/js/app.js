@@ -70,11 +70,11 @@
     'use strict';
 
     angular
-        .module('helloApp', ['ngRoute', 'navigation.controllers'])
+        .module('helloApp', ['ngRoute'])
         .config(config)
         .run(run)
         .constant('AppConstants', {
-            api: 'http://localhost/Backend/',
+            api: 'http://localhost/Backend',
             jwtKey : 'jwtToken',
             appName : 'School Management'
         });
@@ -94,6 +94,13 @@
                 controllerAs: 'vm'
             })
 
+            .when('/departments', {
+                controller: 'DepartmentListController',
+                templateUrl: '/js/departments/department.list.html',
+                controllerAs: 'vm'
+            })
+
+
             //.when('/register', {
             //    controller: 'RegisterController',
             //    templateUrl: 'register/register.view.html',
@@ -108,9 +115,11 @@
     run.$inject = ['$rootScope', '$location', '$window', '$http'];
     function run($rootScope, $location, $window, $http) {
         // keep user logged in after page refresh
-        $rootScope.globals = $window.localStorage.getItem('globals') || {};
-        if ($rootScope.globals.currentUser) {
-            $http.defaults.headers.common['Authorization'] = 'Beaere ' + $rootScope.globals.currentUser.authdata;
+        var currentUser = $window.localStorage.getItem('currentUser') || {};
+        currentUser = JSON.parse(currentUser);
+
+        if (currentUser) {
+            $http.defaults.headers.common['Authorization'] = 'Bearer ' + currentUser.BearerToken;
         }
 
         //$rootScope.$on('$locationChangeStart', function (event, next, current) {

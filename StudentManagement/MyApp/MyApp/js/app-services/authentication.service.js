@@ -34,7 +34,7 @@
 
             /* Use this for real authentication
              ----------------------------------------------*/
-            $http.post(AppConstants.api + 'auth', {
+            $http.post(AppConstants.api + '/auth', {
                 'provider': 'credentials', username: username, password: password
             })
                 .then(function (response) {
@@ -51,23 +51,21 @@
         function SetCredentials(response) {
             //var authdata = Base64.encode(username + ':' + password);
 
-            $rootScope.globals = {
-                currentUser: {
-                    //username: username,
-                    //authdata: authdata
-                    userInfo: response
-                }
-            };
+            //$rootScope.globals = {
+            //    currentUser: JSON.stringify(response)
+            //}
 
             // set default auth header for http requests
-            $http.defaults.headers.common['Authorization'] = 'Beaere ' + response.BearerToken;
+            console.log('Bearer token : ', response.BearerToken);
+            $http.defaults.headers.common.Authorization = 'Bearer ' + response.BearerToken;
 
             // store user details in globals localstorage that keeps user logged in for 1 week (or until they logout)
-            $window.localStorage.setItem('globals', $rootScope.globals);
+            $window.localStorage.setItem('currentUser', JSON.stringify(response));
+
         }
 
         function ClearCredentials() {
-            $rootScope.globals = {};
+            $rootScope.globals = null;
             $window.localStorage.clear();
             $http.defaults.headers.common.Authorization = 'Basic';
         }

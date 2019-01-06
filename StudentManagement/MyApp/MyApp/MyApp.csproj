@@ -113,6 +113,7 @@
     <Content Include="gulpfile.js" />
     <Content Include="default.cshtml" />
     <Content Include="js\app-services\authentication.service.js" />
+    <Content Include="js\app-services\department.service.js" />
     <Content Include="js\app-services\flash.service.js" />
     <Content Include="js\app-services\user.service.js" />
     <Content Include="js\app.js" />
@@ -128,7 +129,8 @@
     <Content Include="js\config\app.constants.js" />
     <Content Include="js\config\app.run.js" />
     <Content Include="js\config\auth.interceptor.js" />
-    <Content Include="js\departments\controllers.js" />
+    <Content Include="js\departments\department.controllers.js" />
+    <Content Include="js\departments\department.list.html" />
     <Content Include="js\hello\controllers.js" />
     <Content Include="js\home\home.controller.js" />
     <Content Include="js\home\home.view.html" />

@@ -56,11 +56,11 @@
                     <li ng-class="{ active: IsRouteActive('/students')}"><a href="/students">Students</a></li>
                     <li ng-class="{ active: IsRouteActive('/subjects')}"><a href="/subjects">Subjects</a></li>
                     <li ng-class="{ active: IsRouteActive('/scores')}"><a href="/scores">Scores</a></li>
-                    <li ng-class="{ active: IsRouteActive('/auth/users')}"><a id="users" href="/auth/users">{{Users}}</a></li>
-                    <li ng-class="{ active: IsRouteActive('/auth/roles')}"><a id="roles" href="/auth/roles">{{Roles}}</a></li>
-                    <li><a id="displayName" href="#">{{DisplayName}}</a></li>
-                    <li ng-class="{ active: IsRouteActive('/login')}"><a id="login" href="/login">{{Login}}</a></li>
-                    <li><a id="logout" ng-click="onLogout()">{{Logout}}</a></li>
+                    <li ng-class="{ active: IsRouteActive('/auth/users')}"><a ng-show="isLogin && isAdmin" href="/auth/users">Users</a></li>
+                    <li ng-class="{ active: IsRouteActive('/auth/roles')}"><a ng-show="isLogin && isAdmin" id="roles" href="/auth/roles">Roles</a></li>
+                    <li><a ng-show="isLogin" href="#">{{currentUser.DisplayName}}</a></li>
+                    <li ng-class="{ active: IsRouteActive('/login')}"><a ng-show="!isLogin" href="/login">Login</a></li>
+                    <li><a ng-show="isLogin" ng-click="onLogout()">Logout</a></li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div>
@@ -95,13 +95,18 @@
     <script src="~/js/app-services/authentication.service.js"></script>
     <script src="~/js/app-services/user.service.js"></script>
     <script src="~/js/app-services/flash.service.js"></script>
+    <script src="~/js/app-services/department.service.js"></script>
+
 
     <script src="~/js/navigation/controllers.js"></script>
     <script src="~/js/login/login.controller.js"></script>
     <script src="~/js/home/home.controller.js"></script>
+    <script src="~/js/departments/department.controllers.js"></script>
+
 
     <script src="/js/kendo/jquery.min.js"></script>
     <script src="/js/kendo/kendo.all.min.js"></script>
+    <script src="http://cdn.kendostatic.com/2014.1.318/js/kendo.all.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
 
     <!-- endbuild -->

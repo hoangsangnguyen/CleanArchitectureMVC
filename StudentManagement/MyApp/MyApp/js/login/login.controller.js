@@ -5,8 +5,8 @@
         .module('helloApp')
         .controller('LoginController', LoginController);
 
-    LoginController.$inject = ['$location', 'AuthenticationService', 'FlashService'];
-    function LoginController($location, AuthenticationService, FlashService) {
+    LoginController.$inject = ['$location', 'AuthenticationService', 'FlashService', '$rootScope'];
+    function LoginController($location, AuthenticationService, FlashService, $rootScope) {
         var vm = this;
 
         vm.login = login;
@@ -21,8 +21,9 @@
             AuthenticationService.Login(vm.username, vm.password, function (response) {
                 console.log('response ', response.status);
                 if (response.status == 200) {
-                    AuthenticationService.SetCredentials(vm.username, vm.password);
-                    $location.path('/');
+                    AuthenticationService.SetCredentials(response.data);
+                    $rootScope.$emit("LoginSucceed", {});
+
                 } else {
                     FlashService.Error(response.message);
                     vm.dataLoading = false;
