@@ -11,19 +11,31 @@ namespace Backend.ServiceModel.Student
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public int ClassId { get; set; }
         public string ClassName { get; set; }
         public string StudentCode { get; set; }
         public string DateOfBirth { get; set; }
     }
 
     [Route("/students", "GET")]
-    public class GetStudents : IReturn<BaseResponse>{}
+    [Route("/students/{FirstName}/{LastName}/{StudentCode}/{DateOfBirth}", "GET")]
+    public class GetStudents : IReturn<BaseResponse>{
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public Nullable<int> ClassId { get; set; }
+        public string StudentCode { get; set; }
+        public string DateOfBirth { get; set; }
+    }
 
-    [Route("/students/{Id}", "GET")]
-    [Route("/students", "DELETE")]
+    [Route("/students/{Id}", "GET, DELETE")]
     public class StudentById : IReturn<BaseResponse>
     {
         public int Id { get; set; }
+    }
+
+    [Route("/students/viewmodel", "GET")]
+    public class StudentsViewNameId : IReturn<BaseResponse>
+    {
     }
 
     [Route("/students", "POST")]
@@ -34,6 +46,8 @@ namespace Backend.ServiceModel.Student
         public int ClassId { get; set; }
         public string StudentCode { get; set; }
         public string DateOfBirth { get; set; }
+
+        public bool CreateNewUserLogin { get; set; }
     }
 
     [Route("/students", "PUT")]

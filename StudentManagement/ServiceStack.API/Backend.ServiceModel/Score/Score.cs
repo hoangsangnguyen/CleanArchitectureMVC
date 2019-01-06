@@ -19,10 +19,15 @@ namespace Backend.ServiceModel.Score
     }
 
     [Route("/scores", "GET")]
-    public class GetScores : IReturn<BaseResponse> { }
+    [Route("/scores/{StudentId}/{SubjectId}/{Mark}", "GET")]
+    public class GetScores : IReturn<BaseResponse> {
+        public Nullable<int> StudentId { get; set; }
+        public Nullable<int> SubjectId { get; set; }
+        public Nullable<float> Mark { get; set; }
 
-    [Route("/scores/{SubjectId}/{StudentId}", "GET")]
-    [Route("/scores", "DELETE")]
+    }
+
+    [Route("/scores/{StudentId}/{SubjectId}", "GET, DELETE")]
     public class ScoreById : IReturn<BaseResponse>
     {
         public int StudentId { get; set; }

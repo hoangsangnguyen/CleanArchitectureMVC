@@ -18,13 +18,20 @@ namespace Backend.ServiceModel.Department
     }
 
     [Route("/departments", "GET")]
-    public class GetDepartments : IReturn<BaseResponse> { }
+    [Route("/departments/name/{Name}", "GET")]
+    public class GetDepartments : IReturn<BaseResponse> {
+        public string Name { get; set; }
+    }
 
-    [Route("/departments/{Id}", "GET")]
-    [Route("/departments", "DELETE")]
+    [Route("/departments/{Id}", "GET, Delete")]
     public class DepartmentById : IReturn<BaseResponse>
     {
         public int Id { get; set; }
+    }
+
+    [Route("/departments/viewmodel", "GET")]
+    public class DepartmentViewNameId : IReturn<BaseResponse>
+    {
     }
 
     [Route("/departments", "POST")]

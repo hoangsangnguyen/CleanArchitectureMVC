@@ -7,6 +7,7 @@ using ServiceStack;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,7 +25,9 @@ namespace Backend.ServiceInterface
 
         public async Task<object> Get(GetClasses request)
         {
-            var classEntities = await _classService.GetAll();
+            Expression<Func<Class, bool>> filter = x => (request.Name == null || x.Name.Contains(request.Name))
+                                                        && (request.DepartmentId == null || x.DepartmentId == request.DepartmentId);
+            var classEntities = await _classService.GetAll(filter: filter, includeProperties: "Department");
             var dtos = classEntities.ToList().ConvertAll(x =>
             {
                 var dto = x.ConvertTo<ClassDto>();
@@ -41,19 +44,28 @@ namespace Backend.ServiceInterface
             };
         }
 
-        public async Task<object> Get(ClassDto request)
+        public async Task<object> Get(ClassById request)
         {
-            var response = new BaseResponse();
+            Expression<Func<Class, bool>> keySelector = x => x.Id == request.Id;
 
-            var entity = await _classService.GetById(request.Id);
+            var entity = await _classService.GetById(keySelector: keySelector);
             var dto = entity.ConvertTo<ClassDto>();
-            response.Success = true;
-            response.StatusCode = (int)HttpStatusCode.OK;
-            response.Results = dto;
 
-            return response;
+            return new
+            {
+                Success = true,
+                StatusCode = (int)HttpStatusCode.OK,
+                Results = dto,
+            };
         }
 
+        public async Task<object> Get(ClassesViewNameId request)
+        {
+            var models = await _classService.GetModelsWithKeys("Id", "Name");
+            return models;
+        }
+
+        [RequiresAnyRole("admin", "manager")]
         public async Task<object> Post(CreateClass request)
         {
             var response = new BaseResponse();
@@ -65,11 +77,12 @@ namespace Backend.ServiceInterface
             response.Results = result;
             return response;
         }
-
+        [RequiresAnyRole("admin", "manager")]
         public async Task<object> Put(UpdateClass request)
         {
             var response = new BaseResponse();
-            var entity = await _classService.GetById(request.Id);
+            Expression<Func<Class, bool>> keySelector = x => x.Id == request.Id;
+            var entity = await _classService.GetById(keySelector: keySelector);
             request.ToEntity(entity);
             var result = await _classService.Update(entity);
             response.Success = true;
@@ -78,12 +91,12 @@ namespace Backend.ServiceInterface
             response.Results = result.ConvertTo<ClassDto>();
             return response;
         }
-
+        [RequiresAnyRole("admin", "manager")]
         public async Task<object> Delete(ClassById request)
         {
             var response = new BaseResponse();
-
-            var result = await _classService.Delete(request.Id);
+            Expression<Func<Class, bool>> keySelector = x => x.Id == request.Id;
+            var result = await _classService.Delete(keySelector: keySelector);
             response.Success = true;
             response.Message = $"Delete class with id {request.Id} success";
             response.StatusCode = (int)HttpStatusCode.OK;

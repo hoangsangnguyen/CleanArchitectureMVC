@@ -1,0 +1,28 @@
+﻿<div class="navbar navbar-inverse" role="navigation" ng-controller="navigationCtrl">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">School Management</a>
+        </div>
+        <div class="navbar-collapse collapse" id="menu">
+            <ul class="nav navbar-nav">
+                <li ng-class="{ active: IsRouteActive('/departments')}"><a href="/departments">Departments</a></li>
+                <li ng-class="{ active: IsRouteActive('/class')}"><a href="/class">Class</a></li>
+                <li ng-class="{ active: IsRouteActive('/teachers')}"><a href="/teachers">Teachers</a></li>
+                <li ng-class="{ active: IsRouteActive('/students')}"><a href="/students">Students</a></li>
+                <li ng-class="{ active: IsRouteActive('/subjects')}"><a href="/subjects">Subjects</a></li>
+                <li ng-class="{ active: IsRouteActive('/scores')}"><a href="/scores">Scores</a></li>
+                <li ng-class="{ active: IsRouteActive('/auth/users')}"><a id="users" href="/auth/users">{{Users}}</a></li>
+                <li ng-class="{ active: IsRouteActive('/auth/roles')}"><a id="roles" href="/auth/roles">{{Roles}}</a></li>
+                <li><a id="displayName" href="#">{{DisplayName}}</a></li>
+                <li ng-class="{ active: IsRouteActive('/auth/login')}"><a id="login" href="/auth/login">{{Login}}</a></li>
+                <li><a id="logout" ng-click="onLogout()">{{Logout}}</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>

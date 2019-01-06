@@ -1,20 +1,31 @@
-﻿using Autofac;
+﻿using System.Linq;
+using Autofac;
 using Backend.ServiceInterface;
-using Backend.ServiceInterface.Utils;
 using DAL.Database;
 using DAL.Repository;
+using DAL.Repository.Classes;
+using DAL.Repository.Departments;
+using DAL.Repository.Students;
+using DAL.Repository.Teachers;
 using DAL.UnitOfWork;
 using Entity;
 using Funq;
 using Microsoft.EntityFrameworkCore;
 using Service.BaseService;
+using Service.ClassService;
+using Service.DepartmentService;
+using Service.ScoreService;
+using Service.StudentService;
+using Service.SubjectService;
+using Service.TeacherService;
+using Service.UserService;
 using ServiceStack;
+using ServiceStack.API.ServiceInterface.Utils;
 using ServiceStack.Auth;
 using ServiceStack.Caching;
 using ServiceStack.Configuration;
 using ServiceStack.Data;
 using ServiceStack.OrmLite;
-using System.Data;
 
 namespace Backend
 {
@@ -33,7 +44,11 @@ namespace Backend
         /// </summary>
         public override void Configure(Container container)
         {
-            this.Plugins.Add(new CorsFeature());
+            AppSettings = new AppSettings();
+            this.Plugins.Add(new CorsFeature(allowedOrigins: "*",
+                                            allowedMethods: "GET, POST, PUT, DELETE, OPTIONS",
+                                            allowedHeaders: "Content-Type, Access-Control-Allow-Origin, Authorization, UseTokenCookie",
+                                            allowCredentials: true));
 
             var builder = new ContainerBuilder();
 
@@ -66,33 +81,43 @@ namespace Backend
             IContainerAdapter adapter = new AutofacIocAdapter(builder.Build(), container);
             container.Adapter = adapter;
 
+            //seed data
+
+            var db = container.Resolve<StudentContext>();
+            if (!db.Users.Any())
+            {
+                new SaltedHash().GetHashAndSaltString("123456", out string hashedPassword, out string salt);
+
+                db.Users.AddAsync(new User
+                {
+                    FirstName = "Nguyễn",
+                    LastName = "Sang",
+                    DisplayName = "Sang Nguyễn",
+                    UserName = "sangnguyen",
+                    Password = hashedPassword,
+                    Salt = salt,
+                    RoleId = "admin"
+                });
+                db.SaveChanges();
+            }
+
             this.Plugins.Add(new AuthFeature(() => new AuthUserSession(), new IAuthProvider[]
             {
-                new JwtAuthProvider(AppSettings) { AuthKey = AesUtils.CreateKey()},
-                new CredentialsAuthProvider(AppSettings),
-                //new CustomCredentialsAuthProvider()
+                //new CustomJwtAuthProvider(container.Resolve<IUserService>(), AppSettings),
+                new JwtAuthProvider(AppSettings),
+                new CustomCredentialsProvider(container.Resolve<IUserService>())
             }));
 
-            this.Plugins.Add(new RegistrationFeature());
+            //this.Plugins.Add(new RegistrationFeature());
+
+            var userRep = new InMemoryAuthRepository();
+            container.Register<IUserAuthRepository>(userRep);
 
             container.Register<ICacheClient>(new MemoryCacheClient());
 
-            //container.Register<IDbConnectionFactory>(c =>
-            //    new OrmLiteConnectionFactory(AppSettings.GetString("ConnectionString"), SqlServer2017Dialect.Provider));
-
-            //container.Register<IAuthRepository>(c =>
-            //    new OrmLiteAuthRepository(dbFactory: c.Resolve<IDbConnectionFactory>()));
-
-            //container.Resolve<IAuthRepository>().InitSchema();
-
-            var userRep = new InMemoryAuthRepository();
-            userRep.CreateUserAuth(new UserAuth
-            {
-                Id = 1,
-                UserName = "sang",
-                DisplayName = "hoang sang",
-            }, "123");
-            container.Register<IAuthRepository>(userRep);
+            //string hash;
+            //string salt;
+            //new SaltedHash().GetHashAndSaltString("password", out hash, out salt);
         }
     }
 }

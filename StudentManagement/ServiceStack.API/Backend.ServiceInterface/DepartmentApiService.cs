@@ -7,12 +7,14 @@ using System.Threading.Tasks;
 using System.Net;
 using Entity;
 using AutoMapper;
-using ServiceStack;
 using Backend.ServiceModel.Department;
+using ServiceStack;
 using Backend.ServiceModel;
+using System.Linq.Expressions;
 
 namespace Backend.ServiceInterface
 {
+   
     public class DepartmentApiService : BaseService
     {
         private readonly IDepartmentService _departmentService;
@@ -24,8 +26,12 @@ namespace Backend.ServiceInterface
 
         public async Task<object> Get(GetDepartments request)
         {
-            var classEntities = await _departmentService.GetAll();
-            var dtos = classEntities.ToList().ConvertAll(x => x.ConvertTo<DepartmentDto>());
+            Expression<Func<Department, bool>> filter = null;
+            if (!request.Name.IsNullOrEmpty())
+                filter = x => x.Name.Contains(request.Name);
+
+            var departmentEntities = await _departmentService.GetAll(filter: filter);
+            var dtos = departmentEntities.ToList().ConvertAll(x => x.ConvertTo<DepartmentDto>());
 
             return new
             {
@@ -36,19 +42,28 @@ namespace Backend.ServiceInterface
             };
         }
 
-        public async Task<object> Get(DepartmentDto request)
+        public async Task<object> Get(DepartmentById request)
         {
-            var response = new BaseResponse();
+            Expression<Func<Department, bool>> keySelector = x => x.Id == request.Id;
 
-            var entity = await _departmentService.GetById(request.Id);
+            var entity = await _departmentService.GetById(keySelector: keySelector);
             var dto = entity.ConvertTo<DepartmentDto>();
-            response.Success = true;
-            response.StatusCode = (int)HttpStatusCode.OK;
-            response.Results = dto;
 
-            return response;
+            return new
+            {
+                Success = true,
+                StatusCode = (int)HttpStatusCode.OK,
+                Results = dto,
+            };
         }
 
+        public async Task<object> Get(DepartmentViewNameId request)
+        {
+            var models = await _departmentService.GetModelsWithKeys("Id", "Name");
+            return models;
+        }
+
+        [RequiresAnyRole("admin", "manager")]
         public async Task<object> Post(CreateDepartment request)
         {
             var response = new BaseResponse();
@@ -60,11 +75,12 @@ namespace Backend.ServiceInterface
             response.Results = result;
             return response;
         }
-
+        [RequiresAnyRole("admin", "manager")]
         public async Task<object> Put(UpdateDepartment request)
         {
             var response = new BaseResponse();
-            var entity = await _departmentService.GetById(request.Id);
+            Expression<Func<Department, bool>> keySelector = x => x.Id == request.Id;
+            var entity = await _departmentService.GetById(keySelector: keySelector);
             request.ToEntity(entity);
             var result = await _departmentService.Update(entity);
             response.Success = true;
@@ -73,12 +89,12 @@ namespace Backend.ServiceInterface
             response.Results = result.ConvertTo<DepartmentDto>();
             return response;
         }
-
+        [RequiresAnyRole("admin", "manager")]
         public async Task<object> Delete(DepartmentById request)
         {
             var response = new BaseResponse();
-
-            var result = await _departmentService.Delete(request.Id);
+            Expression<Func<Department, bool>> keySelector = x => x.Id == request.Id;
+            var result = await _departmentService.Delete(keySelector: keySelector);
             response.Success = true;
             response.Message = $"Delete department with id {request.Id} success";
             response.StatusCode = (int)HttpStatusCode.OK;
