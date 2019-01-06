@@ -1,0 +1,80 @@
+﻿<div class="content" ng-controller="editTeachersCtrl">
+    <div class="content-header clearfix">
+        <h3 class="pull-left">
+            Edit teacher
+        </h3>
+        <div class="pull-right">
+            <button type="button" class="btn bg-blue" ng-click="onBack()">
+                <i class="fa fa-floppy-o"></i>
+                Back
+            </button>
+            <button type="button" class="btn bg-blue" ng-click="onSave()" id="btnSave">
+                <i class="fa fa-floppy-o"></i>
+                Save
+            </button>
+            <button type="button" class="btn bg-red" ng-click="onDelete()" id="btnDelete">
+                <i class="fa fa-floppy-o"></i>
+                Delete
+            </button>
+        </div>
+    </div>
+
+    <div class="form-horizontal">
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group form-custom">
+                                <div class="col-md-3">
+                                    <label class="control-label">First name:</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <input class="form-control" ng-model="firstName" id="FirstName" type="text" placeholder="Type first name">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group form-custom">
+                                <div class="col-md-3">
+                                    <label class="control-label">Last name:</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <input class="form-control" ng-model="lastName" id="LastName" type="text" placeholder="Type last name">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group form-custom">
+                                <div class="col-md-3">
+                                    <label class="control-label">Department:</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <input class="form-control" ng-model="departmentId" id="DepartmentId" style="width: 100%;">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group form-custom">
+                                <div class="col-md-3">
+                                </div>
+                                <div class="col-md-9">
+                                    <label class="control-label k-form-field">
+                                        <input type="checkbox" id="isManager" class="k-checkbox">
+                                        <label class="k-checkbox-label" for="isManager">Is manager</label>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

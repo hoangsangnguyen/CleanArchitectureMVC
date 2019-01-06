@@ -19,10 +19,15 @@ namespace Backend.ServiceModel.Teacher
     }
 
     [Route("/teachers", "GET")]
-    public class GetTeachers : IReturn<BaseResponse> { }
+    [Route("/teachers/{FirstName}/{LastName}/{DepartmentId}/{IsManager}", "GET")]
+    public class GetTeachers : IReturn<BaseResponse> {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public Nullable<int> DepartmentId { get; set; }
+        public Nullable<bool> IsManager { get; set; }
+    }
 
-    [Route("/teachers/{Id}", "GET")]
-    [Route("/teachers", "DELETE")]
+    [Route("/teachers/{Id}", "GET, DELETE")]
     public class TeacherById : IReturn<BaseResponse>
     {
         public int Id { get; set; }
@@ -36,6 +41,7 @@ namespace Backend.ServiceModel.Teacher
         public int? SubjectId { get; set; }
         public int DepartmentId { get; set; }
         public bool IsManager { get; set; }
+        public bool CreateNewUserLogin { get; set; }
     }
 
     [Route("/teachers", "PUT")]

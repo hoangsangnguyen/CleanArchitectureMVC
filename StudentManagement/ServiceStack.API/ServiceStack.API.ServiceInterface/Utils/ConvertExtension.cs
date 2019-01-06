@@ -9,11 +9,13 @@ namespace Backend.ServiceInterface
 {
     public static class ConvertExtension
     {
-        public static void ToEntity(this object source, IEntity entity)
+        public static void ToEntity(this object source, IEntity entity, string[] exceptionProperty = null)
         {
             var properties = source.GetType().GetProperties();
             foreach (var property in properties)
             {
+                if (exceptionProperty != null && exceptionProperty.Contains(property.Name))
+                    continue;
                 var value = property.GetValue(source);
                 if (value != null)
                 {

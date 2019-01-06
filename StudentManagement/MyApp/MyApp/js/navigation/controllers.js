@@ -12,8 +12,6 @@
                 } else {
                     initViewAfterLogin();
                 }
-
-                $location.path('/');
             });
 
             $rootScope.$on("LoginSucceed", function () {
@@ -21,8 +19,25 @@
                 $location.path('/');
             });
 
+            function updateMenuByRole(role) {
+                switch (role) {
+                    case 'admin':
+                        $scope.Users = 'Users';
+                        $('#menu ul li #users').show();
+                        $scope.Roles = 'Roles';
+                        $('#menu ul li #roles').show();
+                        break;
+                    default:
+                        $scope.Users = '';
+                        $('#menu ul li #users').hide();
+                        $scope.Roles = '';
+                        $('#menu ul li #roles').hide();
+                        break;
+                }
+            }
+
             function initViewAfterLogin() {
-                $scope.DisplayName = $window.localStorage.getItem('displayName');
+                $scope.DisplayName = JSON.parse($window.localStorage.getItem('userInfo')).DisplayName;
                 $('#menu ul li #displayName').show();
 
                 $scope.Logout = 'Logout';
@@ -30,6 +45,11 @@
 
                 $scope.Login = '';
                 $('#menu ul li #login').hide();
+
+                var role = JSON.parse($window.localStorage.getItem('userInfo')).Role;
+                var roleName = JSON.parse(role).SystemName;
+                updateMenuByRole(roleName);
+
             }
 
             function initViewBeforeLogin() {
@@ -41,6 +61,8 @@
 
                 $scope.Login = 'Login';
                 $('#menu ul li #login').show();
+
+                updateMenuByRole('');
             }
 
             $scope.onLogout = function () {

@@ -10,12 +10,25 @@
             $scope.login = function () {
                 $http.post(url + '/auth', getData())
                     .success(function (response) {
-                        console.log(response.headers);
                         $window.localStorage.setItem('token', 'Bearer ' + response.BearerToken);
-                        $window.localStorage.setItem('displayName', response.DisplayName);
+                        $window.localStorage.setItem('userInfo', JSON.stringify({
+                            UserId: response.UserId,
+                            UserName: response.UserName,
+                            SessionId: response.SessionId,
+                            DisplayName: response.DisplayName,
+                            RefreshToken: response.RefreshToken,
+                            Role: response.Meta.Role
+                        }));
                         $rootScope.$emit("LoginSucceed", {});
                     });
             }
+
+            $("".concat("#Password")).keydown(function (event) {
+                if (event.keyCode === 13) {
+                    $scope.login();
+                    return false;
+                }
+            });
 
             function getData() {
                 var data = {

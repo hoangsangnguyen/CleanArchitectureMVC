@@ -20,6 +20,8 @@ namespace Entity
         [MaxLength(50)]
         public string Display { get; set; }
 
+        [Required]
+        public int Level { get; set; }
     }
 
     public enum RoleEnum

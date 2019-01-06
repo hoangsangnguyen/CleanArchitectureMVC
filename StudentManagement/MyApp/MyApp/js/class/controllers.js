@@ -14,6 +14,13 @@
                     return;
                 }
 
+                // update view by role name
+                var role = JSON.parse($window.localStorage.getItem('userInfo')).Role;
+                var roleName = JSON.parse(role).SystemName;
+                if (roleName !== 'admin' && roleName !== 'manager') {
+                    document.getElementById('createArea').style.display = "none";
+                }
+
                 initView();
             });
 
@@ -185,6 +192,14 @@
                 if (token === null) {
                     $location.path("/auth/login");
                     return;
+                }
+
+                // update view by role name
+                var role = JSON.parse($window.localStorage.getItem('userInfo')).Role;
+                var roleName = JSON.parse(role).SystemName;
+                if (roleName !== 'admin' && roleName !== 'manager') {
+                    document.getElementById('btnSave').style.display = "none";
+                    document.getElementById('btnDelete').style.display = "none";
                 }
 
                 initView();

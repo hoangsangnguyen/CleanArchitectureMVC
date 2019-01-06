@@ -26,7 +26,12 @@ namespace ServiceStack.API.ServiceInterface
         [RequiredRole("admin")]
         public async Task<object> Get(GetUsers request)
         {
-            var userEntities = await _userService.GetAll(includeProperties: "role");
+            Expression<Func<User, bool>> filter = x => (request.FirstName == null || x.FirstName.Contains(request.FirstName))
+                                                       && (request.LastName == null || x.LastName.Contains(request.LastName))
+                                                       && (request.DisplayName == null || x.DisplayName.Contains(request.DisplayName))
+                                                       && (request.UserName == null || x.UserName.Contains(request.UserName))
+                                                       && (request.RoleId == null || x.Role.SystemName.Equals(request.RoleId));
+            var userEntities = await _userService.GetAll(filter: filter, includeProperties: "Role");
             var dtos = userEntities.ToList().ConvertAll(x =>
             {
                 var dto = x.ConvertTo<UserDto>();
@@ -90,7 +95,15 @@ namespace ServiceStack.API.ServiceInterface
             // check user is owner
             if (!base.IsAdminOrManagerOrOwner(entity.UserName, entity.RoleId)) throw new MethodAccessException();
 
-            request.ToEntity(entity);
+            request.ToEntity(entity, new string[] { "Password" });
+
+            if (request.Password != null && request.Password != entity.Password)
+            {
+                new SaltedHash().GetHashAndSaltString(request.Password, out var hashedPassword, out var salt);
+                entity.Password = hashedPassword;
+                entity.Salt = salt;
+            }
+           
             var result = await _userService.Update(entity);
             response.Success = true;
             response.Message = "Update user success";
