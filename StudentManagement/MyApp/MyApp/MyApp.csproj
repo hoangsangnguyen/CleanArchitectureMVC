@@ -116,6 +116,7 @@
     <Content Include="js\app-services\class.service.js" />
     <Content Include="js\app-services\department.service.js" />
     <Content Include="js\app-services\flash.service.js" />
+    <Content Include="js\app-services\score.service.js" />
     <Content Include="js\app-services\student.service.js" />
     <Content Include="js\app-services\subject.service.js" />
     <Content Include="js\app-services\teacher.service.js" />
@@ -1188,6 +1189,11 @@
     <Content Include="js\login\login.controller.js" />
     <Content Include="js\navigation\controllers.js" />
     <Content Include="js\scores\controllers.js" />
+    <Content Include="js\scores\score.create.controller.js" />
+    <Content Include="js\scores\score.create.html" />
+    <Content Include="js\scores\score.edit.controller.js" />
+    <Content Include="js\scores\score.edit.html" />
+    <Content Include="js\scores\score.list.html" />
     <Content Include="js\services\index.js" />
     <Content Include="js\services\jwt.service.js" />
     <Content Include="js\services\user.service.js" />
@@ -2719,6 +2725,7 @@
     <Content Include="styles\kendo.uniform.min.css.map" />
     <Content Include="styles\kendo.uniform.mobile.min.css.map" />
     <Content Include="js\login\login.view.html" />
+    <Content Include="js\scores\score.list.controller.js" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

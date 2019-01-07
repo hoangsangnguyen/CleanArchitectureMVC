@@ -1,0 +1,100 @@
+﻿<div class="content-header clearfix">
+    <h3 class="pull-left">
+        Scores List
+    </h3>
+    <div class="pull-right" ng-show="isAdminOrManager">
+        <a href="/scores/new" class="btn bg-blue">
+            <i class="fa fa-plus-square"></i>
+            Create
+        </a>
+    </div>
+</div>
+
+<div class="content">
+    <div class="form-horizontal">
+        <div class="panel-group">
+            <div class="panel panel-default panel-search">
+                <div class="panel-body">
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group form-custom">
+                                <div class="col-md-3">
+                                    <label class="control-label">Student:</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <select kendo-combo-box
+                                            k-placeholder="'Select student...'"
+                                            k-data-text-field="'Name'"
+                                            k-data-value-field="'Id'"
+                                            k-auto-bind="false"
+                                            ng-change="onSearch()"
+                                            ng-model="searchData.StudentId"
+                                            k-data-source="studentDataSource"
+                                            style="width: 100%" ng-keydown="onSearch()"></select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group form-custom">
+                                <div class="col-md-3">
+                                    <label class="control-label">Subject:</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <select kendo-combo-box
+                                            k-placeholder="'Select subject...'"
+                                            k-data-text-field="'Name'"
+                                            k-data-value-field="'Id'"
+                                            k-auto-bind="false"
+                                            ng-change="onSearch()"
+                                            ng-model="searchData.SubjectId"
+                                            k-data-source="subjectDataSource"
+                                            style="width: 100%" ng-keydown="onSearch()"></select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group form-custom">
+                                <div class="col-md-3">
+                                    <label class="control-label">Mark:</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <input class="form-control" ng-model="searchData.Mark" type="number" max="10" min="0" placeholder="Type mark" ng-change="onSearch()">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group form-custom">
+                                <div class="col-md-4">
+                                    <label class="control-label"></label>
+                                </div>
+                                <div class="col-md-8">
+                                    <button type="button" class="btn btn-primary" ng-click="onSearch()">
+                                        <i class="fa fa-search"></i>
+                                        Search
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div kendo-grid="grid" options="mainGridOptions"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -197,6 +197,24 @@
                 templateUrl: '/js/subjects/subject.edit.html',
                 controllerAs: 'vm'
             })
+
+            .when('/scores', {
+                controller: 'ScoreListController',
+                templateUrl: '/js/scores/score.list.html',
+                controllerAs: 'vm'
+            })
+
+            .when('/scores/new', {
+                controller: 'ScoreCreateController',
+                templateUrl: '/js/scores/score.create.html',
+                controllerAs: 'vm'
+            })
+
+            .when('/scores/:StudentId/:SubjectId', {
+                controller: 'ScoreEditController',
+                templateUrl: '/js/scores/score.edit.html',
+                controllerAs: 'vm'
+            })
             //.when('/register', {
             //    controller: 'RegisterController',
             //    templateUrl: 'register/register.view.html',

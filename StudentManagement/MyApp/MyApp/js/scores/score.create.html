@@ -1,0 +1,81 @@
+﻿<div class="content">
+    <div class="content-header clearfix">
+        <h3 class="pull-left">
+            Create new score
+        </h3>
+        <div class="pull-right">
+            <button type="button" class="btn bg-blue" ng-click="onBack()">
+                <i class="fa fa-floppy-o"></i>
+                Back
+            </button>
+            <button type="button" class="btn bg-blue" ng-click="onSave()" ng-show="isAdminOrManager">
+                <i class="fa fa-floppy-o"></i>
+                Save
+            </button>
+        </div>
+    </div>
+
+    <div class="form-horizontal">
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group form-custom">
+                                <div class="col-md-3">
+                                    <label class="control-label">Student:</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <select kendo-combo-box
+                                            k-placeholder="'Select student...'"
+                                            k-data-text-field="'Name'"
+                                            k-data-value-field="'Id'"
+                                            k-auto-bind="false"
+                                            ng-change="onSearch()"
+                                            ng-model="data.StudentId"
+                                            k-data-source="studentDataSource"
+                                            style="width: 100%" ng-keydown="onSearch()"></select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group form-custom">
+                                <div class="col-md-3">
+                                    <label class="control-label">Subject:</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <select kendo-combo-box
+                                            k-placeholder="'Select subject...'"
+                                            k-data-text-field="'Name'"
+                                            k-data-value-field="'Id'"
+                                            k-auto-bind="false"
+                                            ng-change="onSearch()"
+                                            ng-model="data.SubjectId"
+                                            k-data-source="subjectDataSource"
+                                            style="width: 100%" ng-keydown="onSearch()"></select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group form-custom">
+                                <div class="col-md-3">
+                                    <label class="control-label">Mark:</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <input class="form-control" ng-model="data.Mark" type="number" max="10" min="0" placeholder="Type mark">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

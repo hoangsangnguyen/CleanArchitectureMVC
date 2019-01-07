@@ -14,6 +14,7 @@
         service.Create = Create;
         service.Update = Update;
         service.Delete = Delete;
+        service.GetViewModels = GetViewModels;
 
         return service;
 
@@ -39,6 +40,10 @@
 
         function Delete(id) {
             return $http.delete(AppConstants.api + '/students/' + id).then(handleSuccess, handleError('Error deleting student'));
+        }
+
+        function GetViewModels() {
+            return $http.get(AppConstants.api + '/students/viewmodel').then(handleSuccess, handleError('Error getting students'));
         }
 
         // private functions
