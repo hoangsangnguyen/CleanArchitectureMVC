@@ -22,23 +22,23 @@
                 method: 'GET',
                 url: AppConstants.api + '/departments',
                 params: searchData
-            }).then(handleSuccess, handleError('Error getting all users'));
+            }).then(handleSuccess, handleError('Error getting all departments'));
         }
 
         function GetById(id) {
-            return $http.get(AppConstants.api + '/departments/' + id).then(handleSuccess, handleError('Error getting user by id'));
+            return $http.get(AppConstants.api + '/departments/' + id).then(handleSuccess, handleError('Error getting department by id'));
         }
 
         function Create(department) {
-            return $http.post(AppConstants.api + '/departments', department).then(handleSuccess, handleError('Error creating user'));
+            return $http.post(AppConstants.api + '/departments', department).then(handleSuccess, handleError('Error creating department'));
         }
 
-        function Update(user) {
-            return $http.put(AppConstants.api + '/departments', user).then(handleSuccess, handleError('Error updating user'));
+        function Update(department) {
+            return $http.put(AppConstants.api + '/departments', department).then(handleSuccess, handleError('Error updating department'));
         }
 
         function Delete(id) {
-            return $http.delete(AppConstants.api + '/departments/' + id).then(handleSuccess, handleError('Error deleting user'));
+            return $http.delete(AppConstants.api + '/departments/' + id).then(handleSuccess, handleError('Error deleting department'));
         }
 
         // private functions

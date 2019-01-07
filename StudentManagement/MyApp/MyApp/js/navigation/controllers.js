@@ -21,23 +21,6 @@
             $location.path('/');
         });
 
-        function updateMenuByRole(role) {
-            switch (role) {
-                case 'admin':
-                    $scope.Users = 'Users';
-                    $('#menu ul li #users').show();
-                    $scope.Roles = 'Roles';
-                    $('#menu ul li #roles').show();
-                    break;
-                default:
-                    $scope.Users = '';
-                    $('#menu ul li #users').hide();
-                    $scope.Roles = '';
-                    $('#menu ul li #roles').hide();
-                    break;
-            }
-        }
-
         function initViewAfterLogin(currentUser) {
             currentUser = JSON.parse(currentUser);
             $scope.isLogin = true;

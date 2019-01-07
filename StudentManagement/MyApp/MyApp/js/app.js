@@ -106,6 +106,12 @@
                 controllerAs: 'vm'
             })
 
+            .when('/departments/:id', {
+                controller: 'DepartmentEditController',
+                templateUrl: '/js/departments/department.edit.html',
+                controllerAs: 'vm'
+            })
+
 
             //.when('/register', {
             //    controller: 'RegisterController',
@@ -121,10 +127,10 @@
     run.$inject = ['$rootScope', '$location', '$window', '$http'];
     function run($rootScope, $location, $window, $http) {
         // keep user logged in after page refresh
-        var currentUser = $window.localStorage.getItem('currentUser') || {};
-        currentUser = JSON.parse(currentUser);
+        var currentUser = $window.localStorage.getItem('currentUser') || null;
 
         if (currentUser) {
+            currentUser = JSON.parse(currentUser);
             $http.defaults.headers.common['Authorization'] = 'Bearer ' + currentUser.BearerToken;
         }
 

@@ -131,6 +131,8 @@
     <Content Include="js\config\auth.interceptor.js" />
     <Content Include="js\departments\department.create.controller.js" />
     <Content Include="js\departments\department.create.html" />
+    <Content Include="js\departments\department.edit.controller.js" />
+    <Content Include="js\departments\department.edit.html" />
     <Content Include="js\departments\department.list.controllers.js" />
     <Content Include="js\departments\department.list.html" />
     <Content Include="js\hello\controllers.js" />
