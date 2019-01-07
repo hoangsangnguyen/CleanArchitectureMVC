@@ -112,7 +112,23 @@
                 controllerAs: 'vm'
             })
 
+            .when('/classes', {
+                controller: 'ClassListController',
+                templateUrl: '/js/class/class.list.html',
+                controllerAs: 'vm'
+            })
 
+            .when('/classes/new', {
+                controller: 'ClassCreateController',
+                templateUrl: '/js/class/class.create.html',
+                controllerAs: 'vm'
+            })
+
+            .when('/classes/:Id', {
+                controller: 'ClassEditController',
+                templateUrl: '/js/class/class.edit.html',
+                controllerAs: 'vm'
+            })
             //.when('/register', {
             //    controller: 'RegisterController',
             //    templateUrl: 'register/register.view.html',

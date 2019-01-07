@@ -130,152 +130,152 @@
     ]);
 
 
-    //app.controller('createClassCtrl', ['$scope', '$http', '$location', '$window',
-    //    function ($scope, $http, $location, $window) {
-    //        $(document).ready(function () {
-    //            var token = $window.localStorage.getItem('token');
-    //            if (token === null) {
-    //                $location.path("/auth/login");
-    //                return;
-    //            }
+    app.controller('createClassCtrl', ['$scope', '$http', '$location', '$window',
+        function ($scope, $http, $location, $window) {
+            $(document).ready(function () {
+                var token = $window.localStorage.getItem('token');
+                if (token === null) {
+                    $location.path("/auth/login");
+                    return;
+                }
 
-    //            initView();
-    //        });
+                initView();
+            });
 
-    //        function initView() {
-    //            $("#departmentId").kendoComboBox({
-    //                dataTextField: "Name",
-    //                dataValueField: "Id",
-    //                filter: "contains",
-    //                autoBind: true,
-    //                dataSource: {
-    //                    dataType: "odata",
-    //                    serverFiltering: true,
-    //                    transport: {
-    //                        read: {
-    //                            url: rootUrl + "/departments/viewmodel",
-    //                            dataType: "json",
-    //                            headers: { 'Authorization': $window.localStorage.getItem('token') },
-    //                        }
-    //                    }
-    //                }
-    //            });
-    //        }
+            function initView() {
+                $("#departmentId").kendoComboBox({
+                    dataTextField: "Name",
+                    dataValueField: "Id",
+                    filter: "contains",
+                    autoBind: true,
+                    dataSource: {
+                        dataType: "odata",
+                        serverFiltering: true,
+                        transport: {
+                            read: {
+                                url: rootUrl + "/departments/viewmodel",
+                                dataType: "json",
+                                headers: { 'Authorization': $window.localStorage.getItem('token') },
+                            }
+                        }
+                    }
+                });
+            }
 
-    //        $scope.onSave = function () {
-    //            $http({
-    //                method: 'POST',
-    //                url: rootUrl + '/classes',
-    //                data: JSON.stringify({ Name: $scope.name, DepartmentId: $("#departmentId").data("kendoComboBox").value() }),
-    //                headers: { 'Authorization': $window.localStorage.getItem('token') }
-    //            })
-    //                .then(function (response) {
-    //                    $location.path("/class");
-    //                }).catch(function (e) {
-    //                    console.log('Error: ', e);
-    //                    throw e;
-    //                }).finally(function () {
-    //                });
-    //        }
+            $scope.onSave = function () {
+                $http({
+                    method: 'POST',
+                    url: rootUrl + '/classes',
+                    data: JSON.stringify({ Name: $scope.name, DepartmentId: $("#departmentId").data("kendoComboBox").value() }),
+                    headers: { 'Authorization': $window.localStorage.getItem('token') }
+                })
+                    .then(function (response) {
+                        $location.path("/class");
+                    }).catch(function (e) {
+                        console.log('Error: ', e);
+                        throw e;
+                    }).finally(function () {
+                    });
+            }
 
-    //        $scope.onBack = function () {
-    //            $location.path("/class");
-    //        }
-    //    }
-    //]);
+            $scope.onBack = function () {
+                $location.path("/class");
+            }
+        }
+    ]);
 
-    //app.controller('editClassCtrl', ['$scope', '$http', '$location', '$routeParams', '$window',
-    //    function ($scope, $http, $location, $routeParams, $window) {
-    //        var id = $routeParams.id;
-    //        $(document).ready(function () {
-    //            var token = $window.localStorage.getItem('token');
-    //            if (token === null) {
-    //                $location.path("/auth/login");
-    //                return;
-    //            }
+    app.controller('editClassCtrl', ['$scope', '$http', '$location', '$routeParams', '$window',
+        function ($scope, $http, $location, $routeParams, $window) {
+            var id = $routeParams.id;
+            $(document).ready(function () {
+                var token = $window.localStorage.getItem('token');
+                if (token === null) {
+                    $location.path("/auth/login");
+                    return;
+                }
 
-    //            // update view by role name
-    //            var role = JSON.parse($window.localStorage.getItem('userInfo')).Role;
-    //            var roleName = JSON.parse(role).SystemName;
-    //            if (roleName !== 'admin' && roleName !== 'manager') {
-    //                document.getElementById('btnSave').style.display = "none";
-    //                document.getElementById('btnDelete').style.display = "none";
-    //            }
+                // update view by role name
+                var role = JSON.parse($window.localStorage.getItem('userInfo')).Role;
+                var roleName = JSON.parse(role).SystemName;
+                if (roleName !== 'admin' && roleName !== 'manager') {
+                    document.getElementById('btnSave').style.display = "none";
+                    document.getElementById('btnDelete').style.display = "none";
+                }
 
-    //            initView();
-    //        });
+                initView();
+            });
 
 
-    //        function initView() {
-    //            $("#departmentId").kendoComboBox({
-    //                dataTextField: "Name",
-    //                dataValueField: "Id",
-    //                filter: "contains",
-    //                autoBind: true,
-    //                dataSource: {
-    //                    dataType: "odata",
-    //                    serverFiltering: true,
-    //                    transport: {
-    //                        read: {
-    //                            url: rootUrl + "/departments/viewmodel",
-    //                            dataType: "json",
-    //                            headers: { 'Authorization': $window.localStorage.getItem('token') },
-    //                        }
-    //                    }
-    //                }
-    //            });
+            function initView() {
+                $("#departmentId").kendoComboBox({
+                    dataTextField: "Name",
+                    dataValueField: "Id",
+                    filter: "contains",
+                    autoBind: true,
+                    dataSource: {
+                        dataType: "odata",
+                        serverFiltering: true,
+                        transport: {
+                            read: {
+                                url: rootUrl + "/departments/viewmodel",
+                                dataType: "json",
+                                headers: { 'Authorization': $window.localStorage.getItem('token') },
+                            }
+                        }
+                    }
+                });
 
-    //            $http({
-    //                method: 'GET',
-    //                url: rootUrl + '/classes/' + id,
-    //                headers: { 'Authorization': $window.localStorage.getItem('token') },
-    //            })
-    //                .then(function (response) {
-    //                    $scope.name = response.data.Results.Name;
-    //                    $("#departmentId").data("kendoComboBox").value(response.data.Results.DepartmentId);
-    //                }).catch(function (e) {
-    //                    console.log('Error: ', e);
-    //                    throw e;
-    //                }).finally(function () {
-    //                });
-    //        }
+                $http({
+                    method: 'GET',
+                    url: rootUrl + '/classes/' + id,
+                    headers: { 'Authorization': $window.localStorage.getItem('token') },
+                })
+                    .then(function (response) {
+                        $scope.name = response.data.Results.Name;
+                        $("#departmentId").data("kendoComboBox").value(response.data.Results.DepartmentId);
+                    }).catch(function (e) {
+                        console.log('Error: ', e);
+                        throw e;
+                    }).finally(function () {
+                    });
+            }
 
-    //        $scope.onSave = function () {
-    //            $http({
-    //                method: 'PUT',
-    //                url: rootUrl + '/classes',
-    //                data: JSON.stringify({ Id: id, Name: $scope.name, DepartmentId: $("#departmentId").data("kendoComboBox").value() }),
-    //                headers: { 'Authorization': $window.localStorage.getItem('token') },
-    //            })
-    //                .then(function (response) {
-    //                    $location.path("/class");
-    //                }).catch(function (e) {
-    //                    console.log('Error: ', e);
-    //                    throw e;
-    //                }).finally(function () {
-    //                });
-    //        }
+            $scope.onSave = function () {
+                $http({
+                    method: 'PUT',
+                    url: rootUrl + '/classes',
+                    data: JSON.stringify({ Id: id, Name: $scope.name, DepartmentId: $("#departmentId").data("kendoComboBox").value() }),
+                    headers: { 'Authorization': $window.localStorage.getItem('token') },
+                })
+                    .then(function (response) {
+                        $location.path("/class");
+                    }).catch(function (e) {
+                        console.log('Error: ', e);
+                        throw e;
+                    }).finally(function () {
+                    });
+            }
 
-    //        $scope.onBack = function () {
-    //            $location.path("/class");
-    //        }
+            $scope.onBack = function () {
+                $location.path("/class");
+            }
 
-    //        $scope.onDelete = function () {
-    //            $http({
-    //                method: 'DELETE',
-    //                url: rootUrl + '/classes/' + id,
-    //                headers: { 'Authorization': $window.localStorage.getItem('token') },
-    //            })
-    //                .then(function (response) {
-    //                    $location.path("/class");
-    //                }).catch(function (e) {
-    //                    console.log('Error: ', e);
-    //                    throw e;
-    //                }).finally(function () {
-    //                });
-    //        }
+            $scope.onDelete = function () {
+                $http({
+                    method: 'DELETE',
+                    url: rootUrl + '/classes/' + id,
+                    headers: { 'Authorization': $window.localStorage.getItem('token') },
+                })
+                    .then(function (response) {
+                        $location.path("/class");
+                    }).catch(function (e) {
+                        console.log('Error: ', e);
+                        throw e;
+                    }).finally(function () {
+                    });
+            }
 
-    //    }
-    //]);
+        }
+    ]);
 })();
 

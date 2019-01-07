@@ -1,0 +1,1279 @@
+{
+	"info": {
+		"_postman_id": "ded5c1b7-5252-40f0-b291-3a12688122be",
+		"name": "StudentManagement",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Departments",
+			"item": [
+				{
+					"name": "Get all",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6ImZLdSJ9.eyJpYXQiOjE1NDY4MjUzMzIsImV4cCI6MTU0ODAzNDkzMiwicHJlZmVycmVkX3VzZXJuYW1lIjoidXl0aW4iLCJyb2xlcyI6WyJzdHVkZW50Il19.dCujle3JXnMDzi4N0VfW1zQGiPbNrSGPT2nb2-lbfBfqmk5nSiHAcbQZGE9dECOHmkVAAPmy9zJ11M9uxCNbxXne9EgGGWluC6rSXmiSDHrxm_jm0SkxiG6uXW39RnIdMNuXL8ZDcpctbYXE5-JDN_dMvPAgISM5Pdo137aOZqLj2uYzuqIxjYXHcu4PSyiW1vZwfgWlBuN-INi06nI4V6hDJ3kKBAt_9tcsoIKl1lI2ZSBu5hFfnHh7PmRwxYqNoItFPUY04HzcAlvb4aJIXaUPtiZIwocUqyUeBMyUsWqbiVAPC2hK5g6sYMKbzrT1e2Tb0ij1J8NcGCFyOCOlpA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{student}}/departments/8",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"departments",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create department",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6InhyZyJ9.eyJpYXQiOjE1NDY0MTUyOTgsImV4cCI6MTU0NzYyNDg5OCwiZ2l2ZW5fbmFtZSI6IkPhuqduIiwiZmFtaWx5X25hbWUiOiJDw7kiLCJuYW1lIjoiQ-G6p24gVsSDbiBDw7kiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJjdWNhbiIsInJvbGVzIjpbIm1hbmFnZXIiXX0.UKhqkIE99Feg9zZbVLnP_ZUyW4scGIIDo9M4dTY9fVSbi4u8CrBGL0sLr1uOwhE-CvCKAAhrHc_Jz6ov45qfCtqPlTBVp1IMC9qzFy4bfUblfCUqIvHhdKHXS_pLIUnTTLV5MRgn-yYSmvNwu2GGWx51Nu-LRr2orXbFcpnIxpg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\" : \"Economics\"\n}"
+						},
+						"url": {
+							"raw": "{{student}}/departments",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"departments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update department",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Id\" : 8,\n\t\"Name\" : \"Information technology\"\n}"
+						},
+						"url": {
+							"raw": "{{student}}/departments",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"departments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Department",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Id\" : 9\n}"
+						},
+						"url": {
+							"raw": "{{student}}/departments",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"departments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get department viewmodel",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{student}}/departments/viewmodel",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"departments",
+								"viewmodel"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Class",
+			"item": [
+				{
+					"name": "Get all",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{student}}/classes?name=1321",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"classes"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "1321"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create class",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Name\" : \"D14CQCP02\",\n\t\"DepartmentId\" : 8\n}"
+						},
+						"url": {
+							"raw": "{{student}}/classes",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"classes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update class",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Name\": \"D14CQCP01\",\n    \"Id\": 14\n}"
+						},
+						"url": {
+							"raw": "{{student}}/classes",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"classes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete class",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Id\" : 13\n}"
+						},
+						"url": {
+							"raw": "{{student}}/classes",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"classes"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Student",
+			"item": [
+				{
+					"name": "Get all",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{student}}/students",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Student",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"FirstName\" : \"Tran\",\n\t\"LastName\" : \"Anh\",\n\t\"ClassId\" : 14,\n\t\"StudentCode\" : \"N04\",\n\t \"DateOfBirth\": \"1996-04-24\"\n\t\n}"
+						},
+						"url": {
+							"raw": "{{student}}/students",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update student",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t \"Id\": 3,\n\t \"DateOfBirth\": \"1997-23-09\"\n}"
+						},
+						"url": {
+							"raw": "{{student}}/students",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Student",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Id\" : 2\n}"
+						},
+						"url": {
+							"raw": "http://localhost/ServiceStack.API/students",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"ServiceStack.API",
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Student By Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6ImZLdSJ9.eyJpYXQiOjE1NDY1MDIyODgsImV4cCI6MTU0NzcxMTg4OCwicHJlZmVycmVkX3VzZXJuYW1lIjoic2FuZ25ndXllbiIsInJvbGVzIjpbImFkbWluIl19.HAe0BiSGZyXx8LvalUk-Q5h38diQEQ_blhiXcd3KAJ7-D1Mm8AAUorzJ-PVVUcXhsh9u3TnUtnOiO6XHDOeNKyS2YjNT5WHchYiyDm-_PH2fkhTO4tWfMvUfTrIx4_uZO-YPWaYA0cTbtiPsyrfwIwdDHz2016hwI6ur7x3YUtFYf6QNE6b_4tNXjVnrdcSi92Cd33EWn8xGuskBbsZVQcg9J7P1W6oBJEosW87GvWlekdL7_p7I-5YlTABTs91JoZL-0W7PTZp_-gBSch4PJpBppwagHqFuQFkU_gqOVirBwxpx8L57UHh72TvgsZ5iLdDZHiKKXHyMZvpRtIzVow",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{student}}/students/1",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"students",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get viewmodel",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{student}}/students/viewmodel",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"students",
+								"viewmodel"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Teacher",
+			"item": [
+				{
+					"name": "Get all",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6ImZLdSJ9.eyJpYXQiOjE1NDY0Nzk5MzcsImV4cCI6MTU0NzY4OTUzNywicHJlZmVycmVkX3VzZXJuYW1lIjoiY3VjYW4ifQ.F-_sdRCq9Pf8IKqi3ZlcsZdyfrpK3hAjhwjvsesSeOtxYJGR5_F03YDbm1vFfW7awo7Ay2Rj-z0wcGYqQTVn2d5hSfgv2xaiX8CLOWVtc92LxPVk1YNv7oXQU_fASSgo_MSkStfjiItgEx4D7AujENiMaIa0l3kGTfjN-vSY0g_hhxCm7eRwJPqhQenKP9N_HnS9oVLO-h6w8kqSAhKbF67hNs9bWopz6ZPQXgFozyqeDK6JDR-5ClOjdUSce08QgUgpvcCflJOFboyWozgNYCByBtRkh5jJ8lz3L17c6-qx3EPE2v3T7MDGzyRBG1eTYqbKyEA5NydpRMm4oD77SA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{student}}/teachers",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"teachers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create teacher",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"FirstName\" : \"Nguyen\",\n\t\"LastName\" : \"Thi Cê\",\n\t\"DepartmentId\" : 8,\n\t\"IsManager\" : false\n}"
+						},
+						"url": {
+							"raw": "{{student}}/teachers",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"teachers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Teacher",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Id\" : 3,\n\t \"DepartmentId\": 8\n}"
+						},
+						"url": {
+							"raw": "{{student}}/teachers",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"teachers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete teacher",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Id\" : 4\t\n}"
+						},
+						"url": {
+							"raw": "{{student}}/teachers",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"teachers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6ImZLdSJ9.eyJpYXQiOjE1NDY0ODYwMDcsImV4cCI6MTU0NzY5NTYwNywicHJlZmVycmVkX3VzZXJuYW1lIjoic2FuZ25ndXllbiIsInJvbGVzIjpbImFkbWluIl19.D4qrA8TBGlruUOYNgWgUnAnjekDxizYXckET4YQV9ArJ-Jv1fpYS5yGeCZA0E1LQNFEAWZVtV_ynqNImdh4CfzJCyXpLTY06g8_NBWPVTbrPxa-fiZLPBebeHAodUyjdSh4k3lZ2Dtg9qwcJuoKUuQdZMAiUPibdLs8ds8oH2Z42c_glb_shhqj05_A-mZb97yeaad9tUDHv9iAretP-zPGtDW0mUn1EKXzZn5qCqiv_hr9L0RhX52owkDhWxA2FwUV4EQ0pXGHsusQ0OYDrdy5hX-Ec-EW6yDqNTVPt9VkNGpWiKJx8-GYC-8PSeYlXjXh6nnKwnt-MfaUTao7ekA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{student}}/teachers/3",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"teachers",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Subject",
+			"item": [
+				{
+					"name": "Get all",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{student}}/subjects",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"subjects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create subject",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Name\" : \"C++\"\n}"
+						},
+						"url": {
+							"raw": "{{student}}/subjects",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"subjects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update subject",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Id\" : 1,\n\t\"Name\" : \"Java\"\n}"
+						},
+						"url": {
+							"raw": "{{student}}/subjects",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"subjects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete subject",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Id\" : 1\n}"
+						},
+						"url": {
+							"raw": "{{student}}/subjects",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"subjects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get ViewModel",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{student}}/subjects/viewmodel",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"subjects",
+								"viewmodel"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Score",
+			"item": [
+				{
+					"name": "Get all",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{student}}/scores",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"scores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create score",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"StudentId\" : 1,\n\t\"SubjectId\" : 2,\n\t\"Mark\" : 10\n}"
+						},
+						"url": {
+							"raw": "{{student}}/scores",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"scores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update score",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Id\" : 1,\n\t\"Mark\" : 9.5\n}"
+						},
+						"url": {
+							"raw": "{{student}}/scores",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"scores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete score",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Id\" : 1\n}"
+						},
+						"url": {
+							"raw": "{{student}}/scores",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"scores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{student}}/scores/1/2",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"scores",
+								"1",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"provider\" : \"credentials\",\n\t\"UserName\" : \"uytin\",\n\t\"Password\" : 123456\n}"
+						},
+						"url": {
+							"raw": "{{student}}/auth/login",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"FirstName\" : \"Cần\",\n\t\"LastName\" : \"Cù\",\n\t\"DisplayName\" : \"Cần Văn Cù\",\n\t\"UserName\" : \"cucan\",\n\t\"Password\" : 123456,\n\t\"RoleId\" : \"manager\"\n}"
+						},
+						"url": {
+							"raw": "{{student}}/users",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{student}}/users",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User By Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{student}}/users/13",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"users",
+								"13"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update user",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Beaere eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6ImZLdSJ9.eyJpYXQiOjE1NDY1MDUwNzYsImV4cCI6MTU0NzcxNDY3NiwicHJlZmVycmVkX3VzZXJuYW1lIjoidXl0aW4iLCJyb2xlcyI6WyJzdHVkZW50Il19.JDKxEYd3Ico1Xw84ZJboBy8PEAe03_jNsz8rrZmwU9xZdjBPMfuq8ABuuSqUFF-mbBrX7ZmlaafXEiwFV2Y0w5fVg_AoOhM9YnGRnw2621O0MuoLxtxz_jh8exiYdtQHtnFo00qDfwxRrIPYMLqJxmlchk2WqfSEtnGm9K8yiGyQHMkx1iXGegM1QTXtXuookVktpiepB3QmMknWdjwKo5uFTJYY4a4UjwQTYyUkUOcmZ5VNYA2hpWaLyRo65nf_tKVplgXlonj9jntdhcYhHWXN1Fj4NM5JBcLwcQijgbTxzw4NGzp5dMqskSrm3uLYugOcZpd_G3PsZNuETFAtPg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Id\" : 15,\n\t\"FirstName\" : \"Uy\"\n}"
+						},
+						"url": {
+							"raw": "{{student}}/users",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update role",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Id\" : 15,\n\t\"RoleId\" : \"manager\"\n}"
+						},
+						"url": {
+							"raw": "{{student}}/users/updaterole",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"users",
+								"updaterole"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Roles",
+			"item": [
+				{
+					"name": "Get all",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6ImZLdSJ9.eyJpYXQiOjE1NDY4MjUzMzIsImV4cCI6MTU0ODAzNDkzMiwicHJlZmVycmVkX3VzZXJuYW1lIjoidXl0aW4iLCJyb2xlcyI6WyJzdHVkZW50Il19.dCujle3JXnMDzi4N0VfW1zQGiPbNrSGPT2nb2-lbfBfqmk5nSiHAcbQZGE9dECOHmkVAAPmy9zJ11M9uxCNbxXne9EgGGWluC6rSXmiSDHrxm_jm0SkxiG6uXW39RnIdMNuXL8ZDcpctbYXE5-JDN_dMvPAgISM5Pdo137aOZqLj2uYzuqIxjYXHcu4PSyiW1vZwfgWlBuN-INi06nI4V6hDJ3kKBAt_9tcsoIKl1lI2ZSBu5hFfnHh7PmRwxYqNoItFPUY04HzcAlvb4aJIXaUPtiZIwocUqyUeBMyUsWqbiVAPC2hK5g6sYMKbzrT1e2Tb0ij1J8NcGCFyOCOlpA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{student}}/roles",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"roles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Role",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6ImZLdSJ9.eyJpYXQiOjE1NDY0ODk1MDQsImV4cCI6MTU0NzY5OTEwNCwicHJlZmVycmVkX3VzZXJuYW1lIjoic2FuZ25ndXllbiIsInJvbGVzIjpbImFkbWluIl19.D-LjUb_lapOV4LYWV53Jq6oAPXI398t6_ms_Duw_rC2dbBKdaOpKPjwUZ0rRypUWGnYRIJVenL0-Rw24GXCbpGGS3p9VxBtYV-ILJQSYpSJploY2Ri9G_P9wHFfaO8RHEbf21PaSoRSRoktYLoOdSVNXuFA1IEWcMURzyFIXVRqnjaHPlyCyC_4CO5tgdxoNw0kFGPIEfalDyDcEi0QEWkCobd1dfVf0h8B9OZilQLeD1RNt6Ot9w1j6MfAgkkE7O5_FjgaHDXgZ-uyluc5YPXxwNS21266ih9_48F_hQCD0uwYzdyfsqPwPVGQ9VWECHu01TSEBLjX5npK4m_FsdQ",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"SystemName\": \"test\",\n    \"Display\": \"Test\"\n}"
+						},
+						"url": {
+							"raw": "{{student}}/roles",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"roles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update role",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6ImZLdSJ9.eyJpYXQiOjE1NDY0ODk1MDQsImV4cCI6MTU0NzY5OTEwNCwicHJlZmVycmVkX3VzZXJuYW1lIjoic2FuZ25ndXllbiIsInJvbGVzIjpbImFkbWluIl19.D-LjUb_lapOV4LYWV53Jq6oAPXI398t6_ms_Duw_rC2dbBKdaOpKPjwUZ0rRypUWGnYRIJVenL0-Rw24GXCbpGGS3p9VxBtYV-ILJQSYpSJploY2Ri9G_P9wHFfaO8RHEbf21PaSoRSRoktYLoOdSVNXuFA1IEWcMURzyFIXVRqnjaHPlyCyC_4CO5tgdxoNw0kFGPIEfalDyDcEi0QEWkCobd1dfVf0h8B9OZilQLeD1RNt6Ot9w1j6MfAgkkE7O5_FjgaHDXgZ-uyluc5YPXxwNS21266ih9_48F_hQCD0uwYzdyfsqPwPVGQ9VWECHu01TSEBLjX5npK4m_FsdQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t \"SystemName\": \"test\",\n     \"Display\": \"Test1\"\n}"
+						},
+						"url": {
+							"raw": "{{student}}/roles",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"roles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get role by systemname",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6ImZLdSJ9.eyJpYXQiOjE1NDY0ODk1MDQsImV4cCI6MTU0NzY5OTEwNCwicHJlZmVycmVkX3VzZXJuYW1lIjoic2FuZ25ndXllbiIsInJvbGVzIjpbImFkbWluIl19.D-LjUb_lapOV4LYWV53Jq6oAPXI398t6_ms_Duw_rC2dbBKdaOpKPjwUZ0rRypUWGnYRIJVenL0-Rw24GXCbpGGS3p9VxBtYV-ILJQSYpSJploY2Ri9G_P9wHFfaO8RHEbf21PaSoRSRoktYLoOdSVNXuFA1IEWcMURzyFIXVRqnjaHPlyCyC_4CO5tgdxoNw0kFGPIEfalDyDcEi0QEWkCobd1dfVf0h8B9OZilQLeD1RNt6Ot9w1j6MfAgkkE7O5_FjgaHDXgZ-uyluc5YPXxwNS21266ih9_48F_hQCD0uwYzdyfsqPwPVGQ9VWECHu01TSEBLjX5npK4m_FsdQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{student}}/roles/test",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"roles",
+								"test"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete role by systemname",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6ImZLdSJ9.eyJpYXQiOjE1NDY0ODk1MDQsImV4cCI6MTU0NzY5OTEwNCwicHJlZmVycmVkX3VzZXJuYW1lIjoic2FuZ25ndXllbiIsInJvbGVzIjpbImFkbWluIl19.D-LjUb_lapOV4LYWV53Jq6oAPXI398t6_ms_Duw_rC2dbBKdaOpKPjwUZ0rRypUWGnYRIJVenL0-Rw24GXCbpGGS3p9VxBtYV-ILJQSYpSJploY2Ri9G_P9wHFfaO8RHEbf21PaSoRSRoktYLoOdSVNXuFA1IEWcMURzyFIXVRqnjaHPlyCyC_4CO5tgdxoNw0kFGPIEfalDyDcEi0QEWkCobd1dfVf0h8B9OZilQLeD1RNt6Ot9w1j6MfAgkkE7O5_FjgaHDXgZ-uyluc5YPXxwNS21266ih9_48F_hQCD0uwYzdyfsqPwPVGQ9VWECHu01TSEBLjX5npK4m_FsdQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{student}}/roles/test",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"roles",
+								"test"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get role view model",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6ImZLdSJ9.eyJpYXQiOjE1NDY0Nzk5MzcsImV4cCI6MTU0NzY4OTUzNywicHJlZmVycmVkX3VzZXJuYW1lIjoiY3VjYW4ifQ.F-_sdRCq9Pf8IKqi3ZlcsZdyfrpK3hAjhwjvsesSeOtxYJGR5_F03YDbm1vFfW7awo7Ay2Rj-z0wcGYqQTVn2d5hSfgv2xaiX8CLOWVtc92LxPVk1YNv7oXQU_fASSgo_MSkStfjiItgEx4D7AujENiMaIa0l3kGTfjN-vSY0g_hhxCm7eRwJPqhQenKP9N_HnS9oVLO-h6w8kqSAhKbF67hNs9bWopz6ZPQXgFozyqeDK6JDR-5ClOjdUSce08QgUgpvcCflJOFboyWozgNYCByBtRkh5jJ8lz3L17c6-qx3EPE2v3T7MDGzyRBG1eTYqbKyEA5NydpRMm4oD77SA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{student}}/roles/viewmodel",
+							"host": [
+								"{{student}}"
+							],
+							"path": [
+								"roles",
+								"viewmodel"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

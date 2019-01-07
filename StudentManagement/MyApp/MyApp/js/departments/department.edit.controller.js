@@ -19,7 +19,6 @@
 
             DepartmentService.GetById($routeParams.id).then(function (response) {
                 $scope.data = response.Results;
-                console.log($scope.data);
             }, function (error) {
                 alert('Get department by id failed');
             });

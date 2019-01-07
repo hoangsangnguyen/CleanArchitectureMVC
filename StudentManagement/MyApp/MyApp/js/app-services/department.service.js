@@ -14,6 +14,7 @@
         service.Create = Create;
         service.Update = Update;
         service.Delete = Delete;
+        service.GetViewModels = GetViewModels;
 
         return service;
 
@@ -41,6 +42,9 @@
             return $http.delete(AppConstants.api + '/departments/' + id).then(handleSuccess, handleError('Error deleting department'));
         }
 
+        function GetViewModels() {
+            return $http.get(AppConstants.api + '/departments/viewmodel').then(handleSuccess, handleError('Error getting department'));
+        }
         // private functions
 
         function handleSuccess(res) {

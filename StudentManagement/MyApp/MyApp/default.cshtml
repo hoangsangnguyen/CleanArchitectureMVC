@@ -51,7 +51,7 @@
             <div class="navbar-collapse collapse" id="menu">
                 <ul class="nav navbar-nav">
                     <li ng-class="{ active: IsRouteActive('/departments')}"><a href="/departments">Departments</a></li>
-                    <li ng-class="{ active: IsRouteActive('/class')}"><a href="/class">Class</a></li>
+                    <li ng-class="{ active: IsRouteActive('/classes')}"><a href="/classes">Class</a></li>
                     <li ng-class="{ active: IsRouteActive('/teachers')}"><a href="/teachers">Teachers</a></li>
                     <li ng-class="{ active: IsRouteActive('/students')}"><a href="/students">Students</a></li>
                     <li ng-class="{ active: IsRouteActive('/subjects')}"><a href="/subjects">Subjects</a></li>
@@ -96,6 +96,8 @@
     <script src="~/js/app-services/user.service.js"></script>
     <script src="~/js/app-services/flash.service.js"></script>
     <script src="~/js/app-services/department.service.js"></script>
+    <script src="~/js/app-services/class.service.js"></script>
+
 
 
     <script src="~/js/navigation/controllers.js"></script>
@@ -104,11 +106,16 @@
     <script src="~/js/departments/department.list.controllers.js"></script>
     <script src="~/js/departments/department.create.controller.js"></script>
     <script src="~/js/departments/department.edit.controller.js"></script>
+    <script src="~/js/class/class.list.controller.js"></script>
+    <script src="~/js/class/class.create.controller.js"></script>
+    <script src="~/js/class/class.edit.controller.js"></script>
 
 
 
     <script src="/js/kendo/jquery.min.js"></script>
     <script src="/js/kendo/kendo.all.min.js"></script>
+    <script src="~/js/kendo/angular.min.js"></script>
+
     <script src="http://cdn.kendostatic.com/2014.1.318/js/kendo.all.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
 
