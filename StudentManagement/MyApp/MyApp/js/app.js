@@ -85,7 +85,7 @@
 
     //]);
 
-    angular.module('helloApp', ['ngRoute']).config(config)
+    angular.module('helloApp', ['ngRoute', 'kendo.directives']).config(config)
         .run(run)
         .constant('AppConstants', {
             api: 'http://localhost/Backend',
@@ -162,6 +162,23 @@
                 controllerAs: 'vm'
             })
 
+            .when('/students', {
+                controller: 'StudentListController',
+                templateUrl: '/js/students/student.list.html',
+                controllerAs: 'vm'
+            })
+
+            .when('/students/new', {
+                controller: 'StudentCreateController',
+                templateUrl: '/js/students/student.create.html',
+                controllerAs: 'vm'
+            })
+
+            .when('/students/:Id', {
+                controller: 'StudentEditController',
+                templateUrl: '/js/students/student.edit.html',
+                controllerAs: 'vm'
+            })
             //.when('/register', {
             //    controller: 'RegisterController',
             //    templateUrl: 'register/register.view.html',

@@ -116,6 +116,7 @@
     <Content Include="js\app-services\class.service.js" />
     <Content Include="js\app-services\department.service.js" />
     <Content Include="js\app-services\flash.service.js" />
+    <Content Include="js\app-services\student.service.js" />
     <Content Include="js\app-services\teacher.service.js" />
     <Content Include="js\app-services\user.service.js" />
     <Content Include="js\app.js" />
@@ -1190,6 +1191,12 @@
     <Content Include="js\services\jwt.service.js" />
     <Content Include="js\services\user.service.js" />
     <Content Include="js\students\controllers.js" />
+    <Content Include="js\students\student.create.controller.js" />
+    <Content Include="js\students\student.create.html" />
+    <Content Include="js\students\student.edit.controller.js" />
+    <Content Include="js\students\student.edit.html" />
+    <Content Include="js\students\student.list.controller.js" />
+    <Content Include="js\students\student.list.html" />
     <Content Include="js\subjects\controllers.js" />
     <Content Include="js\teachers\controllers.js" />
     <Content Include="js\teachers\teacher.create.controller.js" />

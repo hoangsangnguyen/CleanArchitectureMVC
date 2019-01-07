@@ -79,7 +79,7 @@
                         width: 100,
                         headerAttributes: { style: "text-align:center" },
                         attributes: { style: "text-align:center" },
-                        template: '<a class="btn btn-default" href="/teachers/#=Id#"><i class="fa fa-pencil"></i>Detail</a>'
+                        template: '<a class="btn btn-default" href="/departments/#=Id#"><i class="fa fa-pencil"></i>Detail</a>'
                     }]
             });
         }
