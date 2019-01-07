@@ -179,6 +179,24 @@
                 templateUrl: '/js/students/student.edit.html',
                 controllerAs: 'vm'
             })
+
+            .when('/subjects', {
+                controller: 'SubjectListController',
+                templateUrl: '/js/subjects/subject.list.html',
+                controllerAs: 'vm'
+            })
+
+            .when('/subjects/new', {
+                controller: 'SubjectCreateController',
+                templateUrl: '/js/subjects/subject.create.html',
+                controllerAs: 'vm'
+            })
+
+            .when('/subjects/:Id', {
+                controller: 'SubjectEditController',
+                templateUrl: '/js/subjects/subject.edit.html',
+                controllerAs: 'vm'
+            })
             //.when('/register', {
             //    controller: 'RegisterController',
             //    templateUrl: 'register/register.view.html',

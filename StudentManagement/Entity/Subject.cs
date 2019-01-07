@@ -11,7 +11,7 @@ namespace Entity
     {
         [Key]
         public int Id { get; set; }
-
+        [Required]
         public string Name { get; set; }
 
         public virtual ICollection<Score> Scores { get; set; }
