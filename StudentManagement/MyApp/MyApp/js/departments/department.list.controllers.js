@@ -61,17 +61,15 @@
                             .then(function (departments) {
                                 e.success(departments.Results);
                             });
-                    },
-                    batch: true,
-                    pageSize: 1,
-                }
+                    }
+                },
+                batch: true,
+                pageSize: 20,
             });
+
             $("#grid").kendoGrid({
                 dataSource: dataSource,
-                pageable: {
-                    refresh: true,
-                    pageSizes: true,
-                },
+                pageable: true,
                 height: 550,
                 columns: [
                     { field: "Name", title: "Name" },
@@ -81,7 +79,7 @@
                         width: 100,
                         headerAttributes: { style: "text-align:center" },
                         attributes: { style: "text-align:center" },
-                        template: '<a class="btn btn-default" href="/departments/#=Id#"><i class="fa fa-pencil"></i>Detail</a>'
+                        template: '<a class="btn btn-default" href="/teachers/#=Id#"><i class="fa fa-pencil"></i>Detail</a>'
                     }]
             });
         }

@@ -97,22 +97,19 @@
                 dataType: "json",
                 transport: {
                     read: function (e) {
-                        console.log($scope.searchData);
                         return ClassService.GetAll($scope.searchData)
                             .then(function (classes) {
                                 e.success(classes.Results);
                             });
-                    },
-                    batch: true,
-                    pageSize: 1,
-                }
+                    }
+                },
+                batch: true,
+                pageSize: 20,
             });
+
             $("#grid").kendoGrid({
                 dataSource: dataSource,
-                pageable: {
-                    refresh: true,
-                    pageSizes: true,
-                },
+                pageable: true,
                 height: 550,
                 columns: [
                     { field: "Name", title: "Name" },

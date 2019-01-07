@@ -69,9 +69,23 @@
 (function () {
     'use strict';
 
-    angular
-        .module('helloApp', ['ngRoute'])
-        .config(config)
+    //var module = angular.module('helloApp', [
+    //    'ngRoute',
+    //    'HomeController',
+    //    'LoginController',
+    //    'DepartmentListController',
+    //    'DepartmentCreateController',
+    //    'DepartmentEditController',
+    //    'ClassListController',
+    //    'ClassCreateController',
+    //    'ClassEditController',
+    //    'TeacherListController',
+    //    'TeacherCreateController',
+    //    'TeacherEditController',
+
+    //]);
+
+    angular.module('helloApp', ['ngRoute']).config(config)
         .run(run)
         .constant('AppConstants', {
             api: 'http://localhost/Backend',
@@ -129,6 +143,25 @@
                 templateUrl: '/js/class/class.edit.html',
                 controllerAs: 'vm'
             })
+
+            .when('/teachers', {
+                controller: 'TeacherListController',
+                templateUrl: '/js/teachers/teacher.list.html',
+                controllerAs: 'vm'
+            })
+
+            .when('/teachers/new', {
+                controller: 'TeacherCreateController',
+                templateUrl: '/js/teachers/teacher.create.html',
+                controllerAs: 'vm'
+            })
+
+            .when('/teachers/:Id', {
+                controller: 'TeacherEditController',
+                templateUrl: '/js/teachers/teacher.edit.html',
+                controllerAs: 'vm'
+            })
+
             //.when('/register', {
             //    controller: 'RegisterController',
             //    templateUrl: 'register/register.view.html',
