@@ -50,12 +50,20 @@
             });
         }
 
-        $scope.onSearch = function () {
-            var grid = $('#grid').data('kendoGrid');
-            grid.dataSource.page(1); //new search. Set page size to 1
-            grid.dataSource.read();
+        $scope.onSave = function () {
+            $scope.data.DepartmentId = $("#DepartmentId").data("kendoComboBox").value();
+            TeacherService.Create($scope.data).then(
+                function (response) {
+                    $location.path("/teachers");
+                },
+                function (error) {
+                    alert('Create teacher failed');
+                }
+            )
+        }
 
-            return false;
+        $scope.onBack = function () {
+            $location.path("/teachers");
         }
     }
 

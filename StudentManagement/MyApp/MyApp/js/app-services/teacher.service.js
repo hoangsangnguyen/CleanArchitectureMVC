@@ -31,11 +31,11 @@
         }
 
         function Create(teacher) {
-            return $http.post(AppConstants.api + '/teachers', classDto).then(handleSuccess, handleError('Error creating teacher'));
+            return $http.post(AppConstants.api + '/teachers', teacher).then(handleSuccess, handleError('Error creating teacher'));
         }
 
         function Update(teacher) {
-            return $http.put(AppConstants.api + '/teachers', classDto).then(handleSuccess, handleError('Error updating teacher'));
+            return $http.put(AppConstants.api + '/teachers', teacher).then(handleSuccess, handleError('Error updating teacher'));
         }
 
         function Delete(id) {
