@@ -53,7 +53,7 @@
                     width: 100,
                     headerAttributes: { style: "text-align:center" },
                     attributes: { style: "text-align:center" },
-                    template: '<a class="btn btn-default" href="/auth/roles/#=Id#"><i class="fa fa-pencil"></i>Detail</a>'
+                    template: '<a class="btn btn-default" href="/auth/roles/#=SystemName#"><i class="fa fa-pencil"></i>Detail</a>'
                 }]
         };
 

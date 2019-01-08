@@ -246,7 +246,7 @@
                 controllerAs: 'vm'
             })
 
-            .when('/auth/roles/:Id', {
+            .when('/auth/roles/:SystemName', {
                 controller: 'RoleEditController',
                 templateUrl: '/js/auth/roles/role.edit.html',
                 controllerAs: 'vm'

@@ -30,9 +30,8 @@
             )
         }
 
-        $scope.onSearch = function () {
-            $scope.grid.dataSource.read();
-            return false;
+        $scope.onBack = function () {
+            $location.path("/auth/roles");
         }
     }
 
