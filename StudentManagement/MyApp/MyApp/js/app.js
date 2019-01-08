@@ -234,6 +234,24 @@
                 controllerAs: 'vm'
             })
 
+            .when('/auth/roles', {
+                controller: 'RoleListController',
+                templateUrl: '/js/auth/roles/role.list.html',
+                controllerAs: 'vm'
+            })
+
+            .when('/auth/roles/new', {
+                controller: 'RoleCreateController',
+                templateUrl: '/js/auth/roles/role.create.html',
+                controllerAs: 'vm'
+            })
+
+            .when('/auth/roles/:Id', {
+                controller: 'RoleEditController',
+                templateUrl: '/js/auth/roles/role.edit.html',
+                controllerAs: 'vm'
+            })
+
             //.when('/register', {
             //    controller: 'RegisterController',
             //    templateUrl: 'register/register.view.html',
