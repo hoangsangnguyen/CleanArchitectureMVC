@@ -43,7 +43,15 @@
                                     <label class="control-label">Department:</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <input class="form-control" ng-model="data.DepartmentId" id="departmentId" style="width: 100%;" placeholder="Select department...">
+                                    <select kendo-combo-box
+                                            k-placeholder="'Select department..'"
+                                            k-data-text-field="'Name'"
+                                            k-data-value-field="'Id'"
+                                            k-auto-bind="false"
+                                            ng-change="onSearch()"
+                                            ng-model="data.DepartmentId"
+                                            k-data-source="departmentsDataSource"
+                                            style="width: 100%" ng-keydown="onSearch()"></select>
                                 </div>
                             </div>
                         </div>

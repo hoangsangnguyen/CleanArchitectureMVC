@@ -21,42 +21,10 @@
         });
 
         function initView() {
-            //$scope.mainGridOptions = {
-            //    dataSource: {
-            //        dataType: "json",
-            //        transport: {
-            //            read: function (e) {
-            //                return DepartmentService.GetAll()
-            //                    .then(function (departments) {
-            //                        console.log('Department ', departments);
-            //                        e.success(departments.Results);
-            //                    });
-            //            }
-            //        },
-            //        pageSize: 5,
-            //        serverPaging: true,
-            //        serverSorting: true
-            //    },
-            //    sortable: true,
-            //    pageable: true,
-            //    columns: [{
-            //        field: "Name",
-            //        title: "Name",
-            //    },
-            //    {
-            //        field: "Id",
-            //        title: " ",
-            //        width: 100,
-            //        headerAttributes: { style: "text-align:center" },
-            //        attributes: { style: "text-align:center" },
-            //        template: '<a class="btn btn-default" href="/departments/#=Id#"><i class="fa fa-pencil"></i>Detail</a>'
-            //    }]
-            //};
-
-            $scope.departmentDataSource = {
-                type: "odata",
+            $scope.departmentsDataSource = {
                 serverFiltering: true,
                 transport: {
+                    type: "json",
                     read: function (e) {
                         return DepartmentService.GetViewModels()
                             .then(function (departments) {
@@ -66,51 +34,30 @@
                 }
             };
 
-            $("#DepartmentId").kendoComboBox({
-                filter: "contains",
-                dataTextField: "Name",
-                dataValueField: "Id",
-                placeholder: "Select department...",
-                minLength: 0,
+            $scope.mainGridOptions = {
                 dataSource: {
-                    dataType: "json",
-                    serverFiltering: true,
                     transport: {
+                        type: "odata",
                         read: function (e) {
-                                return DepartmentService.GetViewModels()
-                                .then(function (departments) {
-                                    e.success(departments);
+                            return ClassService.GetAll($scope.searchData)
+                                .then(function (classes) {
+                                    e.success(classes);
                                 });
                         }
-                    }
-                }
-            });
+                    },
+                    schema: {
+                        data: "Results",
+                        total: "ItemCount"
+                    },
+                    batch: true,
 
-            function filterDepartment() {
-                var data = {
-                    Name: $("#DepartmentId").data("kendoComboBox").value()
-                };
-                return data;
-            }
-
-            var dataSource = new kendo.data.DataSource({
-                dataType: "json",
-                transport: {
-                    read: function (e) {
-                        return ClassService.GetAll($scope.searchData)
-                            .then(function (classes) {
-                                e.success(classes.Results);
-                            });
-                    }
                 },
-                batch: true,
-                pageSize: 20,
-            });
-
-            $("#grid").kendoGrid({
-                dataSource: dataSource,
-                pageable: true,
-                height: 550,
+                sortable: true,
+                pageable: {
+                    pageSize: 5,
+                    pageSizes: [5, 10, 20],
+                    refresh: true
+                },
                 columns: [
                     { field: "Name", title: "Name" },
                     { field: "DepartmentName", title: "Department" },
@@ -122,14 +69,11 @@
                         attributes: { style: "text-align:center" },
                         template: '<a class="btn btn-default" href="/classes/#=Id#"><i class="fa fa-pencil"></i>Detail</a>'
                     }]
-            });
+            };
         }
 
         $scope.onSearch = function () {
-            var grid = $('#grid').data('kendoGrid');
-            grid.dataSource.page(1); //new search. Set page size to 1
-            grid.dataSource.read();
-
+            $scope.grid.dataSource.read();
             return false;
         }
     }

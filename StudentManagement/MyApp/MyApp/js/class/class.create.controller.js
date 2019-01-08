@@ -16,46 +16,34 @@
             var role = JSON.parse($window.localStorage.getItem('currentUser')).Meta.Role;
             var roleName = JSON.parse(role).SystemName;
             $scope.isAdminOrManager = roleName == 'admin' || roleName == 'manager'
-
-            initView();
         });
 
-        function initView() {
-            $scope.data = { Name: '', DepartmentId: '' };
+        $scope.data = { Name: '', DepartmentId: '' };
 
-            $("#departmentId").kendoComboBox({
-                dataTextField: "Name",
-                dataValueField: "Id",
-                filter: "contains",
-                autoBind: true,
-                dataSource: {
-                    dataType: "odata",
-                    serverFiltering: true,
-                    transport: {
-                        read: function (e) {
-                            return DepartmentService.GetViewModels()
-                                .then(function (departments) {
-                                    e.success(departments);
-                                });
-                        }
-                    }
+        $scope.departmentsDataSource = {
+            serverFiltering: true,
+            transport: {
+                type: "json",
+                read: function (e) {
+                    return DepartmentService.GetViewModels()
+                        .then(function (departments) {
+                            e.success(departments);
+                        });
                 }
-            });
-
-            $scope.onSave = function () {
-                $scope.data.DepartmentId = $("#departmentId").data("kendoComboBox").value() || '';
-                ClassService.Create($scope.data).then(
-                    function (response) {
-                        $location.path("/classes");
-                    }, function (error) {
-                        alert('Create new class failed: ', error);
-                    });
             }
+        };
 
-            $scope.onBack = function () {
-                $location.path("/classes");
-            }
-          
+        $scope.onSave = function () {
+            ClassService.Create($scope.data).then(
+                function (response) {
+                    $location.path("/classes");
+                }, function (error) {
+                    alert('Create new class failed: ', error);
+                });
+        }
+
+        $scope.onBack = function () {
+            $location.path("/classes");
         }
     }
 

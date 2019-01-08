@@ -23,7 +23,7 @@
                                     <label class="control-label">Class name:</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <input class="form-control" ng-model="searchData.Name" type="text" placeholder="Type class name" ng-keydown="onSearch()">
+                                    <input class="form-control" ng-model="searchData.Name" type="text" placeholder="Type class name" ng-change="onSearch()" ng-keydown="onSearch()">
                                 </div>
                             </div>
                         </div>
@@ -36,15 +36,15 @@
                                     <label class="control-label">Department:</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <!--<select kendo-combo-box
+                                    <select kendo-combo-box
                                             k-placeholder="'Select department...'"
                                             k-data-text-field="'Name'"
-                                            k-data-value-field="'ID'"
-                                            k-filter="'contains'"
+                                            k-data-value-field="'Id'"
                                             k-auto-bind="false"
-                                            k-data-source="departmentDataSource"
-                                            style="width: 100%" ng-model="searchData.departmentId"></select>-->
-                                    <input class="form-control" k-ng-model="searchData.DepartmentId" id="DepartmentId" style="width: 100%;" ng-keydown="onSearch()"/>
+                                            ng-change="onSearch()"
+                                            ng-model="searchData.DepartmentId"
+                                            k-data-source="departmentsDataSource"
+                                            style="width: 100%" ng-keydown="onSearch()"></select>
                                 </div>
                             </div>
                         </div>
@@ -69,7 +69,7 @@
 
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <div id="grid"></div>
+                    <div kendo-grid="grid" options="mainGridOptions"></div>
                 </div>
             </div>
 

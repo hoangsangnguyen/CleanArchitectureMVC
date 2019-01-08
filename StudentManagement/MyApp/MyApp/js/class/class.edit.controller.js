@@ -21,29 +21,9 @@
         });
 
         function initView() {
-            $("#departmentId").kendoComboBox({
-                dataTextField: "Name",
-                dataValueField: "Id",
-                filter: "contains",
-                autoBind: true,
-                dataSource: {
-                    dataType: "odata",
-                    serverFiltering: true,
-                    transport: {
-                        read: function (e) {
-                            return DepartmentService.GetViewModels()
-                                .then(function (departments) {
-                                    e.success(departments);
-                                });
-                        }
-                    }
-                }
-            });
-
             ClassService.GetById($routeParams.Id).then(
                 function (response) {
                     $scope.data = response.Results;
-                    $("#departmentId").data("kendoComboBox").value($scope.data.DepartmentId);
                 },
                 function (error) {
                     alert('Get class by id failed');
@@ -51,8 +31,21 @@
             );
         }
 
+        $scope.departmentsDataSource = {
+            serverFiltering: true,
+            transport: {
+                type: "json",
+                read: function (e) {
+                    return DepartmentService.GetViewModels()
+                        .then(function (departments) {
+                            e.success(departments);
+                        });
+                }
+            }
+        };
+
+
         $scope.onSave = function () {
-            $scope.data.DepartmentId = $("#departmentId").data("kendoComboBox").value() || '';
             ClassService.Update($scope.data).then(
                 function (response) {
                     $location.path("/classes");
