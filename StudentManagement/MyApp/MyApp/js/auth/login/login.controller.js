@@ -5,20 +5,16 @@
         .module('helloApp')
         .controller('LoginController', LoginController);
 
-    LoginController.$inject = ['$location', 'AuthenticationService', 'FlashService', '$rootScope'];
-    function LoginController($location, AuthenticationService, FlashService, $rootScope) {
-        var vm = this;
-
-        vm.login = login;
-
-        (function initController() {
+    LoginController.$inject = ['$scope', '$location', 'AuthenticationService', 'FlashService', '$rootScope'];
+    function LoginController($scope, $location, AuthenticationService, FlashService, $rootScope) {
+        $(document).ready(function () {
             // reset login status
             AuthenticationService.ClearCredentials();
-        })();
+        });
 
-        function login() {
-            vm.dataLoading = true;
-            AuthenticationService.Login(vm.username, vm.password, function (response) {
+        $scope.login = function () {
+            $scope.dataLoading = true;
+            AuthenticationService.Login($scope.username, $scope.password, function (response) {
                 console.log('response ', response.status);
                 if (response.status == 200) {
                     AuthenticationService.SetCredentials(response.data);
@@ -26,11 +22,9 @@
 
                 } else {
                     FlashService.Error(response.message);
-                    vm.dataLoading = false;
+                    $scope.dataLoading = false;
                 }
             });
         };
     }
-
-
 })();

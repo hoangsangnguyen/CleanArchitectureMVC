@@ -51,12 +51,12 @@
             </div>
             <div class="navbar-collapse collapse" id="menu">
                 <ul class="nav navbar-nav">
-                    <li ng-class="{ active: IsRouteActive('/departments')}"><a href="/departments">Departments</a></li>
-                    <li ng-class="{ active: IsRouteActive('/classes')}"><a href="/classes">Class</a></li>
-                    <li ng-class="{ active: IsRouteActive('/teachers')}"><a href="/teachers">Teachers</a></li>
-                    <li ng-class="{ active: IsRouteActive('/students')}"><a href="/students">Students</a></li>
-                    <li ng-class="{ active: IsRouteActive('/subjects')}"><a href="/subjects">Subjects</a></li>
-                    <li ng-class="{ active: IsRouteActive('/scores')}"><a href="/scores">Scores</a></li>
+                    <li ng-class="{ active: IsRouteActive('/departments')}"><a ng-show="isLogin" href="/departments">Departments</a></li>
+                    <li ng-class="{ active: IsRouteActive('/classes')}"><a ng-show="isLogin" href="/classes">Class</a></li>
+                    <li ng-class="{ active: IsRouteActive('/teachers')}"><a ng-show="isLogin" href="/teachers">Teachers</a></li>
+                    <li ng-class="{ active: IsRouteActive('/students')}"><a ng-show="isLogin" href="/students">Students</a></li>
+                    <li ng-class="{ active: IsRouteActive('/subjects')}"><a ng-show="isLogin" href="/subjects">Subjects</a></li>
+                    <li ng-class="{ active: IsRouteActive('/scores')}"><a ng-show="isLogin" href="/scores">Scores</a></li>
                     <li ng-class="{ active: IsRouteActive('/auth/users')}"><a ng-show="isLogin && isAdmin" href="/auth/users">Users</a></li>
                     <li ng-class="{ active: IsRouteActive('/auth/roles')}"><a ng-show="isLogin && isAdmin" id="roles" href="/auth/roles">Roles</a></li>
                     <li><a ng-show="isLogin" href="#">{{currentUser.DisplayName}}</a></li>
@@ -72,27 +72,7 @@
     <!-- build:js /lib/js/angular.min.js -->
     <script src="/node_modules/angular/angular.js"></script>
     <script src="/node_modules/angular-route/angular-route.js"></script>
-
-    <!-- endbuild -->
-    <!-- build:js /js/app.min.js -->
-    @*<script src="/js/hello/controllers.js"></script>
-        <script src="/js/navigation/controllers.js"></script>
-        <script src="/js/auth/login/controllers.js"></script>
-        <script src="~/js/departments/controllers.js"></script>
-        <script src="~/js/class/controllers.js"></script>
-        <script src="~/js/students/controllers.js"></script>
-        <script src="~/js/teachers/controllers.js"></script>
-        <script src="~/js/subjects/controllers.js"></script>
-        <script src="~/js/scores/controllers.js"></script>
-        <script src="~/js/auth/users/controllers.js"></script>
-        <script src="~/js/auth/roles/controllers.js"></script>
-
-        <script src="~/js/auth/index.js"></script>
-        <script src="~/js/layout/index.js"></script>
-        <script src="~/js/services/index.js"></script>*@
-
-    @*<script src="~/js/kendo/jquery.min.js"></script>
-        <script src="~/js/kendo/angular.min.js"></script>*@
+   
     <script src="~/js/kendo/kendo.all.min.js"></script>
 
     <script src="~/js/app.js"></script>
@@ -110,30 +90,37 @@
 
 
     <script src="~/js/navigation/controllers.js"></script>
-    <script src="~/js/login/login.controller.js"></script>
+    <script src="~/js/auth/login/login.controller.js"></script>
     <script src="~/js/home/home.controller.js"></script>
+
     <script src="~/js/departments/department.list.controllers.js"></script>
     <script src="~/js/departments/department.create.controller.js"></script>
     <script src="~/js/departments/department.edit.controller.js"></script>
-    @*<script src="~/js/departments/index.js"></script>*@
+
     <script src="~/js/class/class.list.controller.js"></script>
     <script src="~/js/class/class.create.controller.js"></script>
     <script src="~/js/class/class.edit.controller.js"></script>
+
     <script src="~/js/teachers/teacher.list.controller.js"></script>
     <script src="~/js/teachers/teacher.edit.controller.js"></script>
     <script src="~/js/teachers/teacher.create.controller.js"></script>
+
     <script src="~/js/students/student.list.controller.js"></script>
     <script src="~/js/students/student.create.controller.js"></script>
     <script src="~/js/students/student.edit.controller.js"></script>
+
     <script src="~/js/subjects/subject.list.controller.js"></script>
     <script src="~/js/subjects/subject.create.controller.js"></script>
     <script src="~/js/subjects/subject.edit.controller.js"></script>
+
     <script src="~/js/scores/score.list.controller.js"></script>
     <script src="~/js/scores/score.create.controller.js"></script>
     <script src="~/js/scores/score.edit.controller.js"></script>
+
     <script src="~/js/auth/users/user.list.controller.js"></script>
     <script src="~/js/auth/users/user.create.controller.js"></script>
     <script src="~/js/auth/users/user.edit.controller.js"></script>
+
     <script src="~/js/auth/roles/role.list.controller.js"></script>
     <script src="~/js/auth/roles/role.create.controller.js"></script>
     <script src="~/js/auth/roles/role.edit.controller.js"></script>

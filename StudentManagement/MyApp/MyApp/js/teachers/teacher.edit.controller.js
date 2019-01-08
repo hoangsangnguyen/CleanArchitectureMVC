@@ -30,30 +30,22 @@
                     alert('Get teacher by id failed');
                 }
             )
-
-            $("#DepartmentId").kendoComboBox({
-                filter: "contains",
-                dataTextField: "Name",
-                dataValueField: "Id",
-                placeholder: "Select department...",
-                minLength: 0,
-                dataSource: {
-                    dataType: "json",
-                    serverFiltering: true,
-                    transport: {
-                        read: function (e) {
-                            return DepartmentService.GetViewModels()
-                                .then(function (departments) {
-                                    e.success(departments);
-                                });
-                        }
-                    }
-                }
-            });
         }
 
+        $scope.departmentsDataSource = {
+            transport: {
+                serverFiltering: true,
+                type: "json",
+                read: function (e) {
+                    return DepartmentService.GetViewModels()
+                        .then(function (departments) {
+                            e.success(departments);
+                        });
+                }
+            }
+        };
+
         $scope.onSave = function () {
-            $scope.data.DepartmentId = $("#DepartmentId").data("kendoComboBox").value();
             TeacherService.Update($scope.data).then(
                 function (response) {
                     $location.path("/teachers");

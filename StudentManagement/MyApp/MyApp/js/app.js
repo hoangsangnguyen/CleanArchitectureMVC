@@ -104,7 +104,7 @@
 
             .when('/login', {
                 controller: 'LoginController',
-                templateUrl: '/js/login/login.view.html',
+                templateUrl: '/js/auth/login/login.view.html',
                 controllerAs: 'vm'
             })
 
