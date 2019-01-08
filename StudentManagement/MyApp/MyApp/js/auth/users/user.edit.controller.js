@@ -28,20 +28,20 @@
                     alert('Get user by id failed');
                 }
             )
-
-            $scope.rolesDataSource = {
-                serverFiltering: true,
-                transport: {
-                    type: "json",
-                    read: function (e) {
-                        return RoleService.GetViewModels()
-                            .then(function (roles) {
-                                e.success(roles);
-                            });
-                    }
-                }
-            };
         }
+
+        $scope.rolesDataSource = {
+            serverFiltering: true,
+            transport: {
+                type: "json",
+                read: function (e) {
+                    return RoleService.GetViewModels()
+                        .then(function (roles) {
+                            e.success(roles);
+                        });
+                }
+            }
+        };
 
         $scope.onSave = function () {
             UserService.UpdateUserAndRole($scope.data).then(

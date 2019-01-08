@@ -17,73 +17,70 @@
             var roleName = JSON.parse(role).SystemName;
             $scope.isAdminOrManager = roleName == 'admin' || roleName == 'manager'
 
-            initView();
         });
 
-        function initView() {
-            $scope.searchData = {
-                FirstName: '',
-                LastName: '',
-                ClassId: '',
-                StudentCode: '',
-                DateOfBirth : ''
-            };
+        $scope.searchData = {
+            FirstName: '',
+            LastName: '',
+            ClassId: '',
+            StudentCode: '',
+            DateOfBirth: ''
+        };
 
-            $scope.classesDataSource = {
-                
-                serverFiltering: true,
+        $scope.classesDataSource = {
+
+            serverFiltering: true,
+            transport: {
+                type: "json",
+                read: function (e) {
+                    return ClassService.GetViewModels()
+                        .then(function (classes) {
+                            console.log(classes);
+                            e.success(classes);
+                        });
+                }
+            }
+        };
+
+        $scope.mainGridOptions = {
+            dataSource: {
                 transport: {
-                    type: "json",
+                    type: "odata",
                     read: function (e) {
-                        return ClassService.GetViewModels()
-                            .then(function (classes) {
-                                console.log(classes);
-                                e.success(classes);
+                        return StudentService.GetAll($scope.searchData)
+                            .then(function (students) {
+                                e.success(students);
                             });
                     }
-                }
-            };
+                },
+                schema: {
+                    data: "Results",
+                    total: "ItemCount"
+                },
+                batch: true,
 
-            $scope.mainGridOptions = {
-                dataSource: {
-                    transport: {
-                        type: "odata",
-                        read: function (e) {
-                            return StudentService.GetAll($scope.searchData)
-                                .then(function (students) {
-                                    e.success(students);
-                                });
-                        }
-                    },
-                    schema: {
-                        data: "Results",
-                        total: "ItemCount"
-                    },
-                    batch: true,
-                    
-                },
-                sortable: true,
-                pageable: {
-                    pageSize: 5,
-                    pageSizes: [5, 10, 20],
-                    refresh: true
-                },
-                columns: [
-                    { field: "FirstName", title: "First name" },
-                    { field: "LastName", title: "Last name" },
-                    { field: "ClassName", title: "Class name" },
-                    { field: "StudentCode", title: "Code" },
-                    { field: "DateOfBirth", title: "Date of birth" },
-                    {
-                        field: "Id",
-                        title: " ",
-                        width: 100,
-                        headerAttributes: { style: "text-align:center" },
-                        attributes: { style: "text-align:center" },
-                        template: '<a class="btn btn-default" href="/students/#=Id#"><i class="fa fa-pencil"></i>Detail</a>'
-                    }]
-            };
-        }
+            },
+            sortable: true,
+            pageable: {
+                pageSize: 5,
+                pageSizes: [5, 10, 20],
+                refresh: true
+            },
+            columns: [
+                { field: "FirstName", title: "First name" },
+                { field: "LastName", title: "Last name" },
+                { field: "ClassName", title: "Class name" },
+                { field: "StudentCode", title: "Code" },
+                { field: "DateOfBirth", title: "Date of birth" },
+                {
+                    field: "Id",
+                    title: " ",
+                    width: 100,
+                    headerAttributes: { style: "text-align:center" },
+                    attributes: { style: "text-align:center" },
+                    template: '<a class="btn btn-default" href="/students/#=Id#"><i class="fa fa-pencil"></i>Detail</a>'
+                }]
+        };
 
         $scope.onSearch = function () {
             $scope.grid.dataSource.read();

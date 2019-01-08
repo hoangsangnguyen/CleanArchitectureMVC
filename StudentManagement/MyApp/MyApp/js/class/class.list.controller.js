@@ -17,60 +17,57 @@
             var roleName = JSON.parse(role).SystemName;
             $scope.isAdminOrManager = roleName == 'admin' || roleName == 'manager'
 
-            initView();
         });
 
-        function initView() {
-            $scope.departmentsDataSource = {
-                serverFiltering: true,
+        $scope.departmentsDataSource = {
+            serverFiltering: true,
+            transport: {
+                type: "json",
+                read: function (e) {
+                    return DepartmentService.GetViewModels()
+                        .then(function (departments) {
+                            e.success(departments);
+                        });
+                }
+            }
+        };
+
+        $scope.mainGridOptions = {
+            dataSource: {
                 transport: {
-                    type: "json",
+                    type: "odata",
                     read: function (e) {
-                        return DepartmentService.GetViewModels()
-                            .then(function (departments) {
-                                e.success(departments);
+                        return ClassService.GetAll($scope.searchData)
+                            .then(function (classes) {
+                                e.success(classes);
                             });
                     }
-                }
-            };
-
-            $scope.mainGridOptions = {
-                dataSource: {
-                    transport: {
-                        type: "odata",
-                        read: function (e) {
-                            return ClassService.GetAll($scope.searchData)
-                                .then(function (classes) {
-                                    e.success(classes);
-                                });
-                        }
-                    },
-                    schema: {
-                        data: "Results",
-                        total: "ItemCount"
-                    },
-                    batch: true,
-
                 },
-                sortable: true,
-                pageable: {
-                    pageSize: 5,
-                    pageSizes: [5, 10, 20],
-                    refresh: true
+                schema: {
+                    data: "Results",
+                    total: "ItemCount"
                 },
-                columns: [
-                    { field: "Name", title: "Name" },
-                    { field: "DepartmentName", title: "Department" },
-                    {
-                        field: "Id",
-                        title: " ",
-                        width: 100,
-                        headerAttributes: { style: "text-align:center" },
-                        attributes: { style: "text-align:center" },
-                        template: '<a class="btn btn-default" href="/classes/#=Id#"><i class="fa fa-pencil"></i>Detail</a>'
-                    }]
-            };
-        }
+                batch: true,
+
+            },
+            sortable: true,
+            pageable: {
+                pageSize: 5,
+                pageSizes: [5, 10, 20],
+                refresh: true
+            },
+            columns: [
+                { field: "Name", title: "Name" },
+                { field: "DepartmentName", title: "Department" },
+                {
+                    field: "Id",
+                    title: " ",
+                    width: 100,
+                    headerAttributes: { style: "text-align:center" },
+                    attributes: { style: "text-align:center" },
+                    template: '<a class="btn btn-default" href="/classes/#=Id#"><i class="fa fa-pencil"></i>Detail</a>'
+                }]
+        };
 
         $scope.onSearch = function () {
             $scope.grid.dataSource.read();

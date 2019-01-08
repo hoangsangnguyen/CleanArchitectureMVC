@@ -29,34 +29,34 @@
                     alert('Get score by Id failed');
                 }
             )
-
-            $scope.studentDataSource = {
-                serverFiltering: true,
-                transport: {
-                    type: "json",
-                    read: function (e) {
-                        return StudentService.GetViewModels()
-                            .then(function (students) {
-                                e.success(students);
-                            });
-                    }
-                }
-            };
-
-            $scope.subjectDataSource = {
-                serverFiltering: true,
-                transport: {
-                    type: "json",
-                    read: function (e) {
-                        return SubjectService.GetViewModels()
-                            .then(function (subjects) {
-                                e.success(subjects);
-                            });
-                    }
-                }
-            };
-
         }
+
+        $scope.studentDataSource = {
+            serverFiltering: true,
+            transport: {
+                type: "json",
+                read: function (e) {
+                    return StudentService.GetViewModels()
+                        .then(function (students) {
+                            e.success(students);
+                        });
+                }
+            }
+        };
+
+        $scope.subjectDataSource = {
+            serverFiltering: true,
+            transport: {
+                type: "json",
+                read: function (e) {
+                    return SubjectService.GetViewModels()
+                        .then(function (subjects) {
+                            e.success(subjects);
+                        });
+                }
+            }
+        };
+
 
         $scope.onSave = function () {
             ScoreService.Update($scope.data).then(

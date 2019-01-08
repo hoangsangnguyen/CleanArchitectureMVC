@@ -17,18 +17,15 @@
             var roleName = JSON.parse(role).SystemName;
             $scope.isAdminOrManager = roleName == 'admin' || roleName == 'manager'
 
-            initView();
         });
 
-        function initView() {
-            $scope.searchData = {
-                FirstName: '',
-                LastName: '',
-                DepartmentId: '',
-                IsManager: '',
-                CreateNewUserLogin : ''
-            };
-        }
+        $scope.searchData = {
+            FirstName: '',
+            LastName: '',
+            DepartmentId: '',
+            IsManager: '',
+            CreateNewUserLogin: ''
+        };
 
         $scope.departmentsDataSource = {
             transport: {

@@ -17,32 +17,29 @@
                 return;
             }
 
-            initView();
         });
 
-        function initView() {
-            $scope.data = {
-                FirstName: '',
-                LastName: '',
-                DisplayName: '',
-                UserName: '',
-                Password: '',
-                RoleId: ''
-            };
+        $scope.data = {
+            FirstName: '',
+            LastName: '',
+            DisplayName: '',
+            UserName: '',
+            Password: '',
+            RoleId: ''
+        };
 
-            $scope.rolesDataSource = {
-                serverFiltering: true,
-                transport: {
-                    type: "json",
-                    read: function (e) {
-                        return RoleService.GetViewModels()
-                            .then(function (roles) {
-                                e.success(roles);
-                            });
-                    }
+        $scope.rolesDataSource = {
+            serverFiltering: true,
+            transport: {
+                type: "json",
+                read: function (e) {
+                    return RoleService.GetViewModels()
+                        .then(function (roles) {
+                            e.success(roles);
+                        });
                 }
-            };
-        }
+            }
+        };
 
         $scope.onSave = function () {
             UserService.Create($scope.data).then(

@@ -17,31 +17,28 @@
             var roleName = JSON.parse(role).SystemName;
             $scope.isAdminOrManager = roleName == 'admin' || roleName == 'manager'
 
-            initView();
         });
 
-        function initView() {
-            $scope.data = {
-                FirstName: '',
-                LastName: '',
-                ClassId: '',
-                StudentCode: '',
-                DateOfBirth: ''
-            };
+        $scope.data = {
+            FirstName: '',
+            LastName: '',
+            ClassId: '',
+            StudentCode: '',
+            DateOfBirth: ''
+        };
 
-            $scope.classesDataSource = {
-                serverFiltering: true,
-                transport: {
-                    type: "json",
-                    read: function (e) {
-                        return ClassService.GetViewModels()
-                            .then(function (classes) {
-                                e.success(classes);
-                            });
-                    }
+        $scope.classesDataSource = {
+            serverFiltering: true,
+            transport: {
+                type: "json",
+                read: function (e) {
+                    return ClassService.GetViewModels()
+                        .then(function (classes) {
+                            e.success(classes);
+                        });
                 }
-            };
-        }
+            }
+        };
 
         $scope.onSave = function () {
             StudentService.Create($scope.data).then(

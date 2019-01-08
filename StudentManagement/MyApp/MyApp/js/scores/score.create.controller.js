@@ -17,43 +17,39 @@
             var roleName = JSON.parse(role).SystemName;
             $scope.isAdminOrManager = roleName == 'admin' || roleName == 'manager';
 
-            initView();
         });
 
-        function initView() {
-            $scope.searchData = {
-                SubjectId: '',
-                ScoreId: '',
-                Mark: '',
-            };
+        $scope.data = {
+            SubjectId: '',
+            ScoreId: '',
+            Mark: '',
+        };
 
-            $scope.studentDataSource = {
-                serverFiltering: true,
-                transport: {
-                    type: "json",
-                    read: function (e) {
-                        return StudentService.GetViewModels()
-                            .then(function (students) {
-                                e.success(students);
-                            });
-                    }
+        $scope.studentDataSource = {
+            serverFiltering: true,
+            transport: {
+                type: "json",
+                read: function (e) {
+                    return StudentService.GetViewModels()
+                        .then(function (students) {
+                            e.success(students);
+                        });
                 }
-            };
+            }
+        };
 
-            $scope.subjectDataSource = {
-                serverFiltering: true,
-                transport: {
-                    type: "json",
-                    read: function (e) {
-                        return SubjectService.GetViewModels()
-                            .then(function (subjects) {
-                                e.success(subjects);
-                            });
-                    }
+        $scope.subjectDataSource = {
+            serverFiltering: true,
+            transport: {
+                type: "json",
+                read: function (e) {
+                    return SubjectService.GetViewModels()
+                        .then(function (subjects) {
+                            e.success(subjects);
+                        });
                 }
-            };
-
-        }
+            }
+        };
 
         $scope.onSave = function () {
             ScoreService.Create($scope.data).then(

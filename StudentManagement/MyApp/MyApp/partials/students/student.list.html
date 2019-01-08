@@ -23,7 +23,7 @@
                                     <label class="control-label">First name:</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <input class="form-control" ng-model="searchData.FirstName" type="text" placeholder="Type first name" ng-keydown="onSearch()">
+                                    <input class="form-control" ng-model="searchData.FirstName" type="text" placeholder="Type first name" ng-change="onSearch()" ng-keydown="onSearch()">
                                 </div>
                             </div>
                         </div>
@@ -33,7 +33,7 @@
                                     <label class="control-label">Last name:</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <input class="form-control" ng-model="searchData.LastName" type="text" placeholder="Type last name" ng-keydown="onSearch()">
+                                    <input class="form-control" ng-model="searchData.LastName" type="text" placeholder="Type last name" ng-change="onSearch()" ng-keydown="onSearch()">
                                 </div>
                             </div>
                         </div>
@@ -46,7 +46,7 @@
                                     <label class="control-label">Student code:</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <input class="form-control" ng-model="searchData.StudentCode" type="text" placeholder="Type student code" ng-keydown="onSearch()">
+                                    <input class="form-control" ng-model="searchData.StudentCode" type="text" placeholder="Type student code" ng-change="onSearch()" ng-keydown="onSearch()">
                                 </div>
                             </div>
                         </div>
@@ -78,7 +78,7 @@
                                     <label class="control-label">Date of birth:</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <input kendo-date-picker kendo-date-input k-format = "'yyyy-MM-dd'" ng-model="searchData.DateOfBirth" style="width: 100%" ng-keydown="onSearch()" />
+                                    <input kendo-date-picker kendo-date-input k-format = "'yyyy-MM-dd'" ng-model="searchData.DateOfBirth" style="width: 100%" ng-change="onSearch()" ng-keydown="onSearch()" />
                                 </div>
                             </div>
                         </div>

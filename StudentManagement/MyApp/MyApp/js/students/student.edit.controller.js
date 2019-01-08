@@ -29,20 +29,20 @@
                     alert('Get student by id failed');
                 }
             )
-
-            $scope.classesDataSource = {
-                serverFiltering: true,
-                transport: {
-                    type: "json",
-                    read: function (e) {
-                        return ClassService.GetViewModels()
-                            .then(function (classes) {
-                                e.success(classes);
-                            });
-                    }
-                }
-            };
         }
+
+        $scope.classesDataSource = {
+            serverFiltering: true,
+            transport: {
+                type: "json",
+                read: function (e) {
+                    return ClassService.GetViewModels()
+                        .then(function (classes) {
+                            e.success(classes);
+                        });
+                }
+            }
+        };
 
         $scope.onSave = function () {
             StudentService.Update($scope.data).then(
