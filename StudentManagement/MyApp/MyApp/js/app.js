@@ -215,6 +215,25 @@
                 templateUrl: '/js/scores/score.edit.html',
                 controllerAs: 'vm'
             })
+
+            .when('/auth/users', {
+                controller: 'UserListController',
+                templateUrl: '/js/auth/users/user.list.html',
+                controllerAs: 'vm'
+            })
+
+            .when('/auth/users/new', {
+                controller: 'UserCreateController',
+                templateUrl: '/js/auth/users/user.create.html',
+                controllerAs: 'vm'
+            })
+
+            .when('/auth/users/:Id', {
+                controller: 'UserEditController',
+                templateUrl: '/js/auth/users/user.edit.html',
+                controllerAs: 'vm'
+            })
+
             //.when('/register', {
             //    controller: 'RegisterController',
             //    templateUrl: 'register/register.view.html',

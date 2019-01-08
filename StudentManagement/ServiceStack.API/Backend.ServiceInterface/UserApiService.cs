@@ -112,6 +112,30 @@ namespace ServiceStack.API.ServiceInterface
             return response;
         }
 
+        [RequiredRole("admin")]
+        public async Task<object> Put(UpdateUserAndRole request)
+        {
+            var response = new BaseResponse();
+            Expression<Func<User, bool>> keySelector = x => x.Id == request.Id;
+            var entity = await _userService.GetById(keySelector: keySelector);
+
+            request.ToEntity(entity, new string[] { "Password" });
+
+            if (request.Password != null && request.Password != entity.Password)
+            {
+                new SaltedHash().GetHashAndSaltString(request.Password, out var hashedPassword, out var salt);
+                entity.Password = hashedPassword;
+                entity.Salt = salt;
+            }
+
+            var result = await _userService.Update(entity);
+            response.Success = true;
+            response.Message = "Update user success";
+            response.StatusCode = (int)HttpStatusCode.OK;
+            response.Results = result.ConvertTo<UserDto>();
+            return response;
+        }
+
         [RequiresAnyRole("admin", "manager")]
         public async Task<object> Put(UpdateUserRole request)
         {

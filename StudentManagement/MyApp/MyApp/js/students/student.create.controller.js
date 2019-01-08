@@ -21,7 +21,7 @@
         });
 
         function initView() {
-            $scope.searchData = {
+            $scope.data = {
                 FirstName: '',
                 LastName: '',
                 ClassId: '',

@@ -116,6 +116,7 @@
     <Content Include="js\app-services\class.service.js" />
     <Content Include="js\app-services\department.service.js" />
     <Content Include="js\app-services\flash.service.js" />
+    <Content Include="js\app-services\role.service.js" />
     <Content Include="js\app-services\score.service.js" />
     <Content Include="js\app-services\student.service.js" />
     <Content Include="js\app-services\subject.service.js" />
@@ -129,6 +130,11 @@
     <Content Include="js\auth\login\controllers.js" />
     <Content Include="js\auth\roles\controllers.js" />
     <Content Include="js\auth\users\controllers.js" />
+    <Content Include="js\auth\users\user.create.controller.js" />
+    <Content Include="js\auth\users\user.create.html" />
+    <Content Include="js\auth\users\user.edit.controller.js" />
+    <Content Include="js\auth\users\user.edit.html" />
+    <Content Include="js\auth\users\user.list.html" />
     <Content Include="js\class\class.create.controller.js" />
     <Content Include="js\class\class.create.html" />
     <Content Include="js\class\class.edit.controller.js" />
@@ -2726,6 +2732,7 @@
     <Content Include="styles\kendo.uniform.mobile.min.css.map" />
     <Content Include="js\login\login.view.html" />
     <Content Include="js\scores\score.list.controller.js" />
+    <Content Include="js\auth\users\user.list.controller.js" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
