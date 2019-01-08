@@ -120,7 +120,7 @@
                 controllerAs: 'vm'
             })
 
-            .when('/departments/:id', {
+            .when('/departments/:Id', {
                 controller: 'DepartmentEditController',
                 templateUrl: '/js/departments/department.edit.html',
                 controllerAs: 'vm'

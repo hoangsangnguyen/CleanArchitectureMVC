@@ -23,7 +23,7 @@
                                     <label class="control-label">Department name:</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <input class="form-control" ng-model="searchData.name" ng-keydown="onSearch()" type="text" placeholder="Type department name">
+                                    <input class="form-control" ng-model="searchData.Name" ng-change="onSearch()" ng-keydown="onSearch()" type="text" placeholder="Type department name">
                                 </div>
                             </div>
                         </div>
@@ -47,18 +47,10 @@
 
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <div id="grid"></div>
-                    <!--<div kendo-grid k-options="mainGridOptions">
-                    </div>-->
-            </div>
+                    <div kendo-grid="grid" options="mainGridOptions"></div>
+                </div>
 
         </div>
     </div>
 </div>
 </div>
-<!--<script id="popup_editor" type="text/x-kendo-template">
-    <div class="k-edit-label" style="margin-right:5px">
-        <label for="Name" style="color: black;">Name</label>
-    </div>
-    <input type="text" class="k-input k-textbox" name="Name" data-bind="value:Name">
-</script>-->

@@ -17,7 +17,7 @@
             var roleName = JSON.parse(role).SystemName;
             $scope.isAdminOrManager = roleName == 'admin' || roleName == 'manager'
 
-            DepartmentService.GetById($routeParams.id).then(function (response) {
+            DepartmentService.GetById($routeParams.Id).then(function (response) {
                 $scope.data = response.Results;
             }, function (error) {
                 alert('Get department by id failed');
@@ -33,7 +33,7 @@
         }
 
         $scope.onDelete = function () {
-            DepartmentService.Delete($routeParams.id).then(function (response) {
+            DepartmentService.Delete($routeParams.Id).then(function (response) {
                 $location.path("/departments");
             }, function (error) {
                 alert('Delete department failed');
